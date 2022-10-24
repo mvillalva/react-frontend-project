@@ -1,3 +1,3 @@
 # React Frontend Project
 
-## Tematica: ?
+## Tematica: Netflix
