@@ -1,0 +1,43 @@
+@keyframes animateProfile {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.profiles-gate-container {
+    background: #141414;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 0;
+}
+
+.profiles-gate-container .centered-div {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.profiles-gate-container .centered-div.list-profiles-container:not(.js-transition-node) {    
+    animation: animateProfile .45s forwards;
+}
+
+.profiles-gate-container ul {
+    padding: 0;
+}
