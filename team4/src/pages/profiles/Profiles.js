@@ -1,27 +1,27 @@
 import React from "react";
 import ProfileButton from "../../components/profile-pack/profile-button/ProfileButton";
 import Profile from "../../components/profile-pack/profile/Profile";
-import ProfileAdd from "../../components/profile-pack/profile/ProfileAdd";
+import ProfileAddButton from "../../components/profile-pack/profile/ProfileAddButton";
 import ProfileList from "../../components/profile-pack/profileList/ProfileList";
 import './Profiles.css'
 
-const LoadProfiles = (profiles) => {
-    return profiles
-    .filter(e => profiles.length === 6? e.id !== 6 : e)
-    .map(e => e.id === 6 ? <ProfileAdd name={e.name}></ProfileAdd>:<Profile name={e.name} class={e.bg}></Profile>)
-}
+const Profiles = ({title, profiles, action}) => {
 
-const Profiles = (props) => {
+    const LoadProfiles = () => {
+        return profiles
+        .filter(e => profiles.length === 6 ? e.id !== 6 : e)
+        .map(e => e.id === 6 ? <ProfileAddButton name={e.name}></ProfileAddButton>:<Profile name={e.name} class={e.bg} action={action}></Profile>)
+    }
+
+    const button_title = action === 'R'? "Administrar perfiles" : "Listo"
 
     return (
-        <div className="profiles-gate-container">
-            <div className="centered-div list-profiles-container">
-                <ProfileList title={props.title}>
-                    {LoadProfiles(props.profiles)}
-                </ProfileList>
-                <ProfileButton title="Administrar perfiles"></ProfileButton>
-            </div>
-        </div>
+        <>
+            <ProfileList title={title}>
+                {LoadProfiles()}
+            </ProfileList>
+            <ProfileButton title={button_title} action={action}></ProfileButton>
+        </>
     )
 }
 

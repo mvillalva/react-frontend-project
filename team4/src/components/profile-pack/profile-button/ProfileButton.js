@@ -1,10 +1,13 @@
 import React from "react";
 import './ProfileButton.css'
 
-const ProfileButton = (props) => {
+const ProfileButton = ({title, action}) => {
+    const clases = action === 'R'? 'profile-button':'profile-button preferred-action'
+    const tolink = action === 'R'? '/ManageProfiles':'/profiles'
+
     return (
         <span>
-            <a href="/" className="profile-button">{props.title}</a>
+            <a href={tolink} className={clases}>{title}</a>
         </span>
     )
 }

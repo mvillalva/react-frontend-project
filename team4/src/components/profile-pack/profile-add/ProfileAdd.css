@@ -1,0 +1,189 @@
+* {
+    letter-spacing: normal !important;
+}
+.h1, .h2, .h3 {
+    font-weight: 400 !important;
+}
+
+.h1 {
+    font-size: 4vw !important;
+    margin: 0 !important;
+}
+
+.h2 {
+    color: #666;
+    font-size: 1.3vw !important;
+}
+
+.profile-actions-container {
+    position: relative;
+    text-align: left;
+}
+
+.profile-entry {
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+
+.profile-metadata {
+    display: flex;
+    padding: 2em 0;
+}
+
+img {
+    border: 0;
+}
+
+.ltr-1etmbqw {
+    animation-name: animateScale;
+    animation-duration: 400ms;
+}
+
+.profile-metadata .pulsate, .profile-metadata img {
+    border-radius: 4px;
+    height: 8vw;
+    max-height: 180px;
+    max-width: 180px;
+    min-height: 80px;
+    min-width: 80px;
+    width: 8vw;
+}
+
+.profile-metadata .main-profile-avatar {
+    margin-right: 1.5vw;
+    max-width: 180px;
+    min-width: 80px;
+    white-space: nowrap;
+    width: 8vw;
+}
+
+.profile-metadata img {
+    transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
+}
+
+.profile-metadata .main-profile-avatar img {
+    border-radius: 4px;
+}
+
+.profile-add-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-metadata .profile-entry-inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    vertical-align: middle;
+}
+
+input {
+    line-height: normal;
+}
+
+.profile-entry input[type=text] {
+    background: #666;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 1.3vw;
+    height: 2em;
+    margin: 0 0.8em 0 0;
+    padding: 0.2em 0.6em;
+    text-indent: 0.1vw;
+    width: 18em;
+}
+
+.profile-entry label {
+    display: inline;
+}
+
+.profile-metadata .add-adult-option, .profile-metadata .add-kids-option, .profile-metadata .add-teen-option {
+    align-items: center;
+    display: flex;
+    margin: 5px 0;
+    position: relative;
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.profile-entry input[type=checkbox] {
+    display: none;
+}
+
+.profile-entry label {
+    display: inline;
+}
+
+.profile-entry input[type=checkbox]+label {
+    border: 1px solid #333;
+    border-radius: 0;
+    display: inline-block;
+    font-size: .8vw;
+    height: 2.5em;
+    margin-right: 0.5em;
+    position: relative;
+    width: 2.5em;
+}
+
+.profile-metadata .add-adult-marker, .profile-metadata .add-kids-marker, .profile-metadata .add-teen-marker {
+    font-size: 1.3vw;
+    font-weight: 400;
+}
+
+.kids-profile-tooltip {
+    background: #fff;
+    bottom: 3em;
+    color: #000;
+    font-size: 1vw;
+    left: -6em;
+    opacity: 0;
+    padding: 0.8em;
+    position: absolute;
+    text-align: center;
+    transition: opacity .3s linear 50ms,z-index 1ms linear .35s;
+    width: 18em;
+    z-index: -1;
+}
+
+.kids-profile-tooltip:after {
+    border: 0.7em solid transparent;
+    border-top-color: #fff;
+    content: "";
+    height: 0;
+    left: 50%;
+    margin-left: -0.7em;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    width: 0;
+}
+
+.profile-button {
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2vw !important;
+    letter-spacing: 2px;
+    margin: 2em 0 1em;
+    padding: 0.5em 1.5em;
+}
+
+.profile-button.preferred-action {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: 500 !important;
+}
+
+.profile-actions-container .profile-button {
+    display: inline-block;
+    margin-right: 20px;
+}

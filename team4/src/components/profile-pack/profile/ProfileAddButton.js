@@ -1,10 +1,11 @@
 import React from "react";
+//import { Link } from "react-router-dom";
 import './Profile.css'
 
-const ProfileAdd = (props) => {
+const ProfileAddButton = (props) => {
     return (
         <li className="li">
-            <a href="/">
+            <a href='/AddProfile'>
                 <div className='avatar-wrapper'>
                     <div className='addProfileIcon fas fa-circle-plus'></div>
                 </div>
@@ -14,4 +15,4 @@ const ProfileAdd = (props) => {
     )
 }
 
-export default ProfileAdd
+export default ProfileAddButton
