@@ -1,0 +1,16 @@
+.h1 {
+    font-size: 4vw;
+    margin: 0;
+}
+
+.h1, .h2, .h3 {
+    font-weight: 400;
+}
+
+.profile-delete-warning {
+    font-size: 1.1vw;
+    align-items: center;
+    display: flex;
+    text-align: initial;
+    width: 25vw;
+}

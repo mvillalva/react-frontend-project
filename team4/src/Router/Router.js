@@ -3,6 +3,8 @@ import '../pages/profiles/Profiles.css'
 import Profiles from "../pages/profiles/Profiles";
 import Home from "../pages/home/Home";
 import ProfileAdd from "../components/profile-pack/profile-add/ProfileAdd";
+import ProfileEdit from "../components/profile-pack/profile-edit/ProfileEdit";
+import ProfileDelete from "../components/profile-pack/profile-delete/ProfileDelete";
 
 const Router = (props) => {    
 
@@ -18,8 +20,8 @@ const Router = (props) => {
                 <Route path="/browse" element={<Home />}></Route>
                 <Route path="/ManageProfiles" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
                 <Route path="/AddProfile" element={<ProfileAdd />}></Route>
-                <Route path="/EditProfile" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
-                <Route path="/DeleteProfile" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
+                <Route path="/EditProfile" element={<ProfileEdit />}></Route>
+                <Route path="/DeleteProfile" element={<ProfileDelete />}></Route>
             </Routes>
         </BrowserRouter>
     );
