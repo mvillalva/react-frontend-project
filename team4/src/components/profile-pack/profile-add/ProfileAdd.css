@@ -180,7 +180,7 @@ input[type=checkbox], input[type=radio] {
     background: #fff;
     border: 1px solid #fff;
     color: #000;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 
 .profile-actions-container .profile-button {

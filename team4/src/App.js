@@ -4,27 +4,27 @@ import Router from './Router/Router';
 const profiles = [
   {
       id: 1,
-      name : 'Marce',
+      name : 'User 1',
       bg : 'bg-1'
   },
   {
       id: 2,
-      name : 'Agus',
+      name : 'User 2',
       bg : 'bg-2'
   },
   {
       id: 3,
-      name : 'Cari',
+      name : 'User 3',
       bg : 'bg-3'
   },
   {
       id: 4,
-      name : 'Tati',
+      name : 'User 4',
       bg : 'bg-4'
   },
 //   {
 //       id: 5,
-//       name : 'Nuevo usuario',
+//       name : 'User 5',
 //       bg : 'bg-5'
 //   },
   {
