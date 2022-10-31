@@ -1,7 +1,13 @@
 @font-face {
   font-family: "Netflix Sans";  
   src: url("./fonts/NetflixSans-Regular.woff2") format("woff"),
-  url("./fonts/NetflixSans-Regular.otf") format("opentype");
+  url("./fonts/NetflixSans-Bold.woff2") format("woff"),
+  url("./fonts/NetflixSans-Medium.woff2") format("woff"),
+  url("./fonts/NetflixSans-Light.woff2") format("woff"),
+  url("./fonts/NetflixSans-Regular.otf") format("opentype"),
+  url("./fonts/NetflixSans-Bold.otf") format("opentype"),
+  url("./fonts/NetflixSans-Medium.otf") format("opentype")
+  url("./fonts/NetflixSans-Light.otf") format("opentype");
 }
 
 .App {
