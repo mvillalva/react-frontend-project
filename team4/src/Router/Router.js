@@ -12,7 +12,7 @@ const Router = (props) => {
     
     return (
         <BrowserRouter>
-            <Routes>                    
+            <Routes>
                 <Route path="/" element={<Principal />}></Route>
                 <Route path="/profiles" element={<Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />}></Route>
                 <Route path="/browse" element={<Home />}></Route>
@@ -21,7 +21,7 @@ const Router = (props) => {
                 <Route path="/EditProfile" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
                 <Route path="/DeleteProfile" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
             </Routes>
-        </BrowserRouter>    
+        </BrowserRouter>
     );
 };
 
