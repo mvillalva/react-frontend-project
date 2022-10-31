@@ -7,7 +7,7 @@ const Profile = (props) => {
                                                 <span className='fa fa-pencil svg-icon-edit'></span>
                                             </div> 
                                         : ' '
-    const link = props.action === 'R' ? '/profiles' : '/EditProfile'
+    const link = props.action === 'R' ? '/profiles' : '/EditProfile/' + props.id
 
     return (
         <li className='li profile'>
