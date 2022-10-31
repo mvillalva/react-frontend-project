@@ -15,13 +15,15 @@ const Profiles = ({title, profiles, action}) => {
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"
 
-    return (
-        <>
-            <ProfileList title={title}>
-                {LoadProfiles()}
-            </ProfileList>
-            <ProfileButton title={button_title} action={action}></ProfileButton>
-        </>
+    return (        
+        <div className="profiles-gate-container">
+            <div className="centered-div list-profiles-container">
+                <ProfileList title={title}>
+                    {LoadProfiles()}
+                </ProfileList>
+                <ProfileButton title={button_title} action={action}></ProfileButton>
+            </div>
+        </div>
     )
 }
 
