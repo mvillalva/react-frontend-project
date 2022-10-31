@@ -2,7 +2,7 @@ import React from "react";
 import './ProfileButton.css'
 
 const ProfileButton = ({title, action}) => {
-    const clases = action === 'R'? 'profile-button':'profile-button profile-button-red'
+    const clases = action === 'R'? 'profile-button':'profile-button preferred-action'
     const tolink = action === 'R'? '/ManageProfiles':'/profiles'
 
     return (

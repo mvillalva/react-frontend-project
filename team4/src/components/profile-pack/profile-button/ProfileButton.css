@@ -21,6 +21,22 @@
     font-weight: 600;
 }
 
+.profile-button.preferred-action {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: 600 !important;
+}
+
+.profile-button.preferred-action.preferred-active, 
+.profile-button.preferred-action:focus, 
+.profile-button.preferred-action:hover {
+    background: #c00;
+    border: 1px solid #c00;
+    color: #fff;
+    font-weight: 600 !important;
+}
+
 @media screen and (max-width: 800px) {
     .profile-button {
         font-size: 13px;

@@ -130,6 +130,30 @@
     border-radius: 4px;
 }
 
+.profile-edit-mode {
+    opacity: .5;
+}
+
+.svg-edit-overlay {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.svg-edit-overlay .svg-icon-edit {
+    height: 3rem;
+    max-height: 70px;
+    max-width: 70px;
+    width: 3rem;
+    font-size: 2rem;
+    color: #e5e5e5;
+}
+
 @media screen and (max-width: 865px) {    
     .addProfileIcon {
         font-size: 4em;
