@@ -16,7 +16,7 @@ const ProfileEdit = () => {
                     <div className="profile-edit-parent">
                         <div className="profile-edit-inputs">
                             <label for="profile-name-entry" id="profile-name-entry-label" className="visually-hidden">Nombre del perfil</label>
-                            <input type="text" className="" id="profile-name-entry" aria-labelledby="profile-name-entry-label" placeholder="Nombre" value="Cari" />
+                            <input type="text" className="" id="profile-name-entry" aria-labelledby="profile-name-entry-label" placeholder="Nombre" value="User 3" />
                         </div>                
                     </div>
                 </div>

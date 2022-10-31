@@ -10,7 +10,7 @@ const ProfileDelete = () => {
                     <div className="profile-metadata profile-entry">
                         <div className="main-profile-avatar">
                             <img src="https://occ-0-7118-2773.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABWw0vRAvv1VCQh43eIGGbOU9YGB0c_wGM1K8LDuUnYfB0jVIwRW1gTpYldIoy67LtH1Ky8cxhC_mjBb6C4qfcJWHzLAJasWAXuNR.png?r=ce4" alt="" className="ltr-1etmbqw" />
-                            <div className="profile-name">Cari</div>
+                            <div className="profile-name">User 3</div>
                         </div>
                         <div className="profile-delete-warning">
                             El historial de este perfil, incluidas Mi lista, los votos y la actividad, se eliminará definitivamente, por lo que no tendrás acceso a ellos después.
