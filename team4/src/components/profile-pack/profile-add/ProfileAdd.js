@@ -15,11 +15,11 @@ const ProfileAdd = (props) => {
                         <div className="profile-add-parent">
                             <div className="profile-entry-inputs">
                                 <input type="text" id="add-profile-name" className="" placeholder="Nombre"/>
-                                <label for="add-profile-name" aria-label="Nombre"></label>
+                                <label htmlFor="add-profile-name" aria-label="Nombre"></label>
                                 <div className="option-wrapper">
                                     <div className="add-kids-option">
                                         <input type="checkbox" id="add-kids-profile" />
-                                        <label for="add-kids-profile"></label>
+                                        <label htmlFor="add-kids-profile"></label>
                                         <span className="add-kids-marker" role="checkbox" aria-checked="false" tabindex="0">¿Niños?</span>
                                         <span className="kids-profile-tooltip">Si se selecciona esta opción, este perfil solo puede ver películas y series clasificadas para menores de 12&nbsp;años.</span>
                                     </div>

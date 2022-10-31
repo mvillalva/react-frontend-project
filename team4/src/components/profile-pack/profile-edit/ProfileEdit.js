@@ -14,7 +14,7 @@ const ProfileEdit = (props) => {
                     <div className="profile-metadata profile-entry">
                         <div className="main-profile-avatar">
                             <div className="avatar-box">
-                                <div className={'profile-icon ' + profile[0].bg}></div>                                
+                                <div className={'profile-icon sz-img ' + profile[0].bg}></div>                                
                             </div>
                         </div>
                         <div className="profile-edit-parent">
