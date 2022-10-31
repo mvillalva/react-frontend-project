@@ -16,6 +16,11 @@
     color: #e5e5e5;
 }
 
+.profile-button-red:hover {
+    background-color: red;
+    font-weight: 600;
+}
+
 @media screen and (max-width: 800px) {
     .profile-button {
         font-size: 13px;
