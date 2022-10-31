@@ -7,10 +7,11 @@ const Profile = (props) => {
                                                 <span className='fa fa-pencil svg-icon-edit'></span>
                                             </div> 
                                         : ' '
+    const link = props.action === 'R' ? '/profiles' : '/EditProfile'
 
     return (
         <li className='li profile'>
-            <a className='profile-link' href="/">
+            <a className='profile-link' href={link}>
                 <div className='avatar-wrapper'>
                     <div className={'profile-icon' + clases + props.class}></div>
                     {editDiv}                    
