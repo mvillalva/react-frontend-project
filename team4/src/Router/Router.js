@@ -11,7 +11,7 @@ const Router = (props) => {
     const Principal = () => props.profiles.length === 2 ? 
                             <Navigate to='/browse' /> :
                             <Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />
-    
+                            
     return (
         <BrowserRouter>
             <Routes>
