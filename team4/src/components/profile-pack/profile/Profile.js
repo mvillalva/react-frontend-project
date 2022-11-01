@@ -13,7 +13,7 @@ const Profile = (props) => {
         <li className='li profile'>
             <a className='profile-link' href={link}>
                 <div className='avatar-wrapper'>
-                    <div className={'profile-icon' + clases + props.class}></div>
+                    <div className={'profile-list-icon' + clases + props.class}></div>
                     {editDiv}                    
                 </div>
                 <span className='profile-name'>{props.name}</span>

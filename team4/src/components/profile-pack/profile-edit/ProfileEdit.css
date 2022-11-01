@@ -1,14 +1,198 @@
+* {
+    letter-spacing: 0 !important;
+}
+
+@keyframes animateContainer {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hh1, .hh2, .hh3 {
+    font-weight: 400;
+}
+
+.hh1 {
+    font-size: 4vw;
+    margin: 0;
+}
+
+.edit-container {
+    background: #141414;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 0;
+}
+
+.edit-container .centered-div {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.edit-container .centered-div.animate-container {    
+    animation: animateContainer .45s forwards;
+}
+
+.edit-actions-container {
+    position: relative;
+    text-align: left;
+}
+
+.edit-entry {
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #333;
+}
+
+.edit-entry label {
+    display: inline;
+}
+
+.edit-metadata {
+    display: flex;
+    padding: 2em 0;
+}
+
+.edit-metadata .profile-avatar {
+    margin-right: 1.5vw;
+    max-width: 180px;
+    min-width: 80px;
+    white-space: nowrap;
+    width: 8vw;
+}
+
 .profile-actions-container {
     position: relative;
     text-align: left;
 }
 
-.sz-img {
-    border-radius: 4px;
+.profile-icon {
     height: 8vw;
     max-height: 180px;
     max-width: 180px;
     min-height: 80px;
     min-width: 80px;
     width: 8vw;
+    background-color: #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;            
+    position: relative;
+    text-decoration: none;    
+}
+
+.profile-icon:after {
+    border: 0.2rem solid transparent;
+    border-radius: 4px;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.edit-container .profile-edit-parent {
+    max-width: 500px;
+}
+
+.profile-edit-inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.edit-entry input[type=text] {
+    background: #666;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    color: #fff;
+    font-size: 1.3vw;
+    height: 2em;
+    margin: 0 0.8em 0 0;
+    padding: 0.2em 0.6em;
+    text-indent: 0.1vw;
+    width: 18em;
+}
+
+.edit-entry .profile-edit-parent input[type=text] {
+    margin: 0;
+    width: 100%;
+}
+
+.edit-button {
+    background-color: transparent;
+    border: 1px solid grey;
+    color: grey;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2vw;
+    letter-spacing: 2px;
+    margin: 2em 0 1em;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+}
+
+.edit-actions-container .edit-button {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.edit-button:hover {
+    border: 1px solid #e5e5e5;
+    color: #e5e5e5;
+}
+
+.edit-button.preferred-action {
+    background: #fff;
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: 600 !important;
+}
+
+.edit-button.preferred-action.preferred-active, 
+.edit-button.preferred-action:focus, 
+.edit-button.preferred-action:hover {
+    background: #c00;
+    border: 1px solid #c00;
+    color: #fff;
+    font-weight: 600 !important;
+}
+
+@media screen and (max-width: 800px) {
+    .edit-button {
+        font-size: 13px;
+    }
+
+    .edit-entry input[type=text] {
+        font-size: 13px;
+    }
+    
+    .hh1 {
+        font-size: 40px;
+    }
+
+    .profile-edit-inputs {
+        margin-left: 15px;
+    }
 }
