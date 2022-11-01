@@ -1,0 +1,14 @@
+.profile-actions-container {
+    position: relative;
+    text-align: left;
+}
+
+.sz-img {
+    border-radius: 4px;
+    height: 8vw;
+    max-height: 180px;
+    max-width: 180px;
+    min-height: 80px;
+    min-width: 80px;
+    width: 8vw;
+}
