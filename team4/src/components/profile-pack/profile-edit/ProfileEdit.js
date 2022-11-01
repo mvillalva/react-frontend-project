@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './ProfileEdit.css'
 
 const ProfileEdit = (props) => {
@@ -22,9 +22,9 @@ const ProfileEdit = (props) => {
                             </div>                
                         </div>
                     </div>
-                    <a href='/ManageProfiles' className="edit-button preferred-action">Guardar</a>
-                    <a href='/ManageProfiles' className="edit-button">Cancelar</a>
-                    <a href={'/DeleteProfile/' + profile[0].id} className="edit-button">Eliminar perfil</a>
+                    <Link to='/ManageProfiles' className="edit-button preferred-action">Guardar</Link>
+                    <Link to='/ManageProfiles' className="edit-button">Cancelar</Link>
+                    <Link to={'/DeleteProfile/' + profile[0].id} className="edit-button">Eliminar perfil</Link>
                 </div>
             </div>
         </div>

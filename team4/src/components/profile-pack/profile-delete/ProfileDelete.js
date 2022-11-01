@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./ProfileDelete.css";
 
 const ProfileDelete = (props) => {
@@ -20,12 +20,12 @@ const ProfileDelete = (props) => {
                             El historial de este perfil, incluidas Mi lista, los votos y la actividad, se eliminará definitivamente, por lo que no tendrás acceso a ellos después.
                         </div>
                     </div>
-                    <a href={"/EditProfile/" + profile[0].id} className="delete-button preferred-action">
+                    <Link to={"/EditProfile/" + profile[0].id} className="delete-button preferred-action">
                         <span>Guardar perfil</span>
-                    </a>
-                    <a href="/ManageProfiles" className="delete-button">
+                    </Link>
+                    <Link to="/ManageProfiles" className="delete-button">
                         <span>Eliminar perfil</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
