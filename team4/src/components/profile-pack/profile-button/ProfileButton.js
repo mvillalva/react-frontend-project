@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './ProfileButton.css'
 
 const ProfileButton = ({title, action}) => {
@@ -7,7 +8,7 @@ const ProfileButton = ({title, action}) => {
 
     return (
         <span>
-            <a href={tolink} className={clases}>{title}</a>
+            <Link to={tolink} className={clases}>{title}</Link>
         </span>
     )
 }

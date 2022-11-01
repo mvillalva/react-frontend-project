@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './ProfileAdd.css'
 
 const ProfileAdd = (props) => {
@@ -27,8 +28,8 @@ const ProfileAdd = (props) => {
                             </div>
                         </div>
                     </div>
-                    <a href="/ManageProfiles" className="add-button preferred-action"><span>Continuar</span></a>
-                    <a href="/ManageProfiles" className="add-button"><span>Cancelar</span></a>
+                    <Link to="/ManageProfiles" className="add-button preferred-action"><span>Continuar</span></Link>
+                    <Link to="/ManageProfiles" className="add-button"><span>Cancelar</span></Link>
                 </div>
             </div>
         </div>

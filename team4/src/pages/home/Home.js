@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import './Home.css'
 
-const Home = () => {
+const Home = (props) => {
+
+    useEffect( () => {
+        document.title = 'Página de inicio - Team4'
+    })
+
     return (
-        <>
-            <h1>Home Page</h1>
-        </>
+        <div className="home-container">
+            <div className="centered-div animate-container">
+                <h1>Hola Mundo!!!</h1>
+            </div>
+        </div>
     )
 }
 
