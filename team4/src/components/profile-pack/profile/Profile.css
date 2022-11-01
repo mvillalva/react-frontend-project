@@ -25,12 +25,12 @@
     cursor: pointer;    
 }
 
-.li a.focused .profile-icon, 
-.li a.focused .profile-icon:after, 
-.li a:focus .profile-icon, 
-.li a:focus .profile-icon:after, 
-.li a:hover .profile-icon, 
-.li a:hover .profile-icon:after {
+.li a.focused .profile-list-icon, 
+.li a.focused .profile-list-icon:after, 
+.li a:focus .profile-list-icon, 
+.li a:focus .profile-list-icon:after, 
+.li a:hover .profile-list-icon, 
+.li a:hover .profile-list-icon:after {
     border-color: #e5e5e5;
 }
 
@@ -56,7 +56,7 @@
     position: relative;
 }
 
-.profile-icon {
+.profile-list-icon {
     background-color: #333;
     background-repeat: no-repeat;
     background-size: cover;
@@ -73,7 +73,7 @@
     width: 10vw;    
 }
 
-.profile-icon:after {
+.profile-list-icon:after {
     border: 0.2rem solid transparent;
     border-radius: 4px;
     bottom: 0;
