@@ -1,55 +1,62 @@
 * {
     letter-spacing: normal !important;
 }
-.h1, .h2, .h3 {
-    font-weight: 400 !important;
+
+@keyframes animateContainer {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-.h1 {
-    font-size: 4vw !important;
-    margin: 0 !important;
+.add-container {
+    background: #141414;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 0;
 }
 
-.h2 {
-    color: #666;
-    font-size: 1.3vw !important;
+.add-container .centered-div {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
 }
 
-.profile-actions-container {
+.add-container .centered-div.animate-container {    
+    animation: animateContainer .45s forwards;
+}
+
+.add-actions-container {
     position: relative;
     text-align: left;
 }
 
-.profile-entry {
+.add-entry {
     border-bottom: 1px solid #333;
     border-top: 1px solid #333;
 }
 
-.profile-metadata {
+.add-metadata {
     display: flex;
     padding: 2em 0;
 }
 
-img {
-    border: 0;
-}
-
-.ltr-1etmbqw {
-    animation-name: animateScale;
-    animation-duration: 400ms;
-}
-
-.profile-metadata .pulsate, .profile-metadata img {
-    border-radius: 4px;
-    height: 8vw;
-    max-height: 180px;
-    max-width: 180px;
-    min-height: 80px;
-    min-width: 80px;
-    width: 8vw;
-}
-
-.profile-metadata .main-profile-avatar {
+.add-metadata .profile-avatar {
     margin-right: 1.5vw;
     max-width: 180px;
     min-width: 80px;
@@ -57,21 +64,56 @@ img {
     width: 8vw;
 }
 
-.profile-metadata img {
-    transition-timing-function: cubic-bezier(.68,-.55,.265,1.55);
-}
-
-.profile-metadata .main-profile-avatar img {
+.profile-icon {
+    height: 8vw;
+    max-height: 180px;
+    max-width: 180px;
+    min-height: 80px;
+    min-width: 80px;
+    width: 8vw;
+    background-color: #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
     border-radius: 4px;
+    box-sizing: border-box;            
+    position: relative;
+    text-decoration: none;    
 }
 
-.profile-add-parent {
+.profile-icon:after {
+    border: 0.2rem solid transparent;
+    border-radius: 4px;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.hh1, .hh2, .hh3 {
+    font-weight: 400;
+}
+
+.hh1 {
+    font-size: 4vw;
+    margin: 0;
+}
+
+.hh2 {
+    color: #666;
+    font-size: 1.3vw;
+}
+
+.add-add-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.profile-metadata .profile-entry-inputs {
+.add-metadata .add-entry-inputs {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -83,7 +125,7 @@ input {
     line-height: normal;
 }
 
-.profile-entry input[type=text] {
+.add-entry input[type=text] {
     background: #666;
     border: 1px solid transparent;
     box-sizing: border-box;
@@ -96,11 +138,11 @@ input {
     width: 18em;
 }
 
-.profile-entry label {
+.add-entry label {
     display: inline;
 }
 
-.profile-metadata .add-adult-option, .profile-metadata .add-kids-option, .profile-metadata .add-teen-option {
+.add-metadata .add-kids-option {
     align-items: center;
     display: flex;
     margin: 5px 0;
@@ -112,15 +154,15 @@ input[type=checkbox], input[type=radio] {
     padding: 0;
 }
 
-.profile-entry input[type=checkbox] {
+.add-entry input[type=checkbox] {
     display: none;
 }
 
-.profile-entry label {
+.add-entry label {
     display: inline;
 }
 
-.profile-entry input[type=checkbox]+label {
+.add-entry input[type=checkbox]+label {
     border: 1px solid #333;
     border-radius: 0;
     display: inline-block;
@@ -131,7 +173,7 @@ input[type=checkbox], input[type=radio] {
     width: 2.5em;
 }
 
-.profile-metadata .add-adult-marker, .profile-metadata .add-kids-marker, .profile-metadata .add-teen-marker {
+.add-metadata .add-kids-marker {
     font-size: 1.3vw;
     font-weight: 400;
 }
@@ -164,26 +206,58 @@ input[type=checkbox], input[type=radio] {
     width: 0;
 }
 
-.profile-button {
+.add-button {
     background-color: transparent;
     border: 1px solid grey;
     color: grey;
     cursor: pointer;
     display: block;
-    font-size: 1.2vw !important;
+    font-size: 1.2vw;
     letter-spacing: 2px;
     margin: 2em 0 1em;
     padding: 0.5em 1.5em;
+    text-decoration: none;
 }
 
-.profile-button.preferred-action {
+.add-actions-container .add-button {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.add-button:hover {
+    border: 1px solid #e5e5e5;
+    color: #e5e5e5;
+}
+
+.add-button.preferred-action {
     background: #fff;
     border: 1px solid #fff;
     color: #000;
     font-weight: 600 !important;
 }
 
-.profile-actions-container .profile-button {
-    display: inline-block;
-    margin-right: 20px;
+.add-button.preferred-action.preferred-active, 
+.add-button.preferred-action:focus, 
+.add-button.preferred-action:hover {
+    background: #c00;
+    border: 1px solid #c00;
+    color: #fff;
+    font-weight: 600 !important;
+}
+
+@media screen and (max-width: 800px) {    
+    .hh2,
+    .add-button,
+    .add-entry input[type=text],
+    .add-metadata .add-kids-marker {
+        font-size: 13px;
+    }
+    
+    .hh1 {
+        font-size: 40px;
+    }
+
+    .add-entry input[type=checkbox]+label {
+        font-size: 7px;
+    }
 }

@@ -7,15 +7,13 @@ const ProfileEdit = (props) => {
     const profile = props.profiles.filter(e => e.id === parseInt(params.id))
 
     return (
-        <div className="profiles-gate-container">
-            <div className="centered-div list-profiles-container">
-                <div className="profile-actions-container">
-                    <h1>Editar perfil</h1>
-                    <div className="profile-metadata profile-entry">
-                        <div className="main-profile-avatar">
-                            <div className="avatar-box">
-                                <div className={'profile-icon sz-img ' + profile[0].bg}></div>                                
-                            </div>
+        <div className="edit-container">
+            <div className="centered-div animate-container">
+                <div className="edit-actions-container">
+                    <h1 className="hh1">Editar perfil</h1>
+                    <div className="edit-metadata edit-entry">
+                        <div className="profile-avatar">                            
+                            <div className={'profile-icon sz-img ' + profile[0].bg}></div>                            
                         </div>
                         <div className="profile-edit-parent">
                             <div className="profile-edit-inputs">
@@ -24,9 +22,9 @@ const ProfileEdit = (props) => {
                             </div>                
                         </div>
                     </div>
-                    <a href='/ManageProfiles' className="profile-button preferred-action">Guardar</a>
-                    <a href='/ManageProfiles' className="profile-button">Cancelar</a>
-                    <a href={'/DeleteProfile/' + profile[0].id} className="profile-button">Eliminar perfil</a>
+                    <a href='/ManageProfiles' className="edit-button preferred-action">Guardar</a>
+                    <a href='/ManageProfiles' className="edit-button">Cancelar</a>
+                    <a href={'/DeleteProfile/' + profile[0].id} className="edit-button">Eliminar perfil</a>
                 </div>
             </div>
         </div>
