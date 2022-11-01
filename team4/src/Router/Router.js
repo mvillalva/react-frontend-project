@@ -14,10 +14,11 @@ const Router = (props) => {
                             
     return (
         <BrowserRouter>
+            {props.children}
             <Routes>
                 <Route path="/" element={<Principal />}></Route>
                 <Route path="/profiles" element={<Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />}></Route>
-                <Route path="/browse" element={<Home />}></Route>
+                <Route path="/home" element={<Home />}></Route>
                 <Route path="/ManageProfiles" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
                 <Route path="/AddProfile" element={<ProfileAdd profiles={props.profiles} />}></Route>
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
