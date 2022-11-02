@@ -35,7 +35,7 @@ function Login() {
                 
             </form>
             <div class="login-signup-now" data-uia="login-signup-now">¿Primera vez en Netflix? 
-            <a class="" target="_self" href="/">Suscríbete ahora</a>
+            <p><b>Suscríbete ahora</b></p>
             </div>
             <span className='derechos'>Esta página está protegida por Google reCAPTCHA para comprobar que no solo eres un robot.</span>
         </div>
