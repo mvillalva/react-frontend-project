@@ -1,8 +1,9 @@
 import React from 'react';
-import './loginPage.css';
+import './LoginPage.css';
+import ButtonLogIn from './ButtonLogIn';
+import Form from 'react-bootstrap/Form';
 
-
-export default function LoginPage() {
+function LoginPage() {
 
     return (
 <>
@@ -11,16 +12,15 @@ export default function LoginPage() {
         <h1 className="loginPage-title"> Login to Netflix </h1>
 
             <form>
+                <p>Inicia sesión</p>
 
                 <input type ="text" name="username"></input>
 
                 <input type="password" name="password"/>
-
-                    <Button type="submit">
-
-                        Login
-                    </Button>
-
+                <ButtonLogIn></ButtonLogIn>
+                    
+                <Form.Check aria-label="option 1"  label="Recuérdame" />
+                <p>¿Necesitas ayuda?</p>
             </form>
 
     </div>
@@ -28,3 +28,4 @@ export default function LoginPage() {
 );
 
 }
+export default LoginPage;
