@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
-import LoginPage from './components/login/LoginPage';
+import LoginPage from './components/login/Login';
 
 const profiles = [
   {

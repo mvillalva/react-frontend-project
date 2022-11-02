@@ -5,6 +5,7 @@ import Home from "../pages/home/Home";
 import ProfileAdd from "../components/profile-pack/profile-add/ProfileAdd";
 import ProfileEdit from "../components/profile-pack/profile-edit/ProfileEdit";
 import ProfileDelete from "../components/profile-pack/profile-delete/ProfileDelete";
+import LoginPage from "../pages/loginPage/LoginPage";
 
 const Router = (props) => {    
 
@@ -17,6 +18,7 @@ const Router = (props) => {
             {props.children}
             <Routes>
                 <Route path="/" element={<Principal />}></Route>
+                <Route path="/loginpage" element={<LoginPage />}></Route>
                 <Route path="/profiles" element={<Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />}></Route>
                 <Route path="/home" element={<Home />}></Route>
                 <Route path="/ManageProfiles" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>

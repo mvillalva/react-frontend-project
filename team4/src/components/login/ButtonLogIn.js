@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { Button } from 'react-bootstrap';
 export default function ButtonLogIn(){
 
 return(
-    <button type="submit"> Inicia sesión
-     </button>
+    <Button variant="danger" type="submit"> Iniciar sesión
+     </Button>
 
 
 )
