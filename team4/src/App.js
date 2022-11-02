@@ -3,6 +3,7 @@ import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
 import LoginPage from './components/login/Login';
 
+
 const profiles = [
   {
       id: 1,
@@ -42,6 +43,7 @@ function App() {
         <Router profiles={profiles}>
           <NavBar></NavBar>
           <LoginPage></LoginPage>
+          
         </Router>
         
     </div>

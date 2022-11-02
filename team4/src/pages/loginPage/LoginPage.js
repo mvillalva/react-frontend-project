@@ -1,11 +1,12 @@
 import React from "react";
+import './LoginPage.css';
 import Login from "../../components/login/Login";
 
-const LoginPage = ()=>{
-    <span>
+const LoginPage = () =>{
+    <div className="loginPage"> 
         <Login></Login>
 
-    </span>
+    </div>
 }
 
-export default LoginPage
+export default LoginPage;
