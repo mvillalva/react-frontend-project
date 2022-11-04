@@ -16,16 +16,21 @@ const Profiles = ({title, profiles, action}) => {
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"
 
-    return (        
-        <div className="profiles-gate-container">
-            <div className="centered-div list-profiles-container">
-                <ProfileList title={title}>
-                    {LoadProfiles()}
-                </ProfileList>
-                <ProfileButton title={button_title} action={action}></ProfileButton>
+    if(profiles.length === 0 ){
+        return <div className="preloader"></div>
+    }
+    else {
+        return (        
+            <div className="profiles-gate-container">
+                <div className="centered-div list-profiles-container">
+                    <ProfileList title={title}>
+                        {LoadProfiles()}
+                    </ProfileList>
+                    <ProfileButton title={button_title} action={action}></ProfileButton>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 
