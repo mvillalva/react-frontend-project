@@ -1,0 +1,38 @@
+
+.LoginContainer{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgb(128, 128, 128, 0.3);
+    background-image: url(../../img/loginBackground.jpg);
+}
+
+.checkBoxLogin{
+    justify-content: center;
+    text-align: center;
+}
+
+.Login{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    display: flex;
+    justify-content:center;
+    height:80vh;
+    background-color: rgba(0,0,0,.75);
+    border-radius: 4px;
+    box-sizing: border-box;
+    flex-direction:column;
+    width:50vh;
+    margin-bottom: 90px;
+padding: 60px  40px;
+}
+
+.derechos{
+-webkit-text-size-adjust: 100%;
+-webkit-font-smoothing: antialiased;
+direction: ltr;
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+text-align: left;
+color: #8c8c8c;
+font-size: 13px;
+letter-spacing: 0!important;}
