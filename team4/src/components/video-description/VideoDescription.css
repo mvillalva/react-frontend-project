@@ -1,0 +1,104 @@
+.video-description {
+     width: 853px;
+     height: 90vh;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+
+.video-description-top {
+     height: 480px;
+     background-image: url("https://occ-0-3792-2774.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABRFIMOyg3rhhNb6HPS6hE1kkz0EN3gpgO6AHXHQdYOtZ0kfashp737vzgh8YbcrXKimKKIyJ0yfzPeXVIOKSOjfAW-YxzGbJFuIRKxqfJSeatH6FKSddUiuanw.webp?r=cf9.gif");
+     background-repeat: no-repeat;
+     background-size: cover;
+
+}
+.video-description-title {
+     font-size: 2rem;
+}
+
+.nombre-pelicula {
+     margin-top: 200px;
+     margin-left: 20px;
+     width: 40%;
+}
+
+.video-description-info-container {
+     display: flex;
+     flex-direction: row;
+}
+
+.video-description-info-container-left {
+     width: 65%;
+     padding: 20px 30px;
+}
+.video-description-info-container-right {
+     width: 35%;
+     padding: 20px 30px;
+}
+
+.video-description-info-categoria {
+     color: #777;
+     font-size: 14px;
+    line-height: 20px;
+}
+
+.video-description-info-container-right a {
+     color: #fff;
+     cursor: pointer;
+     text-decoration: none;
+     font-size: 14px;
+     line-height: 20px;
+ }
+
+ .video-description-info-description {
+     font-size: 14px;
+    line-height: 24px;
+ }
+
+.info-general, .info-general-2 {
+     margin-bottom: 20px;
+ }
+
+ .info-general span {
+     margin-right: 10px;
+ }
+ 
+ .porcentaje {
+     color: #46d369;
+     display: inline-block;
+     font-weight: 500;
+     font-size: 16px;
+ }
+
+ .anio {
+     color: #fff;
+ }
+
+ .maturity {
+     border: 1px solid hsla(0,0%,100%,.4);
+    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    overflow: hidden;
+    padding: 0 0.4em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+ }
+
+ .temporadas {
+     color: #fff;
+ }
+
+ .hd {
+     border: 1px solid hsla(0,0%,100%,.4);
+    border-radius: 3px;
+    color: hsla(0,0%,100%,.9);
+    font-size: .7em;
+    padding: 0 0.5em;
+    white-space: nowrap;
+ }
+
+ .ranking {
+     font-weight: 500;
+     font-size: 20px;
+ }
