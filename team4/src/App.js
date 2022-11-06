@@ -8,7 +8,7 @@ import ProfileProvider from './context/profileContext/ProfileContext';
 const profiles = [
   {
       id: 1,
-      name : 'User 1',
+      name : 'Usuario 1',
       bg : 'bg-1'
   },
   {
