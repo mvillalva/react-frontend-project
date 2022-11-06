@@ -1,6 +1,9 @@
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
+import LoginPage from './components/login/Login';
+import ProfileProvider from './context/profileContext/ProfileContext';
+
 
 const profiles = [
   {
@@ -38,9 +41,12 @@ const profiles = [
 function App() {
   return (
     <div className="App netflix-sans-font-loaded">
+      <ProfileProvider>
         <Router profiles={profiles}>
           <NavBar></NavBar>
+          <LoginPage></LoginPage>          
         </Router>
+      </ProfileProvider>
     </div>
   );
 }
