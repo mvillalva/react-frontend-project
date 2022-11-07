@@ -8,22 +8,22 @@ import ProfileProvider from './context/profileContext/ProfileContext';
 const profiles = [
   {
       id: 1,
-      name : 'User 1',
+      name : 'Usuario 1',
       bg : 'bg-1'
   },
   {
       id: 2,
-      name : 'User 2',
+      name : 'Usuario 2',
       bg : 'bg-2'
   },
   {
       id: 3,
-      name : 'User 3',
+      name : 'Usuario 3',
       bg : 'bg-3'
   },
   {
       id: 4,
-      name : 'User 4',
+      name : 'Usuario 4',
       bg : 'bg-4'
   },
 //   {
