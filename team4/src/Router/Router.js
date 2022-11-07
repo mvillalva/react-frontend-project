@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import '../pages/profiles/Profiles.css'
 import Profiles from "../pages/profiles/Profiles";
@@ -9,16 +10,19 @@ import LoginPage from "../pages/loginPage/LoginPage";
 import LoginHelp from "../components/login/LoginHelp";
 import VideoDescriptionPage from "../pages/videoDescriptionPage/VideoDescriptionPage";
 import PlaylistPage from "../pages/playlistPage/PlaylistPage";
+import Search from "../pages/Search/Search";
 // import Slider from "../components/slider/Slider";
 
-const Router = (props) => {    
+const Router = (props) => { 
 
+    // console.log(props.titulos)
     const Principal = () => props.profiles.length === 2 ? 
                             <Navigate to='/browse' /> :
                             (props.profiles.lenght === 0 ?
                                 <div className="preloader"></div> :
                                 <Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />)
-                            
+    
+                     
     return (
         <BrowserRouter>
             {props.children}
@@ -34,11 +38,13 @@ const Router = (props) => {
                 <Route path="/AddProfile" element={<ProfileAdd profiles={props.profiles} />}></Route>
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
+                <Route path="/search" element={<Search resultados={props.titulos}/>}></Route>
                 <Route path="/*" element={<><h1>404</h1></>}></Route>
                 {/* <Route path="/slider" element={<Slider />}></Route> */}
             </Routes>
         </BrowserRouter>
     );
 };
+
 
 export default Router;

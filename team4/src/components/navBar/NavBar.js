@@ -4,6 +4,7 @@ import './NavBar.css'
 import {Navbar, Container, Nav} from 'react-bootstrap'
 import { ProfileContext } from '../../context/profileContext/ProfileContext'
 import logo from '../../img/netflix-icon.svg'
+import Form from 'react-bootstrap/Form';
 
 const NavBar = (props) => {
     const thisLocation = useLocation();
@@ -37,7 +38,7 @@ const NavBar = (props) => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">                    
                         <li className="nav-item me-2">
-                            <Link className="nav-link active" to="#" >Inicio <span className="visually-hidden">(current)</span></Link>
+                            <Link className="nav-link active" to="/home" >Inicio <span className="visually-hidden">(current)</span></Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Series</Link>
@@ -57,7 +58,8 @@ const NavBar = (props) => {
                     </Nav>                    
                 </Navbar.Collapse>
                 <div className="d-flex flex-row align-items-center">
-                    <Link className="fas fa-search text-decoration-none text-light fs-5 me-4"></Link>
+                    {/* <Link className="fas fa-search text-decoration-none text-light fs-5 me-4"></Link> */}
+                    <Link to="/search"><Form.Control onChange={(e) => props.buscar(e.target.value)}  /></Link>
                     <span className="fas fa-bell text-decoration-none text-light fs-5 me-4"></span>
                     <span className={"nav-profile-icon me-5 " + profile.bg}></span>
                 </div>

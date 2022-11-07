@@ -1,7 +1,8 @@
+import React, {useState} from 'react';
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
-import LoginPage from './components/login/Login';
+// import LoginPage from './components/login/Login';
 import ProfileProvider from './context/profileContext/ProfileContext';
 
 
@@ -41,16 +42,41 @@ const profiles = [
 const sinNavBar = ['/login', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile']
 
 function App() {
+  const [titulos, setTitulos] = useState(defaultTitulos());   
+  const buscar = (peli) => {
+      const api_url = `http://www.omdbapi.com/?i=tt3896198&apikey=9c000cc8&s=${peli}`;
+
+      fetch(api_url)
+      .then(data => data.json())
+      .then(resultado => {
+          // console.log(resultado);  // verificacion de resultados de la busqueda
+          const {Search=[]} = resultado;
+          setTitulos({
+          total: Search.length,
+          arreglo: Search,
+          busqueda: true,
+          });
+      })
+  }
+
   return (
     <div className="App netflix-sans-font-loaded overflow-hidden">
       <ProfileProvider>
-        <Router profiles={profiles}>
-          <NavBar filter={sinNavBar}></NavBar>
+        <Router profiles={profiles} titulos={titulos}>
+          <NavBar filter={sinNavBar} buscar={buscar}></NavBar>
           <LoginPage></LoginPage>
         </Router>
       </ProfileProvider>
     </div>
   );
+}
+
+function defaultTitulos(){
+  return {
+      arreglo: [],
+      total: 0,
+      busqueda: false
+  }
 }
 
 export default App;
