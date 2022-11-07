@@ -25,8 +25,8 @@ const NavBar = (props) => {
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Series</Link>
                         </li>
-                        <li className="nav-item me-2">
-                            <Link className="nav-link" to="#">Peliculas</Link>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="#">Películas</Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Novedades populares</Link>

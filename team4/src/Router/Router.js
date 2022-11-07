@@ -8,6 +8,7 @@ import ProfileDelete from "../components/profile-pack/profile-delete/ProfileDele
 import LoginPage from "../pages/loginPage/LoginPage";
 import LoginHelp from "../components/login/LoginHelp";
 import VideoDescriptionPage from "../pages/videoDescriptionPage/VideoDescriptionPage";
+// import Slider from "../components/slider/Slider";
 
 const Router = (props) => {    
 
@@ -32,6 +33,7 @@ const Router = (props) => {
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
                 <Route path="/*" element={<><h1>404</h1></>}></Route>
+                {/* <Route path="/slider" element={<Slider />}></Route> */}
             </Routes>
         </BrowserRouter>
     );
