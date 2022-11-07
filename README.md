@@ -6,6 +6,7 @@
 > * Profile user
 > * Search content
 > * Video description
+> * Video carousel
 * Video player
 * Rate films after you've watched
 > * Playlist
