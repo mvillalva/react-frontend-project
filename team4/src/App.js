@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
-// import LoginPage from './components/login/Login';
 import ProfileProvider from './context/profileContext/ProfileContext';
 
 
@@ -62,8 +61,7 @@ function App() {
       <ProfileProvider>
         <Router profiles={profiles} titulos={titulos}>
           <NavBar buscar={buscar} />
-          {/* <LoginPage></LoginPage> // Provisorio    */}
-        </Router>
+                </Router>
       </ProfileProvider>
     </div>
   );
