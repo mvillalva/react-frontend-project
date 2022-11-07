@@ -38,13 +38,15 @@ const profiles = [
   }
 ]
 
+const sinNavBar = ['/login', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile']
+
 function App() {
   return (
     <div className="App netflix-sans-font-loaded overflow-hidden">
       <ProfileProvider>
         <Router profiles={profiles}>
-          <NavBar></NavBar>
-          <LoginPage></LoginPage>          
+          <NavBar filter={sinNavBar}></NavBar>
+          <LoginPage></LoginPage>
         </Router>
       </ProfileProvider>
     </div>

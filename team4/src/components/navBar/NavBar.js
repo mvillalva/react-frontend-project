@@ -8,10 +8,27 @@ import logo from '../../img/netflix-icon.svg'
 const NavBar = (props) => {
     const thisLocation = useLocation();
     
-    const {profile} = useContext(ProfileContext)
-    
+    const {profile} = useContext(ProfileContext)    
+
+    const findText = () => {
+        let rta = false
+        for (let index = 0; index < props.filter.length; index++) {
+            const element = props.filter[index];            
+            
+            if (thisLocation.pathname.search(element) === 0){
+                console.log(element)
+                console.log(thisLocation.pathname.search(element))
+                rta = true
+            }
+        }
+        
+        return rta
+    }
+
+    console.log(props.filter.find(e => thisLocation.pathname.indexOf(e) > 0))
+        
     return ( 
-        thisLocation.pathname === '/home' ?
+        !findText() && thisLocation.pathname !== '/' ?
         <Navbar bg='transparent' variant='dark' expand='md' sticky="top" className="animate-container mt-2">
             <Container fluid>
                 {/* <Navbar.Brand href="#" className="ms-5 logo-text">Netflix</Navbar.Brand> */}

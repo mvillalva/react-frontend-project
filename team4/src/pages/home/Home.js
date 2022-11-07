@@ -9,7 +9,7 @@ const Home = (props) => {
     })
 
     return (
-        <div className="home-container">
+        <div className="home-container overflow-hidden">
             <div className="centered-div animate-container">
                 <h1>Bienvenidos a</h1>
                 <div>
