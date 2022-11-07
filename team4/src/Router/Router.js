@@ -19,7 +19,7 @@ const Router = (props) => {
             {props.children}
             <Routes>
                 <Route path="/" element={<Principal />}></Route>
-                <Route path="/loginpage" element={<LoginPage />}></Route>
+                <Route path="/loginPage" element={<LoginPage />}></Route>
                 <Route path="/LoginHelp" element={<LoginHelp />}></Route>
                 <Route path="/profiles" element={<Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />}></Route>
                 <Route path="/home" element={<Home />}></Route>
