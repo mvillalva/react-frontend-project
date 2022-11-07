@@ -439,3 +439,34 @@ template {
 .bg-5 {
   background-image:url(https://occ-0-7118-2773.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABY5cwIbM7shRfcXmfQg98cqMqiZZ8sReZnj4y_keCAHeXmG_SoqLD8SXYistPtesdqIjcsGE-tHO8RR92n7NyxZpqcFS80YfbRFz.png?r=229)
 }
+
+.loader-container {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loader {  
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 9px solid red;
+  border-right: 9px solid transparent;
+  box-sizing: border-box;
+  animation: rotate 1s linear infinite;  
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);    
+  }
+  to {
+    transform: rotate(360deg);    
+  }
+}

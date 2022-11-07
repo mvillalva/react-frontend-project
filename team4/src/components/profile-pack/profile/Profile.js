@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { ProfileContext } from '../../../context/profileContext/ProfileContext'
 import './Profile.css'
 
 const Profile = (props) => {
@@ -8,16 +9,22 @@ const Profile = (props) => {
                                                 <span className='fa fa-pencil svg-icon-edit'></span>
                                             </div> 
                                         : ' '
-    const link = props.action === 'R' ? '/home' : '/EditProfile/' + props.id
+    const link = props.action === 'R' ? '/home' : '/EditProfile/' + props.profile.id
+
+    const {changeProfile} = useContext(ProfileContext)
+
+    const setProfile = () => {
+        changeProfile(props.profile)        
+    }
 
     return (
-        <li className='li profile'>
-            <Link className='profile-link' to={link}>
+        <li className='li profile'>            
+            <Link className='profile-link' to={link} onClick={setProfile}>
                 <div className='avatar-wrapper'>
-                    <div className={'profile-list-icon' + clases + props.class}></div>
+                    <div className={'profile-list-icon' + clases + props.profile.bg}></div>
                     {editDiv}                    
                 </div>
-                <span className='profile-name'>{props.name}</span>
+                <span className='profile-name'>{props.profile.name}</span>
             </Link>
         </li>
     )
