@@ -37,3 +37,23 @@
     right: 0;
     top: 0;
 }
+
+.logo-text {
+    color: red !important;
+    font-size: 1.8em !important;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.nav-link {
+    font-size: .9rem !important;
+}
+
+.nav-link.active {
+    font-weight: 500;
+}
+
+.navbar-logo {
+    width: 5.8rem;
+    margin-right: 5px;
+}
