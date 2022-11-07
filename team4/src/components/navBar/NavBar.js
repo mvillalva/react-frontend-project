@@ -20,7 +20,7 @@ const NavBar = (props) => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">                    
                         <li className="nav-item me-2">
-                            <Link className="nav-link active" to="#" >Inicio <span className="visually-hidden">(current)</span></Link>
+                            <Link className="nav-link active" to="/home" >Inicio <span className="visually-hidden">(current)</span></Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Series</Link>
