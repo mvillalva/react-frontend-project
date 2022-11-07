@@ -31,6 +31,7 @@ const Router = (props) => {
                 <Route path="/AddProfile" element={<ProfileAdd profiles={props.profiles} />}></Route>
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
+                <Route path="/*" element={<><h1>404</h1></>}></Route>
             </Routes>
         </BrowserRouter>
     );

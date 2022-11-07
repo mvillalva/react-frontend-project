@@ -40,7 +40,7 @@ const profiles = [
 
 function App() {
   return (
-    <div className="App netflix-sans-font-loaded">
+    <div className="App netflix-sans-font-loaded overflow-hidden">
       <ProfileProvider>
         <Router profiles={profiles}>
           <NavBar></NavBar>
