@@ -17,7 +17,11 @@ const Profiles = ({title, profiles, action}) => {
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"
 
     if(profiles.length === 0 ){
-        return <div className="preloader"></div>
+        return (
+            <div className="loader-container">
+                <div className="loader"></div>
+            </div>
+        )
     }
     else {
         return (        
