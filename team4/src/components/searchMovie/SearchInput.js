@@ -9,6 +9,7 @@ const SearchInput = ({state, buscar}) => {
         let input = document.getElementById("search-input");
         input.value = "";
         input.focus();
+        buscar("")
     };
 
     const changeState = (e) => {
