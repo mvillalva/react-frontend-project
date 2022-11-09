@@ -15,7 +15,7 @@ const Notification = ({children}) => {
 
     return (
         <div className="d-flex align-items-center justify-content-between me-4 pointer position-relative h-100" onMouseOver={()=>{openMenu()}} onMouseOut={() => {closeMenu()}} >            
-            <span className="fas fa-bell text-decoration-none text-light fs-5 me-4 pointer"></span>         
+            <span className="fas fa-bell text-decoration-none text-light fs-5 pointer"></span>         
             <NotificationList visible={visible}>
                 {children}
             </NotificationList>
