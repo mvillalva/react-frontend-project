@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Profile.css'
 
 const ProfileAddButton = (props) => {
-    return (
+    return (        
         <li className="li">
             <Link to='/AddProfile'>
                 <div className='avatar-wrapper'>

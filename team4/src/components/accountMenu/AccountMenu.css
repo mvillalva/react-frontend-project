@@ -1,0 +1,19 @@
+.pointer {
+    cursor: pointer;
+}
+
+.menu-list-container {
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+
+.menu-list {
+    position: relative;    
+    top: 10px;
+    width: 220px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(128, 128, 128, 0.4);    
+    font-size: 14px;    
+}

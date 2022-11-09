@@ -4,6 +4,7 @@
 
 > * Single account supports up to five profiles.
 > * Profile user
+> * NavBar
 > * Search content
 > * Video description
 > * Video carousel

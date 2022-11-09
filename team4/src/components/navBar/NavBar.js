@@ -1,20 +1,30 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './NavBar.css'
 import {Navbar, Container, Nav} from 'react-bootstrap'
-import { ProfileContext } from '../../context/profileContext/ProfileContext'
 import logo from '../../img/netflix-icon.svg'
-import Form from 'react-bootstrap/Form';
+import SearchMovie from '../searchMovie/SearchMovie'
+import Notification from '../notification/Notification'
+import AccountMenu from '../accountMenu/AccountMenu'
+import Profile from '../profile-pack/profile/Profile'
 
 const NavBar = (props) => {
-    const thisLocation = useLocation();
-    const {profile} = useContext(ProfileContext)
-    
+    const thisLocation = useLocation();    
+
+    let filter = props.filter.find(e => thisLocation.pathname.search(e) === 0)    
+
+    const getProfiles = () => {
+        return (
+            props.profiles
+            .filter(e => e.id !== 6)
+            .map(e => <Profile profile={e} action='R' key={e.id.toString()} class="small-icon"></Profile>)
+        )
+    }
+        
     return ( 
-        thisLocation.pathname === '/home' || thisLocation.pathname === '/search' ?
+        !filter && thisLocation.pathname !== '/' ?
         <Navbar bg='transparent' variant='dark' expand='md' sticky="top" className="animate-container mt-2">
-            <Container fluid>
-                {/* <Navbar.Brand href="#" className="ms-5 logo-text">Netflix</Navbar.Brand> */}
+            <Container fluid>                
                 <Navbar.Brand href="#" className="ms-5"><img className='navbar-logo' src={logo} alt="logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -32,18 +42,27 @@ const NavBar = (props) => {
                             <Link className="nav-link" to="#">Novedades populares</Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="#">Mi lista</Link>
+                            <Link className="nav-link" to="/PlaylistPage">Mi lista</Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Explora por idiomas</Link>
                         </li>
                     </Nav>                    
                 </Navbar.Collapse>
-                <div className="d-flex flex-row align-items-center">
-                    {/* <Link className="fas fa-search text-decoration-none text-light fs-5 me-4"></Link> */}
-                    <Link to="/search"><Form.Control onChange={(e) => props.buscar(e.target.value)}  /></Link>
-                    <span className="fas fa-bell text-decoration-none text-light fs-5 me-4"></span>
-                    <span className={"nav-profile-icon me-5 " + profile.bg}></span>
+                <div className="d-flex flex-row align-items-center">                    
+                    <SearchMovie  buscar={props.buscar} />
+                    <Notification></Notification>
+                    <AccountMenu>
+                        <ul className="ul">
+                            {getProfiles()} 
+                            <li>
+                                <span className="me-3 fas fa-pencil"></span>
+                                <Link className="text-decoration-none text-light" to="/ManageProfiles">Administrar perfiles</Link>
+                            </li>
+                        </ul>
+                        <hr />
+                        <span >Cerrar sesión en Netflix</span>
+                    </AccountMenu>                    
                 </div>
             </Container>
         </Navbar>        

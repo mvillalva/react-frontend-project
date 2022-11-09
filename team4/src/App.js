@@ -38,6 +38,8 @@ const profiles = [
   }
 ]
 
+const sinNavBar = ['/login', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile']
+
 function App() {
   const [titulos, setTitulos] = useState(defaultTitulos());   
   const buscar = (peli) => {
@@ -60,8 +62,8 @@ function App() {
     <div className="App netflix-sans-font-loaded overflow-hidden">
       <ProfileProvider>
         <Router profiles={profiles} titulos={titulos}>
-          <NavBar buscar={buscar} />
-                </Router>
+          <NavBar filter={sinNavBar} buscar={buscar} profiles={profiles}></NavBar>          
+        </Router>
       </ProfileProvider>
     </div>
   );

@@ -1,0 +1,19 @@
+.pointer {
+    cursor: pointer;
+}
+
+.noti-container {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.noti-list {
+    position: relative;    
+    top: 10px;
+    width: 420px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(128, 128, 128, 0.4);    
+    font-size: 14px;    
+}

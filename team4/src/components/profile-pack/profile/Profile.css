@@ -122,13 +122,14 @@
 }
 
 .svg-edit-overlay .svg-icon-edit {
-    height: 3rem;
     max-height: 70px;
     max-width: 70px;
+    height: 3rem;
     width: 3rem;
     font-size: 2rem;
     color: #e5e5e5;
 }
+
 
 @media screen and (max-width: 865px) {    
     .addProfileIcon {
@@ -140,4 +141,25 @@
     .profile-name {
         font-size: 12px;
     }
+}
+
+.small-icon
+{
+    display: flex !important;    
+}
+
+.small-icon .profile-list-icon,
+.small-icon .profile-list-icon:hover {
+
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border: 0px;
+    border-color: black !important;    
+}
+
+.small-icon .profile-name {
+    font-size: 14px;
+    margin-left: 10px;
 }
