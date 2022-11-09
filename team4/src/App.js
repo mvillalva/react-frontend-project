@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
-// import LoginPage from './components/login/Login';
 import ProfileProvider from './context/profileContext/ProfileContext';
 
 
@@ -63,8 +62,7 @@ function App() {
     <div className="App netflix-sans-font-loaded overflow-hidden">
       <ProfileProvider>
         <Router profiles={profiles} titulos={titulos}>
-          <NavBar filter={sinNavBar} buscar={buscar}></NavBar>
-          <LoginPage></LoginPage>
+          <NavBar filter={sinNavBar} buscar={buscar} profiles={profiles}></NavBar>          
         </Router>
       </ProfileProvider>
     </div>
