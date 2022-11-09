@@ -15,18 +15,18 @@ const Profile = (props) => {
 
     const setProfile = () => {
         changeProfile(props.profile)        
-    }
-
-    return (
-        <li className='li profile'>            
-            <Link className='profile-link' to={link} onClick={setProfile}>
+    }    
+    
+    return (        
+        <li className='li profile '>
+            <Link className={'profile-link ' + (props.class? props.class : '')} to={link} onClick={setProfile}>
                 <div className='avatar-wrapper'>
                     <div className={'profile-list-icon' + clases + props.profile.bg}></div>
                     {editDiv}                    
                 </div>
                 <span className='profile-name'>{props.profile.name}</span>
             </Link>
-        </li>
+        </li>        
     )
 }
 

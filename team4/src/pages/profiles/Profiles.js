@@ -10,8 +10,8 @@ const Profiles = ({title, profiles, action}) => {
     const LoadProfiles = () => {
         return profiles
         .filter(e => profiles.length === 6 ? e.id !== 6 : e)
-        .map(e => e.id === 6 ? <ProfileAddButton name={e.name}></ProfileAddButton>
-                             : <Profile profile={e} action={action}></Profile>)
+        .map(e => e.id === 6 ? <ProfileAddButton name={e.name} key={e.id.toString()}></ProfileAddButton>
+                             : <Profile profile={e} action={action} key={e.id.toString()}></Profile>)
     }
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"

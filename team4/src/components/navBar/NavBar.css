@@ -57,3 +57,8 @@
     width: 5.8rem;
     margin-right: 5px;
 }
+
+.ul {
+    list-style: none;
+    padding: 0;    
+}
