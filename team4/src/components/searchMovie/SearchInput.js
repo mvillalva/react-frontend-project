@@ -21,7 +21,7 @@ const SearchInput = ({state, buscar}) => {
 
     const search = (e) => {
         navigate('/search')
-        buscar(e.target.value)
+        buscar.buscar(e.target.value, buscar.setTitulos)
     }
 
 
