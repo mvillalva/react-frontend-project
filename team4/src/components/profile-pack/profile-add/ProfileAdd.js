@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { addData, getMaxValue } from "../../../functions/firebaseActions";
 import './ProfileAdd.css'
 
@@ -13,9 +13,9 @@ const ProfileAdd = (props) => {
     const addProfile = async (e) => {
         e.preventDefault()
         
-        let input = document.getElementById('add-profile-name')        
+        let input = document.getElementById('profile-name')
         
-        const max_value = await getMaxValue('users', 'id')                
+        const max_value = await getMaxValue('users', 'id')
         
         const data = {
             name: input.value,

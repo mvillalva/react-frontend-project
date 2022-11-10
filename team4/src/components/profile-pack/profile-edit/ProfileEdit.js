@@ -16,7 +16,7 @@ const ProfileEdit = (props) => {
     const saveData = async (e) => {
         e.preventDefault()
         
-        let input = document.getElementById('profile-name-entry')
+        let input = document.getElementById('profile-name')
         let data = {name: input.value}        
         
         await updateData('users', profile[0].key, data)
