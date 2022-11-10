@@ -78,7 +78,8 @@
     border-radius: 4px;
     box-sizing: border-box;            
     position: relative;
-    text-decoration: none;    
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .profile-icon:after {

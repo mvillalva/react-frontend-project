@@ -42,7 +42,7 @@ const NavBar = (props) => {
                             <Link className="nav-link" to="#">Novedades populares</Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="/PlaylistPage">Mi lista</Link>
+                            <Link className="nav-link" to="/Playlist">Mi lista</Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Explora por idiomas</Link>
@@ -61,7 +61,7 @@ const NavBar = (props) => {
                             </li>
                         </ul>
                         <hr />
-                        <span >Cerrar sesión en Netflix</span>
+                        <Link className="text-decoration-none text-light" to='/login'>Cerrar sesión en Netflix</Link>
                     </AccountMenu>                    
                 </div>
             </Container>

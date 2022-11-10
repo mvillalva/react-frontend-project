@@ -3,10 +3,10 @@ import './App.css';
 import NavBar from './components/navBar/NavBar';
 import Router from './Router/Router';
 import ProfileProvider from './context/profileContext/ProfileContext';
-import { getData } from './functions/firebaseActions';
+import { getProfilesData } from './functions/firebaseActions';
 import { buscar, defaultTitulos } from './functions/movieApi';
 
-const sinNavBar = ['/login', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile']
+const sinNavBar = ['/login', '/start', '/start?', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile', '/ProfileAvatars']
 
 function App() {    
     const [titulos, setTitulos] = useState(defaultTitulos());    
@@ -14,7 +14,7 @@ function App() {
         
     useEffect(() => {
         const getProfiles = async () => {
-            let data = await getData('users')
+            let data = await getProfilesData('users')
             setProfiles(data)
         }
 

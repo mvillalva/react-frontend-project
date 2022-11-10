@@ -1,10 +1,18 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { deleteData } from "../../../functions/firebaseActions";
 import "./ProfileDelete.css";
 
 const ProfileDelete = (props) => {
     const params = useParams()
     const profile = props.profiles.filter(e => e.id === parseInt(params.id))
+
+    const deleteProfile = async (e) => {
+        e.preventDefault()
+        
+        await deleteData('users', profile[0].key)
+        window.location.href = '/ManageProfiles'
+    }
 
     return (
         <div className="delete-container">
@@ -23,7 +31,7 @@ const ProfileDelete = (props) => {
                     <Link to={"/EditProfile/" + profile[0].id} className="delete-button preferred-action">
                         <span>Guardar perfil</span>
                     </Link>
-                    <Link to="/ManageProfiles" className="delete-button">
+                    <Link to="/ManageProfiles" className="delete-button" onClick={(e)=>{deleteProfile(e)}}>
                         <span>Eliminar perfil</span>
                     </Link>
                 </div>

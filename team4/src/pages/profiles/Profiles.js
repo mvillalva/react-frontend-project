@@ -14,7 +14,7 @@ const Profiles = ({title, profiles, action}) => {
                              : <Profile profile={e} action={action} key={e.id.toString()}></Profile>)
     }
 
-    const button_title = action === 'R'? "Administrar perfiles" : "Listo"
+    const button_title = action === 'R'? "Administrar perfiles" : "Listo"    
 
     if(profiles.length === 0 ){
         return (
