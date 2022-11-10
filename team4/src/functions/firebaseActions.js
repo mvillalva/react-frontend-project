@@ -2,7 +2,9 @@ import {collection, doc, getDocs, setDoc, query, where, updateDoc, deleteDoc, ad
 import db from "../firebase/firebaseConfig";
 
 export const getProfilesData = async (source) => {    
-    const datos = await getDocs(collection(db, source));
+    const cnx = collection(db, source)
+    const res = query(cnx, orderBy("type"), orderBy("name"))
+    const datos = await getDocs(res);
     
     let vec = []
 
@@ -13,6 +15,7 @@ export const getProfilesData = async (source) => {
             avatar: doc.data().avatar,
             name: doc.data().name,
             bg: doc.data().bg,
+            type: doc.data().type,
         }        
 
         vec = [...vec, data]

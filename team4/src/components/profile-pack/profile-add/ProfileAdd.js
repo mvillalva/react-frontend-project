@@ -19,9 +19,10 @@ const ProfileAdd = (props) => {
         
         const data = {
             name: input.value,
-            id: max_value+1,
+            id: max_value + (max_value===5? 2: 1),
             avatar: '',
-            bg: 'bg-5'
+            bg: bg,
+            type: 'Profile',
         }        
 
         await addData('users', data)
