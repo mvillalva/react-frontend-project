@@ -12,6 +12,12 @@ export const buscar = (peli, setTitulos) => {
             busqueda: true,
             });
         })
+    } else {
+        setTitulos({
+            total: 0,
+            arreglo: [],
+            busqueda: true,
+            });
     }
 }
 

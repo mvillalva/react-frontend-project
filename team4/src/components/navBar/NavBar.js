@@ -61,7 +61,7 @@ const NavBar = (props) => {
                             </li>
                         </ul>
                         <hr />
-                        <Link className="text-decoration-none text-light" to='/login'>Cerrar sesión en Netflix</Link>
+                        <Link className="text-decoration-none text-light" to='/'>Cerrar sesión en Netflix</Link>
                     </AccountMenu>                    
                 </div>
             </Container>

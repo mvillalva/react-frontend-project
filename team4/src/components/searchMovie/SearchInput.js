@@ -1,26 +1,28 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SearchInput = ({state, buscar}) => {
     const navigate = useNavigate()
+    const location = useLocation()
     
     const deleteContent = () => {
         let input = document.getElementById("search-input");
         input.value = "";
         input.focus();
-        buscar("")
+        buscar.buscar("", buscar.setTitulos)
     };
 
     const changeState = (e) => {
         if (!e.target.value){
             state.setClick(false);
-            navigate('/home')
+            navigate(-1)
         }
     }
 
     const search = (e) => {
-        navigate('/search')
+        if (location.pathname !== '/search')
+            navigate('/search')
         buscar.buscar(e.target.value, buscar.setTitulos)
     }
 
