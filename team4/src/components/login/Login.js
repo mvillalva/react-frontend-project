@@ -14,7 +14,7 @@ function Login() {
         <div className='Login'>
          <h1 className="loginPage-title"> Login to Netflix </h1>
 
-            <form method='post'>
+            <form action='/start' method='get'>
                 <h1>Inicia sesión</h1>
 
                 <div className='InpUserName'>
