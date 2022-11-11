@@ -13,7 +13,7 @@ const Home = (props) => {
             <div className="centered-div animate-container">
                 <h1>Bienvenidos a</h1>
                 <div>
-                    <img src={logo} alt="logo" className="w-100"/>
+                    <img src={logo} alt="logo" className="img-size"/>
                 </div>
             </div>
         </div>
