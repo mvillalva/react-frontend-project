@@ -1,11 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 export default function ButtonLogIn(){
+    const navigate = useNavigate()
 
-return(
-    <Button variant="danger" type="submit"> Iniciar sesión
-     </Button>
+    const goPage = (e) => {
+        e.preventDefault()
+        navigate('/start')
+    }
 
-
-)
+    return(
+        <Button variant="danger" onClick={(e)=> {goPage(e)}}>
+            Iniciar sesión
+        </Button>
+    )
 };

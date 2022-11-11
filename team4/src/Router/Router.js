@@ -42,7 +42,7 @@ const Router = (props) => {
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
                 <Route path="/search" element={<Search resultados={props.titulos}/>}></Route>
-                <Route path="/*" element={<><h1>404</h1></>}></Route>
+                <Route path="/*" element={<div className="vh-100"><h1>404</h1></div>}></Route>
                 <Route path="/ProfileAvatars" element={<Avatars />}></Route>
                 {/* <Route path="/slider" element={<Slider />}></Route> */}
             </Routes>
