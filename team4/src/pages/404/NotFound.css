@@ -1,0 +1,98 @@
+.nf-container{
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;    
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../img/perdidos.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.nf-header {    
+    background-color: rgba(0,0,0,.97);
+    height: 68px;
+    left: 0;
+    padding: 0 45px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    width: 5.5rem;
+}
+
+.nf-title{
+    font-size: 4rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 57%);
+    margin-top: 10vw;
+    margin-bottom: 2vw;
+}
+
+.nf-subtitle {
+    font-size: 1.4rem;
+    font-weight: 100;
+    margin-bottom: 2vw;
+}
+
+.nf-content {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 700px;
+}
+
+.nf-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;    
+    margin: 0 auto;
+    padding-bottom: 2em;
+}
+
+.nf-button {
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    width: 160px;
+    height: 40px;
+    padding-top: 10px;
+    appearance: none;
+    font-weight: 600;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 2vw;
+}
+
+.nf-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+}
+
+.nt-coderror {
+    position: relative;
+    font-size: 1.6rem;    
+}
+
+.nt-coderror::before {
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    height: 50px;
+    content: '';
+    border-left: 2px solid red;
+}
+
+.nf-footer {
+    font-size: 0.8rem;
+    align-self: flex-end;
+    padding-bottom: 20px;
+    padding-right: 40px;
+}

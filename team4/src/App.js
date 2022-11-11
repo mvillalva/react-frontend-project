@@ -6,7 +6,7 @@ import ProfileProvider from './context/profileContext/ProfileContext';
 import { getProfilesData } from './functions/firebaseActions';
 import { buscar, defaultTitulos } from './functions/movieApi';
 
-const sinNavBar = ['/login', '/start', '/start?', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile', '/ProfileAvatars']
+const sinNavBar = ['/login', '/start', '/start?', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile', '/ProfileAvatars', '/notfound']
 
 function App() {    
     const [titulos, setTitulos] = useState(defaultTitulos());    
