@@ -13,6 +13,7 @@ import PlaylistPage from "../pages/playlistPage/PlaylistPage";
 import Search from "../pages/Search/Search";
 import Avatars from '../components/profile-pack/avatars/Avatars';
 import FrontPage from '../pages/fronPage/FrontPage';
+import NotFound from '../pages/404/NotFound';
 // import Slider from "../components/slider/Slider";
 
 const Router = (props) => { 
@@ -42,7 +43,8 @@ const Router = (props) => {
                 <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
                 <Route path="/search" element={<Search resultados={props.titulos}/>}></Route>
-                <Route path="/*" element={<div className="vh-100"><h1>404</h1></div>}></Route>
+                <Route path="/notfound" element={<NotFound />}></Route>
+                <Route path="/*" element={<Navigate to='/notfound' />}></Route>
                 <Route path="/ProfileAvatars" element={<Avatars />}></Route>
                 {/* <Route path="/slider" element={<Slider />}></Route> */}
             </Routes>
