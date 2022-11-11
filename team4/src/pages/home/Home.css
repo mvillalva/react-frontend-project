@@ -31,3 +31,7 @@
 .home-container .centered-div.animate-container {    
     animation: animateContainer .45s forwards;
 }
+
+.img-size {
+    width: 20rem;
+}
