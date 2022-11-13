@@ -17,7 +17,7 @@ const NavBar = (props) => {
         return (
             props.profiles
             .filter(e => e.id !== 6)
-            .map(e => <Profile profile={e} action='R' key={e.id.toString()} class="small-icon"></Profile>)
+            .map(e => <Profile profile={e} action='M' key={e.id.toString()} class="small-icon"></Profile>)
         )
     }
         
@@ -49,7 +49,7 @@ const NavBar = (props) => {
                         </li>
                     </Nav>                    
                 </Navbar.Collapse>
-                <div className="d-flex flex-row align-items-center">                    
+                <div className="navbar-menu-container mt-2 mt-lg-0">
                     <SearchMovie  buscar={props.buscar} />
                     <Notification></Notification>
                     <AccountMenu>

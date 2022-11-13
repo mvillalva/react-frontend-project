@@ -9,7 +9,7 @@ const Profile = (props) => {
                                                 <span className='fa fa-pencil svg-icon-edit'></span>
                                             </div> 
                                         : ' '
-    const link = props.action === 'R' ? '/home' : '/EditProfile/' + props.profile.id
+    const link = props.action === 'U' ? '/EditProfile/' + props.profile.id : '/home'
 
     const {changeProfile} = useContext(ProfileContext)
 
@@ -18,10 +18,10 @@ const Profile = (props) => {
     }    
     
     return (        
-        <li className='li profile '>
+        <li className={props.action === 'M'?'li profile2' : 'li profile'}>
             <Link className={'profile-link ' + (props.class? props.class : '')} to={link} onClick={setProfile}>
                 <div className='avatar-wrapper'>
-                    <div className={'profile-list-icon' + clases + props.profile.bg}></div>
+                    <div className={'profile-list-icon ' + (props.action === 'M'? 'profile-list-icon2 ' :'') + clases + props.profile.bg}></div>
                     {editDiv}                    
                 </div>
                 <span className='profile-name'>{props.profile.name}</span>

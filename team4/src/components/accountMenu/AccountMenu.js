@@ -22,7 +22,7 @@ const AccountMenu = ( {children} ) => {
     }
 
     return (
-        <div className="d-flex align-items-center justify-content-between me-5 pointer position-relative h-100" onMouseOver={()=>{openMenu()}} onMouseOut={() => {closeMenu()}} >
+        <div className="d-flex align-items-center justify-content-between me-lg-5 pointer position-relative h-100" onMouseOver={()=>{openMenu()}} onMouseOut={() => {closeMenu()}} >
             <span className={"nav-profile-icon " + profile.bg}></span>
             <span className="fas fa-caret-down ms-2" id="arrow"></span>
             <AccountMenuList visible={visible}>

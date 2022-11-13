@@ -8,6 +8,12 @@
     width: 10vw;
 }
 
+.li.profile2 {
+    max-width: 200px;
+    min-width: 84px;
+    width: 8.5rem;
+}
+
 .li {
     display: inline-block;
     position: relative;
@@ -34,6 +40,15 @@
     border-color: #e5e5e5;
 }
 
+.profile-list-icon2, 
+.profile-list-icon2:after, 
+.profile-list-icon2, 
+.profile-list-icon2:after, 
+.profile-list-icon2, 
+.profile-list-icon2:after {
+    border-color: transparent !important;
+}
+
 .li a.focused .profile-name, 
 .li a:focus .profile-name, 
 .li a:hover .profile-name {
@@ -46,10 +61,10 @@
     font-size: 1.3vw;
     line-height: 1.2em;
     margin: 0.6em 0;
-    min-height: 1.8em;
+    min-height: 1.8rem;
+    text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
-    text-overflow: ellipsis;
 }
 
 .list-profiles .avatar-wrapper {
