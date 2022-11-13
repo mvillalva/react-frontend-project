@@ -14,6 +14,7 @@ import Search from "../pages/Search/Search";
 import Avatars from '../components/profile-pack/avatars/Avatars';
 import FrontPage from '../pages/fronPage/FrontPage';
 import NotFound from '../pages/404/NotFound';
+
 // import Slider from "../components/slider/Slider";
 
 const Router = (props) => { 
@@ -29,6 +30,7 @@ const Router = (props) => {
     return (
         <BrowserRouter>
             {props.children}
+            
             <Routes>
                 <Route path="/" element={<FrontPage />}></Route>
                 <Route path="/start" element={<Principal />}></Route>
