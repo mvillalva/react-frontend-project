@@ -1,6 +1,7 @@
 import React from "react";
 import './PlaylistPage.css';
 import Playlist from "../../components/playlist/Playlist";
+import Footer from "../../components/footer/Footer";
 
 const movieData = [
     {
@@ -38,6 +39,7 @@ const PlaylistPage = () => {
           <div className="playlist-page-container">
               <div className="centered-div animate-container">
                <Playlist data={movieData} />
+               <Footer></Footer>
               </div>
           </div>
       )

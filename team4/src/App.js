@@ -6,6 +6,8 @@ import ProfileProvider from './context/profileContext/ProfileContext';
 import { getProfilesData } from './functions/firebaseActions';
 import { buscar, defaultTitulos } from './functions/movieApi';
 
+
+
 const sinNavBar = ['/login', '/start', '/start?', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile', '/ProfileAvatars', '/notfound']
 
 function App() {    
@@ -23,12 +25,15 @@ function App() {
     }, [])
 
     return (
-        <div className="App netflix-sans-font-loaded overflow-hidden">
+        <div className="App netflix-sans-font-loaded overflow-hidden general">
             <ProfileProvider>
                 <Router profiles={profiles} titulos={titulos}>
                     <NavBar filter={sinNavBar} buscar={{buscar, setTitulos}} profiles={profiles}></NavBar>
+                    
                 </Router>
+                
             </ProfileProvider>
+            
         </div>
     );
 }
