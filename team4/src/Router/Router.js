@@ -17,15 +17,14 @@ import NotFound from '../pages/404/NotFound';
 // import Slider from "../components/slider/Slider";
 
 const Router = (props) => { 
-
-    // console.log(props.titulos)
     const Principal = () => props.profiles.length === 2 ? 
                             <Navigate to='/home' /> :
                             (props.profiles.lenght === 0 ?
                                 <div className="preloader"></div> :
                                 <Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />)
     
-                     
+    const location = window.location.href.split('/').join('%2')
+
     return (
         <BrowserRouter>
             {props.children}
@@ -44,7 +43,7 @@ const Router = (props) => {
                 <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
                 <Route path="/search" element={<Search resultados={props.titulos}/>}></Route>
                 <Route path="/notfound" element={<NotFound />}></Route>
-                <Route path="/*" element={<Navigate to='/notfound' />}></Route>
+                <Route path="/*" element={<Navigate to={'/notfound?'+location} />}></Route>
                 <Route path="/ProfileAvatars" element={<Avatars />}></Route>
                 {/* <Route path="/slider" element={<Slider />}></Route> */}
             </Routes>

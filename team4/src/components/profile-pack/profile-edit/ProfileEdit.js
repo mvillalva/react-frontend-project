@@ -17,7 +17,7 @@ const ProfileEdit = (props) => {
         e.preventDefault()
         
         let input = document.getElementById('profile-name')
-        let data = {name: input.value}        
+        let data = {name: input.value, bg: bg}        
         
         await updateData('users', profile[0].key, data)
         

@@ -59,6 +59,23 @@
 }
 
 .ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
     list-style: none;
-    padding: 0;    
+}
+
+.navbar-menu-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;    
+}
+
+@media screen and (max-width: 800px) {
+    
+    .navbar-menu-container {
+        width: 100%;
+        justify-content: end;
+    }
 }
