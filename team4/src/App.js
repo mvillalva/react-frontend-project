@@ -8,7 +8,7 @@ import { buscar, defaultTitulos } from './functions/movieApi';
 
 
 
-const sinNavBar = ['/login', '/start', '/start?', '/profiles', '/ManageProfiles', '/EditProfile', '/DeleteProfile', '/AddProfile', '/ProfileAvatars', '/notfound']
+const sinNavBar = ['/login', '/start', '/profiles', '/ManageProfiles', '/EditProfile/:id', '/DeleteProfile/:id', '/AddProfile', '/ProfileAvatars', '/notfound', '/']
 
 function App() {    
     const [titulos, setTitulos] = useState(defaultTitulos());    

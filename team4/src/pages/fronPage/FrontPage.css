@@ -26,6 +26,7 @@
     height: 35px;    
     padding: 8px;
     color: white;
+    text-align: center;
     text-decoration: none;
     background-color: rgb(211, 17, 17);
     border-radius: 4px;
@@ -46,8 +47,10 @@
     max-width: 680px;
     font-size: 3.2rem;
     font-weight: bold;
+    text-align: center;
 }
 
 .login-subtitle{    
     font-size: 1.6rem;
+    text-align: center
 }

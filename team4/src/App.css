@@ -10,8 +10,10 @@
   url("./fonts/NetflixSans-Light.otf") format("opentype");
 }
 
-.App {
-  text-align: center;
+.App {  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-logo {

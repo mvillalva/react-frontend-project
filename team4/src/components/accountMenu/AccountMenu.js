@@ -5,7 +5,7 @@ import AccountMenuList from "./AccountMenuList";
 
 const AccountMenu = ( {children} ) => {
     const { profile } = useContext(ProfileContext);
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false)    
 
     const openMenu = () => {
         let arrow = document.getElementById('arrow')
