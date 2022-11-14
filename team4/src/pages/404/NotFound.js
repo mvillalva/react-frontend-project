@@ -7,7 +7,7 @@ const NotFound = () => {
     return (
         <div className="nf-container">
             <div className="nf-header d-flex">
-                <img src={logo} alt="logo" className="logo"></img>
+                <Link to="/" className="mt-4"><img src={logo} alt="logo" className="logo"></img></Link>
             </div>
             <div className="nf-bg nf-content">
                 <h1 className="nf-title">¿Te perdiste?</h1>

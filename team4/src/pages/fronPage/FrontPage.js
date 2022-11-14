@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../../img/netflix-icon.svg'
-import './FronPage.css'
+import './FrontPage.css'
 
 const FrontPage = () => {
     return (
