@@ -14,8 +14,7 @@ import Search from "../pages/Search/Search";
 import Avatars from '../components/profile-pack/avatars/Avatars';
 import FrontPage from '../pages/fronPage/FrontPage';
 import NotFound from '../pages/404/NotFound';
-
-// import Slider from "../components/slider/Slider";
+import Slider from "../components/slider/Slider.jsx";
 
 const Router = (props) => { 
     const Principal = () => props.profiles.length === 2 ? 
@@ -47,7 +46,7 @@ const Router = (props) => {
                 <Route path="/notfound" element={<NotFound />}></Route>
                 <Route path="/*" element={<Navigate to={'/notfound?'+location} />}></Route>
                 <Route path="/ProfileAvatars" element={<Avatars />}></Route>
-                {/* <Route path="/slider" element={<Slider />}></Route> */}
+                <Route path="/slider" element={<Slider movies={props.movies} />}></Route>
             </Routes>
         </BrowserRouter>
     );
