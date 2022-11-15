@@ -7,16 +7,17 @@ import SearchMovie from '../searchMovie/SearchMovie'
 import Notification from '../notification/Notification'
 import AccountMenu from '../accountMenu/AccountMenu'
 import Profile from '../profile-pack/profile/Profile'
+import { getCurrentProfile } from "../../functions/general";
 
 const NavBar = (props) => {
     const thisLocation = useLocation();    
 
     let filter = props.filter.find(e => matchPath({ path: e }, thisLocation.pathname))    
 
-    const getProfiles = () => {
+    const getProfiles = () => {        
         return (
             props.profiles
-            .filter(e => e.id !== 6)
+            .filter(e => e.id !== 6 && e.id !== getCurrentProfile().id)
             .map(e => <Profile profile={e} action='M' key={e.id.toString()} class="small-icon"></Profile>)
         )
     }
