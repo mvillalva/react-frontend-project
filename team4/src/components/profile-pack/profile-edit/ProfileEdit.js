@@ -8,8 +8,7 @@ const ProfileEdit = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
     const params = useParams()
-    const profiles = getProfiles()
-    console.log(profiles)
+    const profiles = getProfiles()    
 
     let name = profiles[params.id].name
     let bg = profiles[params.id].bg
