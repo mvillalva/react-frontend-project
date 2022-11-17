@@ -21,7 +21,7 @@ const AccountMenu = ( {children} ) => {
         arrow.classList.add('fa-caret-down')
         arrow.classList.remove('fa-caret-up')
         setVisible(false)
-    }
+    }    
     
     return (
         <div className="d-flex align-items-center justify-content-between me-lg-5 pointer position-relative h-100" onMouseOver={()=>{openMenu()}} onMouseOut={() => {closeMenu()}} >

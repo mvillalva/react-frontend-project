@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { addData, getMaxValue } from "../../../functions/firebaseActions";
+import { updateData } from "../../../functions/firebaseActions";
 import './ProfileAdd.css'
 
 const ProfileAdd = (props) => {
@@ -15,17 +15,16 @@ const ProfileAdd = (props) => {
         
         let input = document.getElementById('profile-name')
         
-        const max_value = await getMaxValue('users', 'id')
-        
         const data = {
             name: input.value,
-            id: max_value + (max_value===5? 2: 1),
             avatar: '',
             bg: bg,
             type: 'Profile',
-        }        
+        }
 
-        await addData('users', data)
+        props.profiles.push(data)
+
+        await updateData('users', {profiles: props.profiles})
         
         window.location.href = '/ManageProfiles'
     }
