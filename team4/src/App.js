@@ -3,8 +3,12 @@ import "./App.css";
 import NavBar from "./components/navBar/NavBar";
 import Router from "./Router/Router";
 import ProfileProvider from "./context/profileContext/ProfileContext";
-import { getProfilesData } from "./functions/firebaseActions";
+import { fbCreateOrGetDocument } from "./functions/firebaseActions";
 import { buscar, defaultTitulos } from "./functions/movieApi";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { firebaseApp } from "./firebase/firebaseConfig";
+
+const auth = getAuth(firebaseApp);
 
 const sinNavBar = [
   "/login",
@@ -16,33 +20,52 @@ const sinNavBar = [
   "/AddProfile",
   "/ProfileAvatars",
   "/notfound",
+  "/front",
   "/",
 ];
 
 function App() {
   const [titulos, setTitulos] = useState(defaultTitulos());
   const [profiles, setProfiles] = useState([]);
+  const [loggedUser, setLoggedUser] = useState(null);
 
-  useEffect(() => {
-    const getProfiles = async () => {
-      let data = await getProfilesData("users");
-      setProfiles(data);
-    };
+  onAuthStateChanged(auth, (userFirebase) => {    
+    setLoggedUser(userFirebase? userFirebase : null )        
+  });
+  
+  useEffect(() => {    
+    if (loggedUser) {
+      const getProfiles = async () => {
+        let data = await fbCreateOrGetDocument("users", loggedUser.email);
+        
+        setProfiles(data);
+        localStorage.setItem('login', loggedUser.email)
+        localStorage.setItem('profiles', JSON.stringify(data))
+      };
 
-    getProfiles();
-  }, []);
+      getProfiles();
+    } else {
+      if (profiles.length > 0) {
+        setProfiles([])
+        localStorage.removeItem('profile')
+      }
+    }
+  // eslint-disable-next-line    
+  }, [loggedUser]);
 
   const movies = [{id:1},{id:2}]
-
+  
   return (
     <div className="App netflix-sans-font-loaded overflow-hidden general">
       <ProfileProvider>
-        <Router profiles={profiles} titulos={titulos} movies={movies}>
+        <Router profiles={profiles} titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null}>
+        {profiles.length > 0 && loggedUser &&  
           <NavBar
             filter={sinNavBar}
             buscar={{ buscar, setTitulos }}
             profiles={profiles}
           ></NavBar>
+          }          
         </Router>
       </ProfileProvider>
     </div>
