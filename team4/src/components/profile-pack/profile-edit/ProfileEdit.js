@@ -14,9 +14,6 @@ const ProfileEdit = (props) => {
     let name = profiles[params.id].name
     let bg = profiles[params.id].bg
     
-    console.log(name)
-    console.log(bg)
-    
     const saveData = async (e) => {
         e.preventDefault()
         
