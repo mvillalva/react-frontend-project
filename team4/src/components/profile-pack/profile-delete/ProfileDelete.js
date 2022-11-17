@@ -1,16 +1,21 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { deleteData } from "../../../functions/firebaseActions";
+import { updateData } from "../../../functions/firebaseActions";
+import { getProfiles } from "../../../functions/general";
 import "./ProfileDelete.css";
 
 const ProfileDelete = (props) => {
     const params = useParams()
-    const profile = props.profiles.filter(e => e.id === parseInt(params.id))
+    const profiles = getProfiles() 
+    const profile = profiles[params.id]
 
     const deleteProfile = async (e) => {
         e.preventDefault()
+
+        const newProfiles = profiles.filter((e, index) => index !== parseInt(params.id))
         
-        await deleteData('users', profile[0].key)
+        await updateData('users', {profiles: newProfiles})
+        
         window.location.href = '/ManageProfiles'
     }
 
@@ -21,14 +26,14 @@ const ProfileDelete = (props) => {
                     <h1 className="hh1">¿Eliminar perfil?</h1>
                     <div className="delete-metadata delete-entry">
                         <div className="profile-avatar">
-                            <div className={'profile-icon ' + profile[0].bg}></div>
-                            <div className="profile-name">{profile[0].name}</div>
+                            <div className={'profile-icon ' + profile.bg}></div>
+                            <div className="profile-name">{profile.name}</div>
                         </div>
                         <div className="delete-delete-warning">
                             El historial de este perfil, incluidas Mi lista, los votos y la actividad, se eliminará definitivamente, por lo que no tendrás acceso a ellos después.
                         </div>
                     </div>
-                    <Link to={"/EditProfile/" + profile[0].id} className="delete-button preferred-action">
+                    <Link to={"/EditProfile/" + params.id} className="delete-button preferred-action">
                         <span>Guardar perfil</span>
                     </Link>
                     <Link to="/ManageProfiles" className="delete-button" onClick={(e)=>{deleteProfile(e)}}>

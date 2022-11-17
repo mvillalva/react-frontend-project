@@ -6,20 +6,22 @@ import './ProfileEdit.css'
 const ProfileEdit = (props) => {    
     const navigate = useNavigate()
     const location = useLocation()
-
     const params = useParams()
-    const profile = props.profiles.filter(e => e.id === parseInt(params.id))
 
-    let name = profile[0].name
-    let bg = profile[0].bg
+    let name = props.profiles[params.id].name
+    let bg = props.profiles[params.id].bg
     
     const saveData = async (e) => {
         e.preventDefault()
         
         let input = document.getElementById('profile-name')
-        let data = {name: input.value, bg: bg}        
+
+        props.profiles[params.id].name = input.value
+        props.profiles[params.id].bg = bg
+
+        console.log(props.profiles)
         
-        await updateData('users', profile[0].key, data)
+        await updateData('users', {profiles: props.profiles})
         
         window.location.href = '/ManageProfiles'
     }
@@ -61,7 +63,7 @@ const ProfileEdit = (props) => {
                     </div>
                     <Link to='/ManageProfiles' className="edit-button preferred-action" onClick={(e)=>{saveData(e)}}>Guardar</Link>
                     <Link to='/ManageProfiles' className="edit-button">Cancelar</Link>
-                    <Link to={'/DeleteProfile/'+ profile[0].id} className="edit-button">Eliminar perfil</Link>
+                    <Link to={'/DeleteProfile/'+ params.id} className="edit-button">Eliminar perfil</Link>
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@ import Avatars from '../components/profile-pack/avatars/Avatars';
 import FrontPage from '../pages/fronPage/FrontPage';
 import NotFound from '../pages/404/NotFound';
 import Slider from "../components/slider/Slider.jsx";
+import Logueo from '../pages/loginPage/TestLogueo';
 
 const Router = (props) => { 
     const Principal = () => props.profiles.length === 2 ? 
@@ -24,30 +25,33 @@ const Router = (props) => {
                                 <Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />)
     
     const location = window.location.href.split('/').join('%2')
+    const isLoggedIn = props.loggedUser || localStorage.getItem('login') ? true : false
 
     return (
         <BrowserRouter>
             {props.children}
             
             <Routes>
-                <Route path="/" element={<FrontPage />}></Route>
-                <Route path="/start" element={<Principal />}></Route>
-                <Route path="/login" element={<LoginPage />}></Route>
-                <Route path="/LoginHelp" element={<LoginHelp />}></Route>
-                <Route path="/VideoDescriptionPage" element={<VideoDescriptionPage title="Manifiesto" />}></Route>
-                <Route path="/Playlist" element={<PlaylistPage title="Playlist" />}></Route>
-                <Route path="/profiles" element={<Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' />}></Route>
-                <Route path="/home" element={<Home />}></Route>
-                <Route path="/ManageProfiles" element={<Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' />}></Route>
-                <Route path="/AddProfile" element={<ProfileAdd profiles={props.profiles} />}></Route>
-                <Route path="/EditProfile/:id" element={<ProfileEdit profiles={props.profiles} />}></Route>
-                <Route path="/DeleteProfile/:id" element={<ProfileDelete profiles={props.profiles} />}></Route>
-                <Route path="/search" element={<Search resultados={props.titulos}/>}></Route>
+                <Route path="/" element={isLoggedIn? <Navigate to='/start' /> : <FrontPage />}></Route>
+                <Route path="/start" element={isLoggedIn? <Principal /> : <Navigate to='/' />}></Route>
+                <Route path="/login" element={isLoggedIn? <Navigate to='/start' /> : <LoginPage />}></Route>
+                <Route path="/LoginHelp" element={isLoggedIn? <Navigate to='/start' /> : <LoginHelp />}></Route>
+                <Route path="/VideoDescriptionPage" element={isLoggedIn? <VideoDescriptionPage title="Manifiesto" /> : <Navigate to='/' />}></Route>
+                <Route path="/Playlist" element={isLoggedIn? <PlaylistPage title="Playlist" /> : <Navigate to='/start' /> }></Route>
+                <Route path="/profiles" element={isLoggedIn? <Profiles title="¿Quién está viendo ahora?" profiles={props.profiles} action='R' /> : <Navigate to='/start' /> }></Route>
+                <Route path="/home" element={isLoggedIn? <Home /> : <Navigate to='/' />}></Route>
+                <Route path="/ManageProfiles" element={isLoggedIn? <Profiles title="Administrar perfiles:" profiles={props.profiles} action='U' /> : <Navigate to='/start' /> }></Route>
+                <Route path="/AddProfile" element={isLoggedIn? <ProfileAdd profiles={props.profiles} /> : <Navigate to='/start' /> }></Route>
+                <Route path="/EditProfile/:id" element={isLoggedIn? <ProfileEdit profiles={props.profiles} /> : <Navigate to='/start' /> }></Route>
+                <Route path="/DeleteProfile/:id" element={isLoggedIn? <ProfileDelete profiles={props.profiles} /> : <Navigate to='/start' /> }></Route>
+                <Route path="/search" element={isLoggedIn? <Search resultados={props.titulos}/> : <Navigate to='/start' />}></Route>
                 <Route path="/notfound" element={<NotFound />}></Route>
                 <Route path="/*" element={<Navigate to={'/notfound?'+location} />}></Route>
-                <Route path="/ProfileAvatars" element={<Avatars />}></Route>
-                <Route path="/slider" element={<Slider movies={props.movies} />}></Route>
+                <Route path="/ProfileAvatars" element={isLoggedIn? <Avatars /> : <Navigate to='/start' />} ></Route>
+                <Route path="/slider" element={isLoggedIn? <Slider movies={props.movies} /> : <Navigate to='/start' /> }></Route>
+                <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
             </Routes>
+
         </BrowserRouter>
     );
 };

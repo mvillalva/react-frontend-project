@@ -4,9 +4,6 @@ import logo from '../../img/netflix-icon.svg'
 import './FrontPage.css'
 
 const FrontPage = () => {
-    console.log(navigator)
-    console.log(navigator.language)
-
     return (
         <>            
             <div className="logo-login-container text-start ps-5 pt-4">

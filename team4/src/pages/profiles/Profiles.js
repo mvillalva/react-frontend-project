@@ -9,9 +9,13 @@ const Profiles = ({title, profiles, action}) => {
 
     const LoadProfiles = () => {
         return profiles
-        .filter(e => profiles.length === 6 ? e.id !== 6 : e)
-        .map(e => e.id === 6 ? <ProfileAddButton name={e.name} key={e.id.toString()}></ProfileAddButton>
-                             : <Profile profile={e} action={action} key={e.id.toString()}></Profile>)
+        .filter(e => profiles.length === 6 ? e.type !== 'UserAdd' : e)
+        .sort((s1, s2) => 
+            (s1.type < s2.type || (s1.type === s2.type && s1.name < s2.name))? -1 :
+            ((s1.type === s2.type && s1.name > s2.name) || (s1.type > s2.type))? 1 : 0
+        )
+        .map((e, index) => e.type === 'UserAdd' ? <ProfileAddButton name={e.name} key={index}></ProfileAddButton>
+                             : <Profile profile={e} index={index+1} action={action} key={index}></Profile>)
     }
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"    
