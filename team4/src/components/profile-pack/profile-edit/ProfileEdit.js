@@ -1,25 +1,29 @@
 import React from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { updateData } from '../../../functions/firebaseActions'
+import { getProfiles } from '../../../functions/general'
 import './ProfileEdit.css'
 
 const ProfileEdit = (props) => {    
     const navigate = useNavigate()
     const location = useLocation()
     const params = useParams()
+    const profiles = getProfiles()
+    console.log(profiles)
 
-    let name = props.profiles[params.id].name
-    let bg = props.profiles[params.id].bg
+    let name = profiles[params.id].name
+    let bg = profiles[params.id].bg
+    
+    console.log(name)
+    console.log(bg)
     
     const saveData = async (e) => {
         e.preventDefault()
         
         let input = document.getElementById('profile-name')
 
-        props.profiles[params.id].name = input.value
-        props.profiles[params.id].bg = bg
-
-        console.log(props.profiles)
+        profiles[params.id].name = input.value
+        profiles[params.id].bg = bg        
         
         await updateData('users', {profiles: props.profiles})
         
