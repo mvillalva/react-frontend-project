@@ -1,0 +1,40 @@
+.language-select {
+    position: relative;
+    width: 100px;
+    height: 35px;
+    padding: 0.5rem 1.375rem;    
+    color: #fff;    
+    background: rgba(0,0,0,.4);
+    border: 1px solid #b3b3b3;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    line-height: 1.3em;
+    text-indent: 0;
+    white-space: nowrap;
+    appearance: none;
+    overflow: hidden;
+}
+
+.language-select:focus {    
+    box-shadow: 1 0 0 0 rgb(255 255 255 / 25%);
+}
+
+.language-icon-before {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    color: white;
+    font-size: .7rem;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.language-icon-after {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    color: white;
+    font-size: .7rem;
+    z-index: 1;
+    transform: translateY(-50%);
+}
