@@ -1,13 +1,13 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithRedirect, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import {collection, doc, getDocs, setDoc, query, where, updateDoc, deleteDoc, addDoc, orderBy, limit, getDoc} from 'firebase/firestore'
 import db, { firebaseApp } from "../firebase/firebaseConfig";
 
 
-export const getProfilesData = async (source) => {    
+export const getProfilesData = async (source) => {
     const cnx = collection(db, source)
     const res = query(cnx, orderBy("type"), orderBy("name"))
     const datos = await getDocs(res);
-    
+
     let vec = []
 
     datos.forEach(doc => {
@@ -19,24 +19,24 @@ export const getProfilesData = async (source) => {
             bg: doc.data().bg,
             type: doc.data().type,
             playlist: doc.data().playlist
-        }        
+        }
 
         vec = [...vec, data]
-    });   
+    });
 
     return vec
 }
 
-export const queryData = async (source, qry = null) => {    
+export const queryData = async (source, qry = null) => {
     const cnx = collection(db, source);
     const res = query(cnx, where(qry.field, qry.operator, qry.value));
     const datas = await getDocs(res);
-    
+
     let result = []
 
-    datas.forEach(doc => {            
+    datas.forEach(doc => {
         result = [...result, doc.data()]
-    });   
+    });
 
     return result
 }
@@ -45,13 +45,13 @@ export const getMaxValue = async (source, field) => {
     let result = []
 
     const cnx = collection(db, source);
-    const res = query(cnx, where('id','!=', 6), orderBy(field, 'desc'), limit(1));    
-    
+    const res = query(cnx, where('id','!=', 6), orderBy(field, 'desc'), limit(1));
+
     const datas = await getDocs(res);
 
-    datas.forEach(doc => {            
+    datas.forEach(doc => {
         result = [...result, doc.data()]
-    });   
+    });
 
 
     return result ? result[0].id : 0
@@ -75,12 +75,12 @@ export const deleteData = async (source, key) => {
     await deleteDoc(doc(db, source, key));
 }
 
-export const fbCreateOrGetDocument = async (source, key) => {    
+export const fbCreateOrGetDocument = async (source, key) => {
     if (key) {
-        const datas = await getDoc(doc(db, source, key))        
+        const datas = await getDoc(doc(db, source, key))
 
         if (datas.exists()) {
-            const data = datas.data()            
+            const data = datas.data()
             return data.profiles
         } else {
             const perfiles =  [
@@ -103,7 +103,7 @@ export const fbCreateOrGetDocument = async (source, key) => {
 
             await addDataWithKey(source, key, newData)
             const datas = await getDoc(doc(db, source, key))
-            const data = datas.data()            
+            const data = datas.data()
             return data.profiles
         }
     } else {
@@ -114,21 +114,21 @@ export const fbCreateOrGetDocument = async (source, key) => {
 
 //Authentication
 export const logInWithEmail = async (email, password) => {
-    const auth = getAuth(firebaseApp)    
+    const auth = getAuth(firebaseApp)
     let errorMessage = ''
 
-    await signInWithEmailAndPassword(auth, email, password)    
-    .catch(e => {        
+    await signInWithEmailAndPassword(auth, email, password)
+    .catch(e => {
         switch (e.code) {
             case 'auth/wrong-password':
             case 'auth/user-not-found':
                 errorMessage = 'Usuario y/o Contraseña inválida'
                 break;
-        
+
             default:
                 errorMessage = 'Problemas al autenticarse'
                 break;
-        }                
+        }
     })
 
     return errorMessage
@@ -143,8 +143,8 @@ export const createUserWithEmail = async (email, password) => {
 
 export const googleSingIn = () => {
     const auth = getAuth(firebaseApp)
-    const googleProvider = new GoogleAuthProvider()
-    signInWithRedirect(auth, googleProvider)
+    const googleProvider = new GoogleAuthProvider()    
+    signInWithPopup(auth, googleProvider)
 }
 
 export const logOut = async () => {
