@@ -7,20 +7,12 @@
 
 
 .video-description-top {
-     height: 480px;
-     background-image: url("https://occ-0-3792-2774.1.nflxso.net/dnm/api/v6/9pS1daC2n6UGc3dUogvWIPMR_OU/AAAABRFIMOyg3rhhNb6HPS6hE1kkz0EN3gpgO6AHXHQdYOtZ0kfashp737vzgh8YbcrXKimKKIyJ0yfzPeXVIOKSOjfAW-YxzGbJFuIRKxqfJSeatH6FKSddUiuanw.webp?r=cf9.gif");
-     background-repeat: no-repeat;
-     background-size: cover;
-
+     padding-top: 30px;
+     padding-left: 30px;
 }
+
 .video-description-title {
      font-size: 2rem;
-}
-
-.nombre-pelicula {
-     margin-top: 200px;
-     margin-left: 20px;
-     width: 40%;
 }
 
 .video-description-info-container {
