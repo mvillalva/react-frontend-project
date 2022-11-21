@@ -21,15 +21,42 @@ import { MainContext } from '../context/MainContext';
 const Router = (props) => { 
     const {state} = useContext(MainContext)
 
-    const Principal = () => state.profiles.length === 2 ? 
-                            <Navigate to='/home' /> :
-                            (state.profiles.lenght === 0 ?
-                                <div className="preloader"></div> :
-                                <Profiles title="¿Quién está viendo ahora?" profiles={state.profiles} action='R' />)
+    const Principal = () => props.profilesLoaded ?
+                            (   
+                                state.profiles.length === 2 ?
+                                <Navigate to='/home' /> :
+                                <Profiles title="¿Quién está viendo ahora?" profiles={state.profiles} action='R' />
+                            )
+                            :   <div className="loader-container">
+                                    <div className='loader'></div>
+                                </div>
     
     const location = window.location.href.split('/').join('%2')
     const isLoggedIn = props.loggedUser || localStorage.getItem('login') ? true : false
+    
+    /**
+     * 
+     * @param {*} logged - Objeto que se carga si esta logueado
+     * @param {*} not_logged - Objeto que se carga si NO esta logueado
+     * @returns - Si no esta logueado muestra [not_logged], si esta logueado pero no se cargaron los perfiles muestra el "loader", si no muestra el objeto [logged]
+     */
+    const loadPage = (logged, not_logged) => {
+        let obj = null
 
+        if (isLoggedIn) {
+            obj =   <div className="loader-container">
+                        <div className='loader'></div>
+                    </div>
+            if (props.profilesLoaded) {
+                obj = logged
+            }
+        } else {
+            obj = not_logged
+        }
+
+        return obj
+    }
+    
     return (
         <BrowserRouter>
             {props.children}
@@ -41,9 +68,9 @@ const Router = (props) => {
                 <Route path="/LoginHelp" element={isLoggedIn? <Navigate to='/start' /> : <LoginHelp />}></Route>
                 <Route path="/VideoDescriptionPage" element={isLoggedIn? <VideoDescriptionPage title="Manifiesto" /> : <Navigate to='/' />}></Route>
                 <Route path="/Playlist" element={isLoggedIn? <PlaylistPage title="Playlist" /> : <Navigate to='/start' /> }></Route>
-                <Route path="/profiles" element={isLoggedIn? <Profiles title="¿Quién está viendo ahora?" action='R' /> : <Navigate to='/start' /> }></Route>
-                <Route path="/home" element={isLoggedIn? <Home /> : <Navigate to='/' />}></Route>
-                <Route path="/ManageProfiles" element={isLoggedIn? <Profiles title="Administrar perfiles:" action='U' /> : <Navigate to='/start' /> }></Route>
+                <Route path="/profiles" element={loadPage(<Profiles title="¿Quién está viendo ahora?" action='R' /> , <Navigate to='/start' />) }></Route>
+                <Route path="/home" element={loadPage(<Home /> , <Navigate to='/' />)}></Route>
+                <Route path="/ManageProfiles" element={loadPage(<Profiles title="Administrar perfiles:" action='U' /> , <Navigate to='/start' />) }></Route>
                 <Route path="/AddProfile" element={isLoggedIn? <ProfileAdd /> : <Navigate to='/start' /> }></Route>
                 <Route path="/EditProfile/:id" element={isLoggedIn? <ProfileEdit /> : <Navigate to='/start' /> }></Route>
                 <Route path="/DeleteProfile/:id" element={isLoggedIn? <ProfileDelete /> : <Navigate to='/start' /> }></Route>
