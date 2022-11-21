@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { MainContext } from "../../../context/MainContext";
 import { updateData } from "../../../functions/firebaseActions";
-import { getProfiles } from "../../../functions/general";
 import "./ProfileDelete.css";
 
 const ProfileDelete = (props) => {
     const params = useParams()
-    const profiles = getProfiles() 
-    const profile = profiles[params.id]
+    const {state, changeState} = useContext(MainContext)    
+    const profile = state.profiles.filter((e) => e.uuid === params.id)[0]    
 
     const deleteProfile = async (e) => {
         e.preventDefault()
 
-        const newProfiles = profiles.filter((e, index) => index !== parseInt(params.id))
+        const newProfiles = state.profiles.filter((e) => e.uuid !== params.id)
         
         await updateData('users', {profiles: newProfiles})
+        state.profiles = newProfiles
         
+        changeState(state)
+
         window.location.href = '/ManageProfiles'
+    }
+
+    if (state.profiles.length <= 2) {        
+        window.location.href = '/'
+        return
     }
 
     return (

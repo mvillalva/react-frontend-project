@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { ProfileContext } from '../../../context/profileContext/ProfileContext'
+import { MainContext } from '../../../context/MainContext'
 import './Profile.css'
 
 const Profile = (props) => {
@@ -9,12 +9,13 @@ const Profile = (props) => {
                                                 <span className='fa fa-pencil svg-icon-edit'></span>
                                             </div> 
                                         : ' '
-    const link = props.action === 'U' ? '/EditProfile/' + props.index : '/home'
+    const link = props.action === 'U' ? '/EditProfile/' + props.profile.uuid : '/home'
 
-    const {changeProfile} = useContext(ProfileContext)
+    const {state, changeState} = useContext(MainContext)
 
     const setProfile = () => {
-        changeProfile(props.profile)
+        state.current_profile = props.profile        
+        changeState(state)
     }    
 
     return (        

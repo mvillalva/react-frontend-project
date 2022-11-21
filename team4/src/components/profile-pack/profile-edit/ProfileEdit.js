@@ -1,27 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { MainContext } from '../../../context/MainContext'
 import { updateData } from '../../../functions/firebaseActions'
-import { getProfiles } from '../../../functions/general'
 import './ProfileEdit.css'
 
 const ProfileEdit = (props) => {    
     const navigate = useNavigate()
     const location = useLocation()
     const params = useParams()
-    const profiles = getProfiles()    
-
-    let name = profiles[params.id].name
-    let bg = profiles[params.id].bg
+    const {state, changeState} = useContext(MainContext)    
+    
+    const profile = state.profiles.filter(e => e.uuid === params.id)[0]
+    
+    let name = profile.name
+    let bg = profile.bg
     
     const saveData = async (e) => {
         e.preventDefault()
         
         let input = document.getElementById('profile-name')
 
-        profiles[params.id].name = input.value
-        profiles[params.id].bg = bg        
+        profile.name = input.value
+        profile.bg = bg
+
+        const editProfiles = state.profiles.filter(e => e.uuid !== params.id)
+        editProfiles.push(profile)
         
-        await updateData('users', {profiles: props.profiles})
+        await updateData('users', {profiles: editProfiles})
+        state.profiles = editProfiles
+
+        changeState(state)
         
         window.location.href = '/ManageProfiles'
     }
@@ -63,7 +71,7 @@ const ProfileEdit = (props) => {
                     </div>
                     <Link to='/ManageProfiles' className="edit-button preferred-action" onClick={(e)=>{saveData(e)}}>Guardar</Link>
                     <Link to='/ManageProfiles' className="edit-button">Cancelar</Link>
-                    <Link to={'/DeleteProfile/'+ params.id} className="edit-button">Eliminar perfil</Link>
+                    {state.profiles.length > 2 && <Link to={'/DeleteProfile/'+ params.id} className="edit-button">Eliminar perfil</Link>}
                 </div>
             </div>
         </div>

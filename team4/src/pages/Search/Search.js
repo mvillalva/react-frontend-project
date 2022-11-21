@@ -7,7 +7,7 @@ export default function Search(props){
     return(
         <>
             <ListadoBusqueda resultados={resultados}/>
-            <Footer></Footer>
+          
         </>
     )
 }

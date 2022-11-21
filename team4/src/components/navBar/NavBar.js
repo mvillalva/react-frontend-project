@@ -7,25 +7,28 @@ import SearchMovie from '../searchMovie/SearchMovie'
 import Notification from '../notification/Notification'
 import AccountMenu from '../accountMenu/AccountMenu'
 import Profile from '../profile-pack/profile/Profile'
-import { closeSession, getCurrentProfile } from "../../functions/general";
-import { ProfileContext } from '../../context/profileContext/ProfileContext'
+import { closeSession } from "../../functions/general";
+// import { ProfileContext } from '../../context/profileContext/ProfileContext'
+import { MainContext } from '../../context/MainContext'
 
 const NavBar = (props) => {
     const thisLocation = useLocation();
-    const {changeProfile} = useContext(ProfileContext)
+    const {state, changeState} = useContext(MainContext)
+    // const { current_profile } = useContext(MainContext)
 
     let filter = props.filter.find(e => matchPath({ path: e }, thisLocation.pathname))    
     
     const getProfiles = () => {        
         return (
-            props.profiles
-            .filter(e => e.type !== 'UserAdd' && e.name !== getCurrentProfile().name)
+            state.profiles
+            .filter(e => e.type !== 'UserAdd' && e.name !== state.current_profile.name)
             .map(e => <Profile profile={e} action='M' key={e.name} class="small-icon"></Profile>)
         )
     }
 
-    if (props.profiles.length === 2) {
-        changeProfile(props.profiles[1])
+    if (state.profiles.length === 2) {        
+        state.current_profile = state.profiles[1]
+        changeState(state)
     }
         
     return ( 

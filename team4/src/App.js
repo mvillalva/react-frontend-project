@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/navBar/NavBar";
 import Router from "./Router/Router";
-import ProfileProvider from "./context/profileContext/ProfileContext";
 import { fbCreateOrGetDocument } from "./functions/firebaseActions";
 import { buscar, defaultTitulos } from "./functions/movieApi";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { firebaseApp } from "./firebase/firebaseConfig";
+import MainProvider, { SetContextSate } from "./context/MainContext";
 
 const auth = getAuth(firebaseApp);
 
@@ -37,37 +37,37 @@ function App() {
     if (loggedUser) {
       const getProfiles = async () => {
         let data = await fbCreateOrGetDocument("users", loggedUser.email);
-        
+                
         setProfiles(data);
-        localStorage.setItem('login', loggedUser.email)
-        localStorage.setItem('profiles', JSON.stringify(data))
+        localStorage.setItem('login', loggedUser.email)        
+        SetContextSate('PS', data)
       };
 
       getProfiles();
     } else {
       if (profiles.length > 0) {
         setProfiles([])
-        localStorage.removeItem('profile')
+        SetContextSate('PS', [])        
+        localStorage.removeItem('appState')
       }
     }
   // eslint-disable-next-line    
   }, [loggedUser]);
 
-  const movies = [{id:1},{id:2}]
+  const movies = [{id:1},{id:2}]  
   
   return (
     <div className="App netflix-sans-font-loaded overflow-hidden general">
-      <ProfileProvider>
-        <Router profiles={profiles} titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null}>
-        {profiles.length > 0 && loggedUser &&  
+      <MainProvider>
+        <Router titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null}>
+        {profiles.length > 0 && loggedUser &&
           <NavBar
             filter={sinNavBar}
             buscar={{ buscar, setTitulos }}
-            profiles={profiles}
           ></NavBar>
           }          
         </Router>
-      </ProfileProvider>
+      </MainProvider>
     </div>
   );
 }

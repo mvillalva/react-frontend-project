@@ -10,19 +10,21 @@ const SearchInput = ({state, buscar}) => {
         let input = document.getElementById("search-input");
         input.value = "";
         input.focus();
-        buscar.buscar("", buscar.setTitulos)
+        //buscar.buscar("", buscar.setTitulos)
     };
 
     const changeState = (e) => {
         if (!e.target.value){
-            state.setClick(false);
-            navigate(-1)
+            state.setClick(false);          
+            navigate(location.state)
         }
     }
 
     const search = (e) => {
-        if (location.pathname !== '/search')
-            navigate('/search')
+        if (location.pathname !== '/search'){
+            navigate('/search', {state: location.pathname})
+        }
+
         buscar.buscar(e.target.value, buscar.setTitulos)
     }
 
