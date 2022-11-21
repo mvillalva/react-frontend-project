@@ -95,6 +95,7 @@ export const fbCreateOrGetDocument = async (source, key) => {
 export const logInWithEmail = async (email, password) => {
     const auth = getAuth(firebaseApp)
     let errorMessage = ''
+    
 
     await signInWithEmailAndPassword(auth, email, password)
     .catch(e => {

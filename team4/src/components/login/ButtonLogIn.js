@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { logInWithEmail } from '../../functions/firebaseActions';
+// import { logInWithEmail } from '../../functions/firebaseActions';
 
 export default function ButtonLogIn(){
     const goPage = async (e) => {
@@ -13,7 +13,7 @@ export default function ButtonLogIn(){
     }
 
     return(
-        <Button variant="danger" onClick={(e)=> {goPage(e)}}>
+        <Button variant="danger" type="submit" >
             Iniciar sesión
         </Button>
     )
