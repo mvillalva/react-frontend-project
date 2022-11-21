@@ -71,7 +71,7 @@ const NavBar = (props) => {
                             </li>
                         </ul>
                         <hr />
-                        <a className="text-decoration-none text-light" href='#' onClick={(e) => closeSession(e) }>Cerrar sesión en Netflix</a>
+                        <Link className="text-decoration-none text-light" to='#' onClick={(e) => closeSession(e) }>Cerrar sesión en Netflix</Link>
                     </AccountMenu>                    
                 </div>
             </Container>
