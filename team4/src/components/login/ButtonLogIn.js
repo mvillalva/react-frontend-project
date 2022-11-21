@@ -1,18 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { logInWithEmail } from '../../functions/firebaseActions';
+// import { logInWithEmail } from '../../functions/firebaseActions';
 
 export default function ButtonLogIn(){
-    const goPage = (e) => {
-        e.preventDefault()
+    // const goPage = (e) => {
+    //     e.preventDefault()
         
-        //Borrar en la app final
-        logInWithEmail('team4@test.com', '123456')
-        // navigate('/start')
-    }
+    //     //Borrar en la app final
+    //     logInWithEmail('team4@test.com', '123456')
+    //     // navigate('/start')
+    // }
 
     return(
-        <Button variant="danger" onClick={(e)=> {goPage(e)}}>
+        <Button variant="danger" type="submit" >
             Iniciar sesión
         </Button>
     )
