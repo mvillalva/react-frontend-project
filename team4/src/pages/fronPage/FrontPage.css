@@ -42,7 +42,7 @@
 .language-container {
     position: absolute;
     top: 20px;
-    right: 230px;
+    right: 130px;
 }
 
 .logo-login {
@@ -78,6 +78,10 @@
         width: 167px;
     }
 
+    .language-container {        
+        right: 230px;
+    }
+
     .button-login {
         right: 70px;
         width: 125px;
@@ -96,5 +100,5 @@
     
     .login-subtitle2 {
         font-size: 1.2rem;        
-    }
+    }    
 }

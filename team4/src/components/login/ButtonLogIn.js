@@ -1,11 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import { logInWithEmail } from '../../functions/firebaseActions';
 
 export default function ButtonLogIn(){
-    const navigate = useNavigate()
-
     const goPage = (e) => {
         e.preventDefault()
         

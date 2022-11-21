@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProfileButton from "../../components/profile-pack/profile-button/ProfileButton";
 import Profile from "../../components/profile-pack/profile/Profile";
 import ProfileAddButton from "../../components/profile-pack/profile/ProfileAddButton";
 import ProfileList from "../../components/profile-pack/profileList/ProfileList";
+import { MainContext } from "../../context/MainContext";
 import './Profiles.css'
 
-const Profiles = ({title, profiles, action}) => {
+const Profiles = ({title, action}) => {
+
+    const {state} = useContext(MainContext)
+
+    const profiles = state.profiles
 
     const LoadProfiles = () => {
         return profiles
@@ -15,7 +20,7 @@ const Profiles = ({title, profiles, action}) => {
             ((s1.type === s2.type && s1.name > s2.name) || (s1.type > s2.type))? 1 : 0
         )
         .map((e, index) => e.type === 'UserAdd' ? <ProfileAddButton name={e.name} key={index}></ProfileAddButton>
-                             : <Profile profile={e} index={index+1} action={action} key={index}></Profile>)
+                             : <Profile profile={e} action={action} key={index}></Profile>)
     }
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"    

@@ -1,31 +1,8 @@
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import {collection, doc, getDocs, setDoc, query, where, updateDoc, deleteDoc, addDoc, orderBy, limit, getDoc} from 'firebase/firestore'
 import db, { firebaseApp } from "../firebase/firebaseConfig";
+import { uuidv4 } from '@firebase/util';
 
-
-export const getProfilesData = async (source) => {
-    const cnx = collection(db, source)
-    const res = query(cnx, orderBy("type"), orderBy("name"))
-    const datos = await getDocs(res);
-
-    let vec = []
-
-    datos.forEach(doc => {
-        let data = {
-            key: doc.id,
-            id: doc.data().id,
-            avatar: doc.data().avatar,
-            name: doc.data().name,
-            bg: doc.data().bg,
-            type: doc.data().type,
-            playlist: doc.data().playlist
-        }
-
-        vec = [...vec, data]
-    });
-
-    return vec
-}
 
 export const queryData = async (source, qry = null) => {
     const cnx = collection(db, source);
@@ -85,6 +62,7 @@ export const fbCreateOrGetDocument = async (source, key) => {
         } else {
             const perfiles =  [
                 {
+                    uuid: uuidv4(),
                     name: "Agregar perfil",
                     avatar: "",
                     bg: "",
@@ -92,6 +70,7 @@ export const fbCreateOrGetDocument = async (source, key) => {
                     playlist: []
                 },
                 {
+                    uuid: uuidv4(),
                     name: "Mi Perfil",
                     avatar: "",
                     bg: "bg-5",

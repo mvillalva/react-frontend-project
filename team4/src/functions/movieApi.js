@@ -19,7 +19,7 @@ export const buscar = (peli, setTitulos) => {
         setTitulos({
             total: 0,
             arreglo: [],
-            busqueda: true,
+            busqueda: false,
             });
     }
 }

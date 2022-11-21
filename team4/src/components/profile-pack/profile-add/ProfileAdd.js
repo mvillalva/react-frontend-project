@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { MainContext } from "../../../context/MainContext";
 import { updateData } from "../../../functions/firebaseActions";
+import { uuidv4 } from "@firebase/util";
 import './ProfileAdd.css'
 
 const ProfileAdd = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
+    const {state, changeState} = useContext(MainContext)
 
     let bg = 'bg-5'
     let name = ''
-
+    
     const addProfile = async (e) => {
         e.preventDefault()
         
         let input = document.getElementById('profile-name')
         
         const data = {
+            uuid: uuidv4(),
             name: input.value,
             avatar: '',
             bg: bg,
             type: 'Profile',
         }
 
-        props.profiles.push(data)
+        state.profiles.push(data)
 
-        await updateData('users', {profiles: props.profiles})
-        
+        await updateData('users', {profiles: state.profiles})
+        changeState(state)
+
         window.location.href = '/ManageProfiles'
     }
 
