@@ -29,8 +29,10 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
 
-  onAuthStateChanged(auth, (userFirebase) => {    
-    setLoggedUser(userFirebase? userFirebase : null )        
+  onAuthStateChanged(auth, (userFirebase) => {
+    if (userFirebase && userFirebase !== loggedUser) {      
+      setLoggedUser(userFirebase? userFirebase : null )      
+    }
   });
   
   useEffect(() => {    
@@ -44,7 +46,7 @@ function App() {
       };
 
       getProfiles();
-    } else {
+    } else {      
       if (profiles.length > 0) {
         setProfiles([])
         SetContextSate('PS', [])        
@@ -54,12 +56,14 @@ function App() {
   // eslint-disable-next-line    
   }, [loggedUser]);
 
-  const movies = [{id:1},{id:2}]  
+  const movies = [{id:1},{id:2}]
+
+  const profilesLoaded = profiles.length > 0
   
   return (
     <div className="App netflix-sans-font-loaded overflow-hidden general">
       <MainProvider>
-        <Router titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null}>
+        <Router titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null} profilesLoaded={profilesLoaded}>
         {profiles.length > 0 && loggedUser &&
           <NavBar
             filter={sinNavBar}
