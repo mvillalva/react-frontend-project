@@ -13,7 +13,7 @@ const SearchInput = ({state, buscar}) => {
         //buscar.buscar("", buscar.setTitulos)
     };
 
-    const changeState = (e) => {
+    const verifyState = (e) => {
         if (!e.target.value){
             state.setClick(false);          
             navigate(location.state)
@@ -33,7 +33,7 @@ const SearchInput = ({state, buscar}) => {
         state.click?
         <div className="search-container position-relative">
             <span className="icon-start fas fa-search text-light fs-5"></span>
-            <Form.Control id="search-input" className="search-input" placeholder="Títulos, personas, géneros" onChange={(e) => search(e)} onBlur={(e)=>{changeState(e)}} autoFocus></Form.Control>
+            <Form.Control id="search-input" className="search-input" placeholder="Títulos, personas, géneros" onChange={(e) => search(e)} onBlur={(e)=>{verifyState(e)}} autoFocus></Form.Control>
             <span className="icon-end fas fa-times text-light fs-5" onClick={() => {deleteContent();}}></span>
         </div>
         :''

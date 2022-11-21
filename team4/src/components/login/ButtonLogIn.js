@@ -3,12 +3,13 @@ import { Button } from 'react-bootstrap';
 import { logInWithEmail } from '../../functions/firebaseActions';
 
 export default function ButtonLogIn(){
-    const goPage = (e) => {
+    const goPage = async (e) => {
         e.preventDefault()
         
         //Borrar en la app final
-        logInWithEmail('team4@test.com', '123456')
-        // navigate('/start')
+
+        await logInWithEmail('team4@test.com', '123456')
+       
     }
 
     return(
