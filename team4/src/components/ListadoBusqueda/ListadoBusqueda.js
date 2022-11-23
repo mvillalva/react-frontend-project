@@ -9,7 +9,7 @@ const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
 export default function ListadoBusqueda(props){
     const {resultados} = props;
-    // console.log(props);
+        
     const titulos = resultados.arreglo.map((resultado, index) => {
         return(
             <Col key={index}>
