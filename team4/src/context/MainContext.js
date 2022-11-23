@@ -3,7 +3,7 @@ import React, { useState } from "react"
 const defaultState = {
     current_profile : [],
     profiles: [],
-    current_language: 'es'
+    current_language: 'es-ES'
 }
 
 const getInitialState = () => {

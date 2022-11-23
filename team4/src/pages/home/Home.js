@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import './Home.css'
-import logo from '../../img/netflix-icon.svg'
+import TodayMovie from "../../components/todayMovie/TodayMovie";
 
 const Home = (props) => {
 
@@ -11,10 +11,7 @@ const Home = (props) => {
     return (
         <div className="home-container overflow-hidden">
             <div className="centered-div animate-container">
-                <h1>Bienvenidos a</h1>
-                <div>
-                    <img src={logo} alt="logo" className="img-size"/>
-                </div>
+                <TodayMovie />
             </div>
         </div>
     )

@@ -1,7 +1,11 @@
 import { logOut } from "./firebaseActions"
 
-export const setCurrentLanguaje = (value) => {
+export const setCurrentLanguage = (value) => {
     localStorage.setItem('language', value)
+}
+
+export const getCurrentLanguage = () =>{
+    return localStorage.getItem('language')
 }
 
 export const closeSession = (e) => {
@@ -13,3 +17,9 @@ export const closeSession = (e) => {
     logOut()
     window.location.href = '/'
 }
+
+export const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); 
+  }

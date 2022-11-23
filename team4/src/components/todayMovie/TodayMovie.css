@@ -1,0 +1,111 @@
+.home-movie {
+    position: relative;
+    width: 100vw;
+}
+
+.home-movie-img {    
+    width: 100%;
+    height: 100vh;
+    opacity: 65%;
+    object-fit: cover;
+}
+
+.home-info-container {    
+    position: absolute;
+    display: flex;
+    left: 4%;
+    top: 0;
+    bottom: 30%;
+    width: 80%;
+    flex-direction: column;
+    justify-content: flex-end;    
+    color: white;
+    text-align: left;    
+}
+
+.home-movie-title {    
+    font-size: 10vw;   
+    font-weight: 900;
+    line-height: .9;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
+}
+
+.home-movie-overview {    
+    display: block;
+    font-size: 3vw;
+    line-height: normal;
+    width: 100%;    
+    max-height: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
+}
+
+
+.home-movie-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+.home-movie-button-info,
+.home-movie-button-rep {
+    width: 170px;
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 2rem;
+    padding-right: 2.4rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 700;
+}
+
+.home-movie-button-info {    
+    width: 200px;
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+
+.home-movie-button-rep:hover {    
+    color: black;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.home-movie-button-info:hover {    
+    color: white;
+    background-color: rgba(109, 109, 110, 0.5);
+}
+
+@media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
+    .home-info-container {
+        width: 36%;
+    }
+    
+    .home-movie-overview {
+        font-size: 1.2vw;
+    }
+
+    .home-movie-title {
+        font-size: 5vw;
+    }
+
+    .home-movie-buttons {
+        flex-direction: row;
+        font-size: 1rem;
+    }
+
+    .home-movie-button-info {
+        width: 230px;
+    }
+
+    .home-movie-button-rep {
+        width: 180px;
+    }
+}
