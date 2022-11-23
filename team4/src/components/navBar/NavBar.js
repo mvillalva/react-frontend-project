@@ -8,13 +8,11 @@ import Notification from '../notification/Notification'
 import AccountMenu from '../accountMenu/AccountMenu'
 import Profile from '../profile-pack/profile/Profile'
 import { closeSession } from "../../functions/general";
-// import { ProfileContext } from '../../context/profileContext/ProfileContext'
 import { MainContext } from '../../context/MainContext'
 
 const NavBar = (props) => {
     const thisLocation = useLocation();
     const {state, changeState} = useContext(MainContext)
-    // const { current_profile } = useContext(MainContext)
 
     let filter = props.filter.find(e => matchPath({ path: e }, thisLocation.pathname))    
     
@@ -33,7 +31,7 @@ const NavBar = (props) => {
         
     return ( 
         !filter && thisLocation.pathname !== '/'?
-        <Navbar bg='transparent' variant='dark' expand='md' sticky="top" className="nav-animate-container mt-2">
+        <Navbar variant='dark' expand='md' sticky="top" className="nav-animate-container nav-bg-transparent pt-2" >
             <Container fluid>                
                 <Navbar.Brand href="/home" className="ms-5"><img className='navbar-logo' src={logo} alt="logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
