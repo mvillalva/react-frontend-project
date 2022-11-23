@@ -85,7 +85,7 @@
 
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
     .home-info-container {
-        width: 36%;
+        width: 50%;
     }
     
     .home-movie-overview {
