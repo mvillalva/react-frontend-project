@@ -1,6 +1,10 @@
+.movie_container {
+    position: relative;    
+}
+
 .home-movie {
-    position: relative;
-    width: 100vw;
+    position: relative;    
+    width: 100vw;    
 }
 
 .home-movie-img {    
@@ -8,6 +12,7 @@
     height: 100vh;
     opacity: 65%;
     object-fit: cover;
+    transition: opacity .4s cubic-bezier(.665,.235,.265,.8) 0s;
 }
 
 .home-info-container {    
@@ -15,12 +20,12 @@
     display: flex;
     left: 4%;
     top: 0;
-    bottom: 30%;
+    bottom: 10%;
     width: 80%;
     flex-direction: column;
     justify-content: flex-end;    
     color: white;
-    text-align: left;    
+    text-align: left;
 }
 
 .home-movie-title {    
@@ -71,6 +76,7 @@
     width: 200px;
     background-color: rgba(109, 109, 110, 0.7);
     color: white;
+    cursor: pointer;
 }
 
 .home-movie-button-rep:hover {    
@@ -86,6 +92,7 @@
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
     .home-info-container {
         width: 50%;
+        bottom: 20%;
     }
     
     .home-movie-overview {

@@ -13,14 +13,16 @@ const Profile = (props) => {
 
     const {state, changeState} = useContext(MainContext)
 
-    const setProfile = () => {
+    const setProfile = (e) => {
+        e.preventDefault()
         state.current_profile = props.profile        
         changeState(state)
+        window.location.href = link
     }    
 
     return (        
         <li className={props.action === 'M'?'li profile2' : 'li profile'}>
-            <Link className={'profile-link ' + (props.class? props.class : '')} to={link} onClick={setProfile}>
+            <Link className={'profile-link ' + (props.class? props.class : '')} to={link} onClick={(e) => {setProfile(e)}}>
                 <div className='avatar-wrapper'>
                     <div className={'profile-list-icon ' + (props.action === 'M'? 'profile-list-icon2 ' :'') + clases + props.profile.bg}></div>
                     {editDiv}                    

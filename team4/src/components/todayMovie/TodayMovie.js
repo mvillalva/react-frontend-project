@@ -12,13 +12,17 @@ const TodayMovie = () => {
                     </div>
 
     const [movie, setMovie] = useState()
+
+    const showDescription = (e, id) => {        
+        e.preventDefault()
+        console.log(id)
+    }
         
     useEffect(
         () => {
             const getMovies = async () => {
                 const movies = await getTopMovies()
-                const index = getRandomInt(0, 19)
-                console.log(movies[index])
+                const index = getRandomInt(0, 19)                
 
                 const html =<div className="home-movie">
                                 <img src={BASE_IMG + movies[index].backdrop_path} alt='news' className="home-movie-img"></img>
@@ -27,7 +31,7 @@ const TodayMovie = () => {
                                     <p className="home-movie-overview">{movies[index].overview}</p>
                                     <div className="home-movie-buttons">
                                         <Link to="#" className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
-                                        <Link to="#" className="home-movie-button-info"><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
+                                        <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, movies[index].id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
                                     </div>
                                 </div>
                             </div>

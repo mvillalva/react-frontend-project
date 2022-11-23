@@ -33,7 +33,7 @@ const NavBar = (props) => {
         
     return ( 
         !filter && thisLocation.pathname !== '/'?
-        <Navbar bg='transparent' variant='dark' expand='md' sticky="top" className="animate-container mt-2">
+        <Navbar bg='transparent' variant='dark' expand='md' sticky="top" className="nav-animate-container mt-2">
             <Container fluid>                
                 <Navbar.Brand href="/home" className="ms-5"><img className='navbar-logo' src={logo} alt="logo" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

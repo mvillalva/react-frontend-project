@@ -9,14 +9,14 @@
     }
 }
 
-.animate-container {    
-    animation: animateContainer .45s forwards;
+.nav-animate-container {    
+    animation: animateContainer .45s forwards;  
 }
 
 .nav-profile-icon {
     height: 32px;    
     width: 32px;
-    background-color: #333;
+    /* background-color: #333; */
     background-repeat: no-repeat;
     background-size: cover;
     border: none;

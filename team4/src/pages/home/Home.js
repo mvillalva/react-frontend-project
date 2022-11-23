@@ -9,10 +9,8 @@ const Home = (props) => {
     })
 
     return (
-        <div className="home-container overflow-hidden">
-            <div className="centered-div animate-container">
-                <TodayMovie />
-            </div>
+        <div className="home-container overflow-hidden">            
+            <TodayMovie />            
         </div>
     )
 }
