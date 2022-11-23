@@ -10,7 +10,15 @@
 }
 
 .nav-animate-container {    
-    animation: animateContainer .45s forwards;  
+    animation: animateContainer .45s forwards;    
+}
+
+.nav-bg-transparent {
+    background-color: transparent;
+}
+
+.nav-bg-dark {
+    background-color: #333;
 }
 
 .nav-profile-icon {
@@ -47,6 +55,8 @@
 
 .nav-link {
     font-size: .9rem !important;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
 }
 
 .nav-link.active {
