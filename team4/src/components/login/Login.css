@@ -1,47 +1,40 @@
-.LoginContainer {
+
+.LoginContainer{
     display: flex;
     height: 100vh;
     justify-content: center;
-    align-items: center;
     background-color: rgb(128, 128, 128, 0.3);
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(../../img/loginBackground.jpg);
+    background-image: url(../../img/loginBackground.jpg);
     background-size: cover;
+   
 }
 
-.checkBoxLogin {
-    display: flex;
-    justify-content: space-between;
+.checkBoxLogin{
+    justify-content: center;
     text-align: center;
-    font-size: small;
 }
 
-.Login {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+.Login{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 16px;
     display: flex;
-    justify-content: center;
-    height: 80vh;
-    width: 30vw;
-    min-width: 450px;
-    margin: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    justify-content:center;
+    height:80vh;
+    background-color: rgba(0,0,0,.75);
     border-radius: 4px;
     box-sizing: border-box;
-    flex-direction: column;
-    padding: 60px 68px 40px;
+    flex-direction:column;
+    width:50vh;
+    margin-bottom: 90px;
+padding: 60px  40px;
 }
 
-.derechos {
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    direction: ltr;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    text-align: left;
-    color: #8c8c8c;
-    font-size: 13px;
-    letter-spacing: 0 !important;
-}
-
-.btn-bg {
-    background-color: #e50914 !important;
-}
+.derechos{
+-webkit-text-size-adjust: 100%;
+-webkit-font-smoothing: antialiased;
+direction: ltr;
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+text-align: left;
+color: #8c8c8c;
+font-size: 13px;
+letter-spacing: 0!important;}

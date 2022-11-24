@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { controlVideo, getRandomInt } from "../../functions/general";
+import { controlVideo, getRandomInt, onYouTubeIframeAPIReady } from "../../functions/general";
 import { getMovieClips, getTopMovies } from "../../functions/movieApi";
 import Loader from "../loader/Loader";
 import "./TodayMovie.css";
+
 import Modal from 'react-bootstrap/Modal';
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 
@@ -18,24 +19,23 @@ const TodayMovie = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const [movie, setMovie] = useState()
+    
 
     const showDescription = (e, id) => {        
         e.preventDefault()
         handleShow()
-        movieId = id;     
+        movieId = id;
     }
 
-    const showClip = (video) => {
+    const showClip = (video) => {        
         setTimeout(() => {
             setLoadedClip(video)
 
             setTimeout(() => {
-                document.getElementById('play').click()
+                document.getElementById('play').click()           
             }, 1200)
 
-            setTimeout(setLoadedClip(null), 62000)
+            setTimeout(()=>{setLoadedClip(null)}, 70000)
 
         }, 3000)
     }
@@ -43,9 +43,11 @@ const TodayMovie = () => {
     const getClip = async (id) => {
         console.log(id)
         const movieClips = await getMovieClips(id)
-        const videoClip = movieClips.length > 0 ? <iframe id="iframe" className="home-movie-video" title="Video" src={`https://www.youtube.com/embed/${movieClips[0].key}?rel=0&enablejsapi=1`} allow="autoplay; encrypted-media"></iframe> : null
+        const videoClip = movieClips.length > 0 ? <iframe className="home-movie-video" title="Video" src={`https://www.youtube.com/embed/${movieClips[getRandomInt(0, movieClips.length-1)].key}?rel=0&enablejsapi=1&controls=0`} allow="autoplay; encrypted-media"></iframe> : null
 
-        showClip(videoClip)
+        if (videoClip) {
+            showClip(videoClip)            
+        }
     }
 
     const getMovie = async () => {
@@ -54,11 +56,12 @@ const TodayMovie = () => {
         
         setLoadedMovie(movies[index])
         
-        getClip(movies[index].id)
+        getClip(movies[index].id)        
     }
 
     useEffect(()=>{
         getMovie()
+        // eslint-disable-next-line
     }, [])
 
     return (        
@@ -75,18 +78,18 @@ const TodayMovie = () => {
                             <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
                         </div>
                     </div>
+
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <VideoDescriptionPage movieId={movieId}>
+                            </VideoDescriptionPage>
+                        </Modal.Body>
+                    </Modal>
                 </div>
                 : <Loader />
             }
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                </Modal.Header>
-                <Modal.Body>
-                    <VideoDescriptionPage movieId={movieId}>
-                    </VideoDescriptionPage>
-                </Modal.Body>
-            </Modal>
         </div>
     );
 };

@@ -25,12 +25,15 @@ export const getRandomInt = (min, max) => {
 }
 
 export const controlVideo = (vidFunc, e = null) => {
-    if (e){
+    if (e) {
         e.preventDefault()
     }
+
     let iframe = document.getElementsByTagName("iframe")[0].contentWindow;
+    
     iframe.postMessage(
       '{"event":"command","func":"' + vidFunc + '","args":""}',
       "*"
     );
 }
+
