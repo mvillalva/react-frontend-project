@@ -4,18 +4,30 @@ import { getRandomInt } from "../../functions/general";
 import { getTopMovies } from "../../functions/movieApi";
 import "./TodayMovie.css";
 
+import Modal from 'react-bootstrap/Modal';
+import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
+
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
+
+let movieId;
 
 const TodayMovie = () => {
     const loader =  <div className="loader-container">
                         <div className="loader"></div>
                     </div>
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [movie, setMovie] = useState()
 
     const showDescription = (e, id) => {        
         e.preventDefault()
-        console.log(id)
+        handleShow()
+        movieId = id;
+        //console.log('ID', id)
     }
         
     useEffect(
@@ -34,6 +46,7 @@ const TodayMovie = () => {
                                         <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, movies[index].id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
                                     </div>
                                 </div>
+                                
                             </div>
 
                 setMovie(html)        
@@ -47,6 +60,15 @@ const TodayMovie = () => {
     return (
         <div className="movie_container">
             {movie? movie : loader}
+
+            <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            </Modal.Header>
+            <Modal.Body>
+                <VideoDescriptionPage movieId={movieId}>
+                </VideoDescriptionPage>
+            </Modal.Body>
+        </Modal>
         </div>
     );
 };

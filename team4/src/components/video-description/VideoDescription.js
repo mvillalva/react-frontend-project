@@ -3,7 +3,7 @@ import './VideoDescription.css'
 
 const VideoDescription = (props) => {
 
-  const webUrl = `https://www.themoviedb.org/t/p/w533_and_h300_bestv2/${props.datamovie.backdrop_path}`;
+  const webUrl = `https://image.tmdb.org/t/p/original/${props.datamovie.backdrop_path}`;
 
     return (
         <div className='video-description'>
