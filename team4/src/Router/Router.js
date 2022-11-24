@@ -17,9 +17,10 @@ import NotFound from '../pages/404/NotFound';
 import Slider from "../components/slider/Slider.jsx";
 import Logueo from '../pages/loginPage/TestLogueo';
 import { MainContext } from '../context/MainContext';
+import Loader from '../components/loader/Loader';
 
-const Router = (props) => { 
-    const {state} = useContext(MainContext)
+const Router = (props) => {     
+    const {state} = useContext(MainContext)    
 
     const Principal = () => props.profilesLoaded ?
                             (   
@@ -27,9 +28,7 @@ const Router = (props) => {
                                 <Navigate to='/home' /> :
                                 <Profiles title="¿Quién está viendo ahora?" profiles={state.profiles} action='R' />
                             )
-                            :   <div className="loader-container">
-                                    <div className='loader'></div>
-                                </div>
+                            :   <Loader />
     
     const location = window.location.href.split('/').join('%2')
     const isLoggedIn = props.loggedUser || localStorage.getItem('login') ? true : false
@@ -44,9 +43,8 @@ const Router = (props) => {
         let obj = null
 
         if (isLoggedIn) {
-            obj =   <div className="loader-container">
-                        <div className='loader'></div>
-                    </div>
+            obj = <Loader />
+            
             if (props.profilesLoaded) {
                 obj = logged
             }

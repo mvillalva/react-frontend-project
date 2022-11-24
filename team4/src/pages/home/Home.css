@@ -16,8 +16,7 @@
 .home-container {    
     position: relative;    
     width: 100vw;        
-    min-height: 1000px;
-    margin-top: -105px;
+    min-height: 1000px;    
     text-align: center;
     background: #202020;
 }
@@ -36,10 +35,4 @@
 
 .img-size {
     width: 20rem;
-}
-
-@media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
-    .home-container {
-        margin-top: -60px;
-    }    
 }

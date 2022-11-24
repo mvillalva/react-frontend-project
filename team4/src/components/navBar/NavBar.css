@@ -10,7 +10,8 @@
 }
 
 .nav-animate-container {    
-    animation: animateContainer .45s forwards;    
+    animation: animateContainer .45s forwards;  
+    transition: 0.3s ease-in-out;  
 }
 
 .nav-bg-transparent {

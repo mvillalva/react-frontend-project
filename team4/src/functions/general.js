@@ -22,4 +22,18 @@ export const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); 
-  }
+}
+
+export const controlVideo = (vidFunc, e = null) => {
+    if (e) {
+        e.preventDefault()
+    }
+
+    let iframe = document.getElementsByTagName("iframe")[0].contentWindow;
+    
+    iframe.postMessage(
+      '{"event":"command","func":"' + vidFunc + '","args":""}',
+      "*"
+    );
+}
+

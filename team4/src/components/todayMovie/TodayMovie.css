@@ -1,5 +1,6 @@
 .movie_container {
     position: relative;    
+    transition: 0.3s ease-in-out;
 }
 
 .home-movie {
@@ -87,6 +88,17 @@
 .home-movie-button-info:hover {    
     color: white;
     background-color: rgba(109, 109, 110, 0.5);
+}
+
+.home-movie-video {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    height: 130vh;
+    width: 110vw;
+    object-fit: cover;
+    object-position: center;
+    transform: translateX(-50%);
 }
 
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
