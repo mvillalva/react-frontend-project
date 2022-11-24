@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { controlVideo, getRandomInt, onYouTubeIframeAPIReady } from "../../functions/general";
+import { controlVideo, getRandomInt } from "../../functions/general";
 import { getMovieClips, getTopMovies } from "../../functions/movieApi";
 import Loader from "../loader/Loader";
 import "./TodayMovie.css";
