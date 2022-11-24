@@ -4,15 +4,27 @@ import { controlVideo, getRandomInt } from "../../functions/general";
 import { getMovieClips, getTopMovies } from "../../functions/movieApi";
 import Loader from "../loader/Loader";
 import "./TodayMovie.css";
+import Modal from 'react-bootstrap/Modal';
+import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
+
+let movieId;
 
 const TodayMovie = () => {
     const [loadedMovie, setLoadedMovie] = useState(null)
     const [loadedClip, setLoadedClip] = useState(null)
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [movie, setMovie] = useState()
 
     const showDescription = (e, id) => {        
-        e.preventDefault()     
+        e.preventDefault()
+        handleShow()
+        movieId = id;     
     }
 
     const showClip = (video) => {
@@ -66,6 +78,15 @@ const TodayMovie = () => {
                 </div>
                 : <Loader />
             }
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                    <VideoDescriptionPage movieId={movieId}>
+                    </VideoDescriptionPage>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };
