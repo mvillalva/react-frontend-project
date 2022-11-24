@@ -506,29 +506,6 @@ template {
   background-image: url(https://occ-0-7118-2773.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABRALaKaonY6GfYhbjPRi6y9-yRNzLhI4bjZmc95qXOZODKsLQm6mxPAoEPA9ukfvHSo_OYWkmO1akAmMPTKzig9XzSYimmYUUA.png?r=54c)
 }
 
-
-.loader-container {
-  position: absolute;
-  display: flex;
-  top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-.loader {  
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  display: inline-block;
-  border-top: 9px solid red;
-  border-right: 9px solid transparent;
-  box-sizing: border-box;
-  animation: rotate 1s linear infinite;  
-}
-
 @keyframes rotate {
   from {
     transform: rotate(0deg);    

@@ -25,9 +25,15 @@ const sinNavBar = [
 ];
 
 function App() {
+  const [isScrolled, setScrolled] = useState(false)
   const [titulos, setTitulos] = useState(defaultTitulos());
   const [profiles, setProfiles] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
+
+  window.onscroll = () => {
+    setScrolled(window.pageYOffset === 0 ? false : true)
+    return () => (window.onscroll = null)
+  }
 
   onAuthStateChanged(auth, (userFirebase) => {
     if (userFirebase && userFirebase !== loggedUser) {      
@@ -66,6 +72,7 @@ function App() {
         <Router titulos={titulos} movies={movies} loggedUser={loggedUser? loggedUser.email: null} profilesLoaded={profilesLoaded}>
         {profiles.length > 0 && loggedUser &&
           <NavBar
+            isScrolled={isScrolled}
             filter={sinNavBar}
             buscar={{ buscar, setTitulos }}
           ></NavBar>

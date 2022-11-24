@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Loader from "../../components/loader/Loader";
 import ProfileButton from "../../components/profile-pack/profile-button/ProfileButton";
 import Profile from "../../components/profile-pack/profile/Profile";
 import ProfileAddButton from "../../components/profile-pack/profile/ProfileAddButton";
@@ -25,16 +26,10 @@ const Profiles = ({title, action}) => {
 
     const button_title = action === 'R'? "Administrar perfiles" : "Listo"    
 
-    if(profiles.length === 0 ){
-        return (
-            <div className="loader-container">
-                <div className="loader"></div>
-            </div>
-        )
-    }
-    else {
-        return (        
-            <div className="profiles-gate-container">
+    return (
+        profiles.length === 0 
+        ? <Loader />
+        : <div className="profiles-gate-container">
                 <div className="centered-div list-profiles-container">
                     <ProfileList title={title}>
                         {LoadProfiles()}
@@ -42,8 +37,7 @@ const Profiles = ({title, action}) => {
                     <ProfileButton title={button_title} action={action}></ProfileButton>
                 </div>
             </div>
-        )
-    }
+    )
 }
 
 
