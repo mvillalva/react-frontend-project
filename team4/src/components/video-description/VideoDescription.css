@@ -1,14 +1,16 @@
 .video-description {
-     width: 853px;
-     height: 90vh;
+     width: 100%;
      margin-left: auto;
      margin-right: auto;
 }
 
 
 .video-description-top {
-     padding-top: 30px;
-     padding-left: 30px;
+     
+}
+
+.video-description-top img {
+    width: 100%;
 }
 
 .video-description-title {
@@ -22,11 +24,11 @@
 
 .video-description-info-container-left {
      width: 65%;
-     padding: 20px 30px;
+     padding: 20px 30px 20px 0;
 }
 .video-description-info-container-right {
      width: 35%;
-     padding: 20px 30px;
+     padding: 20px 0 20px 30px;
 }
 
 .video-description-info-categoria {
