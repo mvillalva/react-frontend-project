@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import "./TodayMovie.css";
 
-import Modal from 'react-bootstrap/Modal';
+
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 import useRandomMovie from "../../hooks/useRandomMovie";
 
@@ -40,14 +40,9 @@ const TodayMovie = () => {
                         </div>
                     </div>
 
-                    <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <VideoDescriptionPage movieId={movieId}>
-                            </VideoDescriptionPage>
-                        </Modal.Body>
-                    </Modal>
+                    <VideoDescriptionPage movieId={movieId} show={show} handleClose={handleClose}>
+                    </VideoDescriptionPage>
+                    
                 </div>
                 : <Loader />
             }

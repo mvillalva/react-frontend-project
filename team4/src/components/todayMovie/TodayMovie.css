@@ -148,29 +148,3 @@
         left: -10%;
     }
 }
-
-.modal-content {
-    background-color: rgb(0 0 0 / 90%) !important;
-
-}
-
-.modal-dialog {
-    max-width: 850px !important;
-
-}
-
-.modal-header {
-    border: none !important;
-    padding-top: 30px !important;
-    padding-left: 30px !important;
-    padding-right: 35px !important;
-}
-
-.modal-body {
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-}
-
-.btn-close {
-    background-color: #FFF !important;
-}
