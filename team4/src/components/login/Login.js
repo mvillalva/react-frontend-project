@@ -32,20 +32,26 @@ function Login() {
     //     console.log("placeholder");
     // }
 
+    /*BORRAR CUANDO ESTE EL LOGIN TERMINADO*/
+    const login = (e) => {
+        e.preventDefault()
+        logInWithEmail('team4@test.com', '123456' )
+    }
+
     return (
 
     <div className="flex-container LoginContainer">
         <div className='Login'>
          <h1 className="loginPage-title"> Login to Netflix </h1>
 
-            <form onSubmit={ (event) => logInWithEmail(event )}>
+            <form onSubmit={ (event) => login(event)}>
                 <h1>Inicia sesión</h1>
 
                 <div className='InpUserName'>
                     <input type ="text" 
                      name="username" 
                      placeholder='Email o número de teléfono'
-                     onChange={logInWithEmail()}/>
+                     onChange={/*logInWithEmail()*/''}/>
                     
                 </div>
 
@@ -53,7 +59,7 @@ function Login() {
                   <input type="password" 
                     name="password" 
                      placeholder='Contraseña'
-                     onChange={logInWithEmail() }/>
+                     onChange={/*logInWithEmail()*/'' }/>
                      
                 </div>
                 <div>
