@@ -42,7 +42,7 @@ const TodayMovie = () => {
 
                     <VideoDescriptionPage movieId={movieId} show={show} handleClose={handleClose}>
                     </VideoDescriptionPage>
-                    
+                    <div className="home-movie-bottom"></div>
                 </div>
                 : <Loader />
             }
@@ -51,3 +51,10 @@ const TodayMovie = () => {
 };
 
 export default TodayMovie;
+
+// const login = (e) => {
+//     e.preventDefault()
+//     const user = document.forms[0].username.value
+//     const pass = document.forms[0].password.value
+//     logInWithEmail(user, pass)
+// }

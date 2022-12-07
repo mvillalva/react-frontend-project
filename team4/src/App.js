@@ -21,6 +21,7 @@ const sinNavBar = [
   "/ProfileAvatars",
   "/notfound",
   "/front",
+  "/registration",
   "/",
 ];
 
