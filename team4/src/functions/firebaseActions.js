@@ -94,8 +94,7 @@ export const fbCreateOrGetDocument = async (source, key) => {
 //Authentication
 export const logInWithEmail = async (email, password) => {
     const auth = getAuth(firebaseApp)
-    let errorMessage = ''
-    
+    let errorMessage = ''    
 
     await signInWithEmailAndPassword(auth, email, password)
     .catch(e => {
@@ -130,4 +129,18 @@ export const googleSingIn = () => {
 export const logOut = async () => {
     const auth = getAuth(firebaseApp)
     await signOut(auth)
+}
+
+export const checkUser = async (value) => {
+    const cnx = collection(db, 'users');
+    let docs = await getDocs(cnx)
+    let exists = false
+
+    docs.forEach(doc => {
+        if (doc.id === value) {
+            exists = true
+        }
+    })
+    
+    return exists
 }

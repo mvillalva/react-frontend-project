@@ -37,3 +37,8 @@ export const controlVideo = (vidFunc, e = null) => {
     );
 }
 
+export const VerifyEmail = (email) => {
+    const verify = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+    return verify.test(email)
+}

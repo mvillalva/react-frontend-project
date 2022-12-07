@@ -10,7 +10,7 @@ const Home = (props) => {
 
     return (
         <div className="home-container overflow-hidden">            
-            <TodayMovie />            
+            <TodayMovie />
         </div>
     )
 }

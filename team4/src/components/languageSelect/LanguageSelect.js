@@ -1,17 +1,28 @@
 import React from 'react'
-import { setCurrentLanguage } from '../../functions/general'
+import { setCurrentLanguage, getCurrentLanguage } from '../../functions/general'
 import './LanguageSelect.css'
 
-const LanguageSelect = () => { 
+const LanguageSelect = () => {
+  const getDefaultValue = () => {
+    let lang = getCurrentLanguage()
+    
+    if (!lang) {
+      lang = 'es-ES'
+      setCurrentLanguage(lang)
+    }
+
+    return lang
+  }
 
   const changeLanguage = e => {
     setCurrentLanguage(e.target.value)
+    window.location.reload()
   }
   
   return (
     <>
         <span className="language-icon-before fas fa-globe"></span>
-        <select className="language-select" id='language-id' defaultValue='es-ES' onChange={e => {changeLanguage(e)}}>
+        <select className="language-select" id='language-id' defaultValue={getDefaultValue()} onChange={e => {changeLanguage(e)}}>
             <option value="es-ES">Español</option>
             <option value="en-US">English</option>
         </select>

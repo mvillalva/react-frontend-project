@@ -27,6 +27,7 @@
     justify-content: flex-end;    
     color: white;
     text-align: left;
+    z-index: 1;
 }
 
 .home-movie-title {    
@@ -110,6 +111,14 @@
     left: -60px;    
     object-fit: cover;
     object-position: center;
+}
+
+.home-movie-bottom {
+    position: absolute;
+    bottom: -180px;
+    width: 100vw;
+    height: 400px;    
+    background-image: linear-gradient(rgba(20, 20, 20, 0), rgb(20, 20, 20), rgb(20, 20, 20));
 }
 
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
