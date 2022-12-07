@@ -9,6 +9,11 @@ export const languajes = {
         FRONT_BUTTON_REGISTER: "Get Started",
         FRONT_INPUT_TEXT: "Email address",
         FRONT_EMAIL_VERIFY: "Please enter a valid email address",
+        REGISTER_TITLE: "Create a password to start your membership",
+        REGISTER_SUBTITLE_1: "Just a few more steps and you're done!",
+        REGISTER_SUBTITLE_2: "We hate paperwork, too.",
+        RESISTER_PASS_LABEL: "Add a password",
+        BUTTON_SIGNIN_GOOGLE: "Sign In with Google",
     },
     "es-ES":{
         LOGIN_HEADER: "prueba",
@@ -20,5 +25,10 @@ export const languajes = {
         FRONT_BUTTON_REGISTER: "Comenzar",
         FRONT_INPUT_TEXT: "Email",
         FRONT_EMAIL_VERIFY: "Escribe una dirección de email válida.",
+        REGISTER_TITLE: "Crea una contraseña para que comiences tu membresía ó iniciá sesión con Google",
+        REGISTER_SUBTITLE_1: "¡Unos pasos más y listo!",
+        REGISTER_SUBTITLE_2: "Tampoco nos gustan los trámites.",
+        RESISTER_PASS_LABEL: "Ingrese una contraseña",
+        BUTTON_SIGNIN_GOOGLE: "Iniciar con Google",
     }
 }

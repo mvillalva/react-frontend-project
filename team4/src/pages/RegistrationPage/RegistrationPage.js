@@ -80,9 +80,9 @@ const RegistrationPage = () => {
             <div className="reg-line"></div>
             <div className="reg-container">
                 <div className="reg-inner-continer">
-                    <h2 className="text-dark fw-bold mb-3">Crea una contraseña para que comiences tu membresía ó iniciá sesión con Google</h2>
-                    <h5 className="text-dark">¡Unos pasos más y listo!</h5>
-                    <h5 className="text-dark mb-3">Tampoco nos gustan los trámites.</h5>
+                    <h2 className="text-dark fw-bold mb-3">{lang.REGISTER_TITLE}</h2>
+                    <h5 className="text-dark">{lang.REGISTER_SUBTITLE_1}</h5>
+                    <h5 className="text-dark mb-3">{lang.REGISTER_SUBTITLE_2}</h5>
                     <form onSubmit={ (event) => login(event )}>
                         <Form.Group className="mb-3 text-secondary">
                             <FloatingLabel controlId="emailId" label="Email">
@@ -94,7 +94,7 @@ const RegistrationPage = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-5 text-secondary">
-                            <FloatingLabel controlId="passId" label="Ingrese una contraseña">
+                            <FloatingLabel controlId="passId" label={lang.RESISTER_PASS_LABEL}>
                                 <Form.Control name="password" type="password" placeholder="Ingrese una contraseña" className="w-100 fs-6" required onChange={(e)=>{changeInput(e)}} isInvalid={!validPass} />
                                 <Form.Control.Feedback type="invalid">
                                     La contraseña debe tener entre 6 y 60 caracteres.
