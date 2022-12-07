@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import { googleSingIn } from '../../functions/firebaseActions';
 import logo from '../../img/google-icon.svg'
-import './Login.css'
+import './ButtonGoogle.css'
 
 const loginGoogle = () => {
     googleSingIn()
