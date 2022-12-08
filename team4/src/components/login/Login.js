@@ -9,25 +9,41 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { logInWithEmail } from "../../functions/firebaseActions";
 
 function Login() {
-
     
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const auth = getAuth(firebaseApp);
-    const user = signInWithEmailAndPassword(auth, email, password)
-    
-    };
 
-const [user, setUser] = useState({
+
+    const [userr, setUser] = useState({
     email:"",
     password:"",
 
 });
-
 const handleChange = ({target:{name,value}})=>{
-    setUser({...user,[name]: value})
+        setUser({...userr,[name]: value})
+ };
 
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   
+    const auth = getAuth(firebaseApp);
+    const email= userr.email;
+    const password= userr.password;    
+    const user = signInWithEmailAndPassword(auth, email, password)
+    .then((Credentials) =>{
+        const firebase_user =Credentials.user;
+        console.log(firebase_user);
+    })
+    .catch((error) =>{
+        const errorCode = error.code;
+        console.log (errorCode);
+
+    });
+
+
+    };
+
+
+
+
 
 
   return (
@@ -41,7 +57,7 @@ const handleChange = ({target:{name,value}})=>{
           <div className="InpUserName">
             <input
               type="text"
-              name="username"
+              name="email"
               placeholder="Email o número de teléfono"
               onChange={handleChange}
             />
