@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 export default function ButtonLogIn(){
     
     return(
-        <Button variant="danger" type="submit" >
+        <Button style={ {width: "250px" }} variant="danger" type="submit" >
             Iniciar sesión
         </Button>
     )

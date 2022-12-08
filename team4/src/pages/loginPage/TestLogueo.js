@@ -79,4 +79,4 @@ const Logueo = () => {
   );
 };
 
-export default Logueo;
+export default Logueo ;
