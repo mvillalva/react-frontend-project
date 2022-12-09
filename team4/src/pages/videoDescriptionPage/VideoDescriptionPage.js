@@ -4,6 +4,7 @@ import VideoDescription from "../../components/video-description/VideoDescriptio
 import Modal from 'react-bootstrap/Modal';  
 
 import { useEffect, useState } from "react";
+import Loader from "../../components/loader/Loader";
 
 const APY_KEY = process.env.REACT_APP_TMDB_APYKEY;
 
@@ -26,11 +27,7 @@ const VideoDescriptionPage = ({movieId, show, handleClose}) => {
     }, [movieId]);
 
     if (isLoading) {
-        return (
-            <div className="loader-container">
-                <div className="loader"></div>
-            </div>
-        );
+        return <Loader />;
       }
     
       return (

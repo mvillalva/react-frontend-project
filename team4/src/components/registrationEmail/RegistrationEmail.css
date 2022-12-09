@@ -27,11 +27,19 @@
     color: white;
 }
 
+.invalid {
+    color: orange !important;
+    font-size: .9rem !important;
+}
+
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
     .button-start {
+        position: relative;
+        top: 1px;
         height: 3.5rem !important;
         margin: 0!important;
         padding: 12px 25px;
+        align-self: flex-start;
         border-bottom-left-radius: 0;
         border-left: 1px solid #333;
         border-top-left-radius: 0;

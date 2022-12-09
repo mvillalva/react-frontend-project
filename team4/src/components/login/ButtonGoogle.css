@@ -1,0 +1,23 @@
+.btn-gl {
+    position: relative;
+    background-color: #0970e5 !important;
+    overflow: hidden;
+}
+
+.google-container {
+    position: absolute;    
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    border-radius: 4px 0 0 4px;
+    height: 100%;
+    background-color: white;    
+}
+
+.google-logo {
+    position: relative;
+    top: 50%;    
+    width: 20px;
+    height: 20px;    
+    transform: translateY(-60%);
+}

@@ -1,0 +1,41 @@
+.reg-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reg-logo {
+    width: 10rem;
+    margin: 1.5rem 1rem .8rem 2rem;
+}
+
+.reg-button-login {
+    margin: 1.5rem 1rem .8rem 2rem;
+    font-size: 1.2rem;    
+    color: black;
+    text-decoration: none;
+}
+
+.reg-button-login:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.reg-line {
+    width: 100vw;
+    height: .5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.reg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg-inner-continer {
+    margin-top: 3rem;
+    max-width: 450px;    
+}

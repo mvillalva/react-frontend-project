@@ -18,6 +18,7 @@ import Slider from "../components/slider/Slider.jsx";
 import Logueo from '../pages/loginPage/TestLogueo';
 import { MainContext } from '../context/MainContext';
 import Loader from '../components/loader/Loader';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 
 const Router = (props) => {     
     const {state} = useContext(MainContext)    
@@ -78,6 +79,7 @@ const Router = (props) => {
                 <Route path="/ProfileAvatars" element={isLoggedIn? <Avatars /> : <Navigate to='/start' />} ></Route>
                 <Route path="/slider" element={isLoggedIn? <Slider movies={props.movies} /> : <Navigate to='/start' /> }></Route>
                 <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
+                <Route path="/registration/:email" element={isLoggedIn? <Navigate to='/start' /> : <RegistrationPage /> } />
             </Routes>
 
         </BrowserRouter>

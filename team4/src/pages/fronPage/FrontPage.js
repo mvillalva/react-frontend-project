@@ -4,10 +4,15 @@ import logo from '../../img/netflix-icon.svg'
 import './FrontPage.css'
 import LanguageSelect from "../../components/languageSelect/LanguageSelect";
 import RegistrationEmail from "../../components/registrationEmail/RegistrationEmail";
+import { languajes } from "../../languages";
+import { getCurrentLanguage } from "../../functions/general";
 
 const FrontPage = () => {
+    const current_language = getCurrentLanguage()
+    const lang = languajes[current_language]
+
     useEffect(() => {
-        document.title = "Team4: Ve series online, ve películas online "
+        document.title = lang.FRONT_PAGE_TITLE
     })
 
     return (
@@ -18,12 +23,12 @@ const FrontPage = () => {
             <div className="language-container">
                 <LanguageSelect />
             </div>
-            <Link to="/login" className="button-login">Iniciar sesión</Link>
+            <Link to="/login" className="button-login">{lang.FRONT_BUTTON_LOGIN}</Link>
             <div className="login-container">
-                <h1 className="login-title">Películas y series ilimitadas y mucho más</h1>
-                <h2 className="login-subtitle">Disfruta donde quieras. Cancela cuando quieras.</h2>
+                <h1 className="login-title">{lang.FRONT_TITLE}</h1>
+                <h2 className="login-subtitle">{lang.FRONT_SUBTITLE}</h2>
                 <div className="mt-4">
-                    <h3 className="login-subtitle2 mb-4">¿Quieres ver Netflix ya? Ingresa tu email para crear una cuenta o reiniciar tu membresía de Netflix.</h3>
+                    <h3 className="login-subtitle2 mb-4">{lang.FRONT_REGISTER}</h3>
                     <RegistrationEmail />
                 </div>
             </div>
