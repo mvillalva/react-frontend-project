@@ -41,10 +41,10 @@ const NavBar = (props) => {
                             <Link className="nav-link active" to="/home" >Inicio <span className="visually-hidden">(current)</span></Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="#">Series</Link>
+                            <Link className="nav-link" to="/series">Series</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="#">Películas</Link>
+                            <Link className="nav-link" to="/movies">Películas</Link>
                         </li>
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="#">Novedades populares</Link>

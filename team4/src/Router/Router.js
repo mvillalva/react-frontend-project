@@ -19,6 +19,8 @@ import Logueo from '../pages/loginPage/TestLogueo';
 import { MainContext } from '../context/MainContext';
 import Loader from '../components/loader/Loader';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import Series from '../pages/Series/Series';
+import Movies from '../pages/Movies/Movies';
 
 const Router = (props) => {     
     const {state} = useContext(MainContext)    
@@ -69,6 +71,8 @@ const Router = (props) => {
                 <Route path="/Playlist" element={isLoggedIn? <PlaylistPage title="Playlist" /> : <Navigate to='/start' /> }></Route>
                 <Route path="/profiles" element={loadPage(<Profiles title="¿Quién está viendo ahora?" action='R' /> , <Navigate to='/start' />) }></Route>
                 <Route path="/home" element={loadPage(<Home /> , <Navigate to='/' />)}></Route>
+                <Route path="/series" element={loadPage(<Series /> , <Navigate to='/start' />)}></Route>
+                <Route path="/movies" element={loadPage(<Movies /> , <Navigate to='/start' />)}></Route>
                 <Route path="/ManageProfiles" element={loadPage(<Profiles title="Administrar perfiles:" action='U' /> , <Navigate to='/start' />) }></Route>
                 <Route path="/AddProfile" element={isLoggedIn? <ProfileAdd /> : <Navigate to='/start' /> }></Route>
                 <Route path="/EditProfile/:id" element={isLoggedIn? <ProfileEdit /> : <Navigate to='/start' /> }></Route>
