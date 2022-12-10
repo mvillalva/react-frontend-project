@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-// import './Movies.css'
-// import TodayMovie from "../../components/todayMovie/TodayMovie";
+import './Series.css';
 import TodaySeries from "../../components/todaySeries/TodaySeries";
 
 const Series = (props) => {
@@ -11,7 +10,6 @@ const Series = (props) => {
 
     return (
         <div className="home-container overflow-hidden">            
-            {/* <TodayMovie /> */}
             <TodaySeries />
         </div>
     )

@@ -18,7 +18,13 @@ const useTrailer = (id, showInMobile = true, height = null, width = null) => {
     const getClip = async (id) => {        
         // const movieClips = await getMovieClips(id);
         const movieClips = await getSeriesClips(id);
-        const videoClip = movieClips.length > 0 ? <VideoPreview show={setShowPlayer} className="home-movie-video" videoId={movieClips[getRandomInt(0, movieClips.length-1)].key} height={height} width={width} /> : null
+        const videoClip = movieClips.length > 0 
+                            ?   <VideoPreview 
+                                    show={setShowPlayer} 
+                                    className="home-movie-video" 
+                                    videoId={movieClips[getRandomInt(0, movieClips.length-1)].key} height={height} width={width} 
+                                /> 
+                            : null
 
         if (videoClip) {
             showClip(videoClip)            

@@ -40,6 +40,10 @@
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
     transition: 600ms ease-out;
 }
+.home-movie-series.home-movie-series{
+    font-size: 3vw;
+    color: #E50914;   
+}
 
 .home-movie-title.smaller {
     transform: scale(.5);    

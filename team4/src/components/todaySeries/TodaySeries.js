@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import "./TodaySeries.css";
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
-// import useRandomMovie from "../../hooks/useRandomMovie";
 import useRandomSeries from "../../hooks/useRandomSeries";
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
@@ -34,6 +33,9 @@ const TodaySeries = () => {
                     <img src={BASE_IMG + loadedSeries.backdrop_path} alt='news' className="home-movie-img"></img>
                     {showPlayer ? loadedClip : '' }
                     <div className="home-info-container">
+                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>
+                            <span className="home-movie-series">Series</span>
+                        </div>
                         <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedSeries.name}</div>
                         <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedSeries.overview}</p>
                         <div className="home-movie-buttons">

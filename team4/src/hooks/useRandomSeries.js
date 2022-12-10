@@ -21,7 +21,7 @@ const useRandomSeries = () => {
     }, [])
 
     const {loadedClip, showPlayer} = useTrailer(loadedSeries, false);
-
+    // console.log(loadedSeries, loadedClip, showPlayer);
     return {loadedSeries, loadedClip, showPlayer};
 }
 
