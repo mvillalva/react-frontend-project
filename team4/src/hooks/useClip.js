@@ -28,6 +28,7 @@ const useClip = (id, showInMobile = true, height = null, width = null) => {
         if(id && (showInMobile  || (!showInMobile && innerWidth > 767) )) {
             getClip(id.id)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[id])
 
     return {loadedClip, showPlayer}

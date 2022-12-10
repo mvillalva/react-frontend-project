@@ -2,6 +2,7 @@
     height: 310px;
     border: none;
     background-color: transparent !important;
+    position: relative;
 }
 
 .card-img-size {
@@ -9,4 +10,9 @@
     height: 280px;
     border-radius: 4px !important;
     object-fit: cover;
+    transition: 0.5s;
+}
+
+.card-img-size:hover{
+    transform: scale(1.1);
 }

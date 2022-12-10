@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
-import './Home.css'
+import './Movies.css'
 import TodayMovie from "../../components/todayMovie/TodayMovie";
 
-const Home = (props) => {
+const Movies = (props) => {
 
     useEffect( () => {
         document.title = 'Página de inicio - Team4'
     })
 
     return (
-        <div className="movie-container overflow-hidden">            
+        <div className="home-container overflow-hidden">            
             <TodayMovie />
         </div>
     )
 }
 
-export default Home
+export default Movies
