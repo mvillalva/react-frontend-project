@@ -23,7 +23,6 @@ export default function ListadoBusqueda(props){
     } 
         
     const titulos = resultados.arreglo.map((resultado, index) => {
-        console.log(resultado)
         return(
             <Col key={index}>
                 <Card className="card-size">

@@ -5,7 +5,7 @@ import TodayMovie from "../../components/todayMovie/TodayMovie";
 const Movies = (props) => {
 
     useEffect( () => {
-        document.title = 'Página de inicio - Team4'
+        document.title = 'Peliculas - Team4'
     })
 
     return (

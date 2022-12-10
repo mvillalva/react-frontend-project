@@ -49,6 +49,19 @@ export const getTopMovies = async () => {
     return res
 }
 
+export const getTopSeries = async () => {    
+    const api_url = `${API_BASE_URL}/discover/tv?api_key=${API_KEY}&language=es-ES&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&timezone=America&with_watch_monetization_types=flatrate`
+    let res = null
+
+    await fetch(api_url)
+    .then(data => data.json())
+    .then(response => {        
+        res = response.results
+    })
+    
+    return res
+}
+
 export const getMovieClips = async (id) => {    
     const api_url = `${API_BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
 
@@ -57,7 +70,23 @@ export const getMovieClips = async (id) => {
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {        
-        res = response.results.filter(e => e.type === 'Clip')
+        console.log(response.results);
+        res = response.results.filter(e => e.type === 'Clip');
+    })
+    
+    return res
+}
+
+export const getSeriesClips = async (id) => {    
+    const api_url = `${API_BASE_URL}/tv/${id}/videos?api_key=${API_KEY}&language=en-US`
+
+    let res = null
+    
+    await fetch(api_url)
+    .then(data => data.json())
+    .then(response => {        
+        console.log(response.results);
+        res = response.results.filter(e => e.type === 'Clip');
     })
     
     return res
