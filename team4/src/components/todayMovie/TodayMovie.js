@@ -36,7 +36,7 @@ const TodayMovie = () => {
                         <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedMovie.overview}</p>
                         <div className="home-movie-buttons">
                             <Link to="#" className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
-                            <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
+                            <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><span className="fas fa-info-circle fs-5"></span> Más información</Link>
                         </div>
                     </div>
 
