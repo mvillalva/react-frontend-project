@@ -23,16 +23,20 @@ export default function ListadoBusqueda(props){
     } 
         
     const titulos = resultados.arreglo.map((resultado, index) => {
+        console.log(resultado);
         return(
             <Col key={index}>
-                <Card className="card-size">
+                <Card className="card-size" onClick={() => showDescription(resultado.id)}>
                     <Card.Img 
                         className="card-img-size" 
                         variant="top" 
                         src={resultado.poster_path? BASE_IMG + resultado.poster_path : nf} 
                         alt="Poster pelicula"
-                        onClick={() => showDescription(resultado.id)}
                     />
+                    <Card.Body className='card-description'>
+                        <Card.Title>{resultado.title}</Card.Title>
+                        {/* <Card.Text> {resultado.overview} </Card.Text> */}
+                    </Card.Body>
                 </Card>
             </Col>
 
