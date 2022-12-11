@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
 import { checkUser } from "../../functions/firebaseActions";
 import { VerifyEmail } from "../../functions/general";
-import { languajes } from "../../languages";
+import { LANGUAGES } from "../../languages";
 import "./RegistrationEmail.css";
 
 const RegistrationEmail = () => {
-    const { state } = useContext(MainContext);
+    const {language} = useContext(MainContext)
     const [validEmail, setValidEmail] = useState(true)
     const navigate = useNavigate();
-    const lang = languajes[state.current_language];    
+    const lang = LANGUAGES[language];
     
     const GoToRegistration = async (e) => {
         e.preventDefault();

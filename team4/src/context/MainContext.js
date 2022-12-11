@@ -1,66 +1,93 @@
 import React, { useState } from "react"
+import { TYPE } from "../functions/general"
 
 const defaultState = {
     current_profile : [],
     profiles: [],
-    current_language: 'es-ES'
+    current_language: 'es-ES',
+    user: []
 }
 
 const getInitialState = () => {
-    const currentSate = localStorage.getItem('appState')
-    const current_language = localStorage.getItem('language')
-
+    const currentSate = localStorage.getItem('appState')    
     const state = currentSate ? JSON.parse(currentSate) : defaultState
-    state.current_language = current_language? current_language : state.current_language
-    
+   
     return state
 }
 
-const saveSate = (state) => {
+const saveState = (state) => {
     localStorage.setItem('appState', JSON.stringify(state))
 }
 
-/**
- * @param {string} type - The types are: CP=Current profile / PS=Profiles / CL=Current language
- * @param {object} value
- */
-export const SetContextSate = (type, value) => {
+export const MainContext = React.createContext(getInitialState())
+
+const getInitByType = (type) => {
     const state = getInitialState()
+    let value = null
 
     switch (type) {
-        case 'CP':
-            state.current_profile = value
-            break;
-    
-        case 'PS':
-            state.profiles = value
+        case TYPE.profiles:
+            value = state.profiles
             break;
 
-        case 'CL':
-            state.current_language = value
+        case TYPE.currentProfile:
+            value = state.current_profile
             break;
-        
+
+        case TYPE.language:
+            value = state.current_language
+            break;
+
+        case TYPE.user:
+            value = state.user
+            break;
+
         default:
             break;
     }
 
-    saveSate(state)
+    return value
 }
 
-
-export const MainContext = React.createContext(getInitialState())
-
-
 const MainProvider = ({children}) => {
-    const [state, setState] = useState(getInitialState())
+    const [profiles, setProfiles] = useState(getInitByType(TYPE.profiles))
+    const [currentProfile, setCurrentProfile] = useState(getInitByType(TYPE.currentProfile))
+    const [language, setLanguage] = useState(getInitByType(TYPE.language))
+    const [user, setUser] = useState(getInitByType(TYPE.user))
 
-    const changeState = (st) => {
-        saveSate(st)
-        setState(st)
+    const changeState = (type, values) => {
+        const state = getInitialState()
+        
+        switch (type) {
+            case TYPE.profiles: 
+                setProfiles(values)
+                state.profiles = values
+                break;
+    
+            case TYPE.currentProfile:
+                setCurrentProfile(values)
+                state.current_profile = values
+                break;
+    
+            case TYPE.language:
+                setLanguage(values)
+                state.current_language = values
+                break;
+    
+            case TYPE.user:
+                setUser(values)
+                state.user = values
+                break;
+    
+            default:
+                break;
+        }
+
+        saveState(state)
     }
 
     return (
-        <MainContext.Provider value={{state, changeState}}>
+        <MainContext.Provider value={{profiles, currentProfile, language, user, changeState}}>
             {children}
         </MainContext.Provider>
     )

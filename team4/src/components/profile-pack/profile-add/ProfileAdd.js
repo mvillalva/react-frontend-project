@@ -4,11 +4,12 @@ import { MainContext } from "../../../context/MainContext";
 import { updateData } from "../../../functions/firebaseActions";
 import { uuidv4 } from "@firebase/util";
 import './ProfileAdd.css'
+import { TYPE } from "../../../functions/general";
 
 const ProfileAdd = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
-    const {state, changeState} = useContext(MainContext)
+    const {profiles, changeState} = useContext(MainContext)
 
     let bg = 'bg-5'
     let name = ''
@@ -26,10 +27,10 @@ const ProfileAdd = (props) => {
             type: 'Profile',
         }
 
-        state.profiles.push(data)
+        profiles.push(data)
 
-        await updateData('users', {profiles: state.profiles})
-        changeState(state)
+        await updateData('users', {profiles: profiles})
+        changeState(TYPE.profiles, profiles)
 
         window.location.href = '/ManageProfiles'
     }

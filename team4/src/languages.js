@@ -1,4 +1,4 @@
-export const languajes = {
+export const LANGUAGES = {
     "en-US":{
         LOGIN_HEADER: "test",
         FRONT_PAGE_TITLE: "Team4 - Watch TV Shows Online, Watch Movies Online",

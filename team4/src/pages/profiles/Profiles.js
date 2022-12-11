@@ -9,9 +9,7 @@ import './Profiles.css'
 
 const Profiles = ({title, action}) => {
 
-    const {state} = useContext(MainContext)
-
-    const profiles = state.profiles
+    const {profiles} = useContext(MainContext)    
 
     const LoadProfiles = () => {
         return profiles

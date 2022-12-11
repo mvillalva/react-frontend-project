@@ -21,15 +21,16 @@ import Loader from '../components/loader/Loader';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import Series from '../pages/Series/Series';
 import Movies from '../pages/Movies/Movies';
+import Footer from '../components/footer/Footer';
 
 const Router = (props) => {     
-    const {state} = useContext(MainContext)    
+    const {profiles} = useContext(MainContext)
 
     const Principal = () => props.profilesLoaded ?
                             (   
-                                state.profiles.length === 2 ?
+                                profiles.length === 2 ?
                                 <Navigate to='/home' /> :
-                                <Profiles title="¿Quién está viendo ahora?" profiles={state.profiles} action='R' />
+                                <Profiles title="¿Quién está viendo ahora?" profiles={profiles} action='R' />
                             )
                             :   <Loader />
     
@@ -85,6 +86,8 @@ const Router = (props) => {
                 <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
                 <Route path="/registration/:email" element={isLoggedIn? <Navigate to='/start' /> : <RegistrationPage /> } />
             </Routes>
+
+            <Footer></Footer>
 
         </BrowserRouter>
     );

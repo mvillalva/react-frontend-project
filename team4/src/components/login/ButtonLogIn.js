@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
-import { getCurrentLanguage } from "../../functions/general";
-import { languajes } from "../../languages";
+import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 import './ButtonLogin.css'
 
 export default function ButtonLogIn() {
-    const current_language = getCurrentLanguage();
-    const lang = languajes[current_language];
+    const {language} = useContext(MainContext);
+    const lang = LANGUAGES[language];
 
     return (
         <Button variant="danger" type="submit" className="btn-bg w-100 mb-2 btn-lg fs-6">

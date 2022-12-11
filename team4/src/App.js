@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import NavBar from "./components/navBar/NavBar";
 import Router from "./Router/Router";
@@ -6,8 +6,8 @@ import { fbCreateOrGetDocument } from "./functions/firebaseActions";
 import { buscar, defaultTitulos } from "./functions/movieApi";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { firebaseApp } from "./firebase/firebaseConfig";
-import MainProvider, { SetContextSate } from "./context/MainContext";
-import { getCurrentLanguage, setCurrentLanguage } from "./functions/general";
+import { MainContext } from "./context/MainContext";
+import { TYPE } from "./functions/general";
 
 const auth = getAuth(firebaseApp);
 
@@ -28,9 +28,9 @@ const sinNavBar = [
 
 function App() {
   const [isScrolled, setScrolled] = useState(false);
-  const [titulos, setTitulos] = useState(defaultTitulos());
-  const [profiles, setProfiles] = useState([]);
-  const [loggedUser, setLoggedUser] = useState(null);
+  const [titulos, setTitulos] = useState(defaultTitulos());  
+  
+  const { profiles, user, changeState} = useContext(MainContext)
 
   window.onscroll = () => {
     setScrolled(window.pageYOffset === 0 ? false : true);
@@ -38,63 +38,50 @@ function App() {
   };
 
   onAuthStateChanged(auth, (userFirebase) => {
-    if (userFirebase && userFirebase !== loggedUser) {
-      setLoggedUser(userFirebase ? userFirebase : null);
+    if (userFirebase && userFirebase !== user) {
+        changeState(TYPE.user, userFirebase ? userFirebase : null);
     }
   });
 
   useEffect(() => {
-    if (loggedUser) {
-      const getProfiles = async () => {
-        let data = await fbCreateOrGetDocument("users", loggedUser.email);
+    if (user) {
+        const getProfiles = async () => {
+        let data = await fbCreateOrGetDocument("users", user.email);
 
-        setProfiles(data);
-        localStorage.setItem("login", loggedUser.email);
-        SetContextSate("PS", data);
+        changeState(TYPE.profiles, data);        
       };
 
       getProfiles();
     } else {
       if (profiles.length > 0) {
-        setProfiles([]);
-        SetContextSate("PS", []);
+        console.log('entro')
+        changeState(TYPE.profiles, []);        
         localStorage.removeItem("appState");
       }
     }
     // eslint-disable-next-line
-  }, [loggedUser]);
+  }, [user]);
 
   const movies = [{ id: 1 }, { id: 2 }];
 
   const profilesLoaded = profiles.length > 0;
-
-  const checkLanguage = () => {
-    const language = getCurrentLanguage();
-
-    if (!language) {
-      setCurrentLanguage("es-ES");
-    }
-  };
-
+  
   return (
-    <div className="App netflix-sans-font-loaded overflow-hidden general">
-      <MainProvider>
-        {checkLanguage()}
+    <div className="App netflix-sans-font-loaded overflow-hidden general">  
         <Router
-          titulos={titulos}
-          movies={movies}
-          loggedUser={loggedUser ? loggedUser.email : null}
-          profilesLoaded={profilesLoaded}
+            titulos={titulos}
+            movies={movies}
+            loggedUser={user ? user.email : null}
+            profilesLoaded={profilesLoaded}
         >
-          {profiles.length > 0 && loggedUser && (
+            {profiles.length > 0 && user && (
             <NavBar
-              isScrolled={isScrolled}
-              filter={sinNavBar}
-              buscar={{ buscar, setTitulos }}
+                isScrolled={isScrolled}
+                filter={sinNavBar}
+                buscar={{ buscar, setTitulos }}
             ></NavBar>
-          )}
-        </Router>
-      </MainProvider>
+            )}
+        </Router>      
     </div>
   );
 }

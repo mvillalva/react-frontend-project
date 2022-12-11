@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { MainContext } from '../../../context/MainContext'
+import { TYPE } from '../../../functions/general'
 import './Profile.css'
 
 const Profile = (props) => {
@@ -11,12 +12,11 @@ const Profile = (props) => {
                                         : ' '
     const link = props.action === 'U' ? '/EditProfile/' + props.profile.uuid : '/home'
 
-    const {state, changeState} = useContext(MainContext)
+    const {changeState} = useContext(MainContext)
 
     const setProfile = (e) => {
-        e.preventDefault()
-        state.current_profile = props.profile        
-        changeState(state)
+        e.preventDefault()        
+        changeState(TYPE.currentProfile, props.profile)
         window.location.href = link
     }    
 

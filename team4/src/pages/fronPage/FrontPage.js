@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../img/netflix-icon.svg'
 import './FrontPage.css'
 import LanguageSelect from "../../components/languageSelect/LanguageSelect";
 import RegistrationEmail from "../../components/registrationEmail/RegistrationEmail";
-import { languajes } from "../../languages";
-import { getCurrentLanguage } from "../../functions/general";
+import { LANGUAGES } from "../../languages";
+import { MainContext } from "../../context/MainContext";
 
 const FrontPage = () => {
-    const current_language = getCurrentLanguage()
-    const lang = languajes[current_language]
+    const {language} = useContext(MainContext)
+    const lang = LANGUAGES[language]
 
     useEffect(() => {
         document.title = lang.FRONT_PAGE_TITLE

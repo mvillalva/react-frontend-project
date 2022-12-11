@@ -2,27 +2,27 @@ import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MainContext } from "../../../context/MainContext";
 import { updateData } from "../../../functions/firebaseActions";
+import { TYPE } from "../../../functions/general";
 import "./ProfileDelete.css";
 
 const ProfileDelete = (props) => {
     const params = useParams()
-    const {state, changeState} = useContext(MainContext)    
-    const profile = state.profiles.filter((e) => e.uuid === params.id)[0]    
+    const {profiles, changeState} = useContext(MainContext)  
+    const curr_profile = profiles.filter((e) => e.uuid === params.id)[0]    
 
     const deleteProfile = async (e) => {
         e.preventDefault()
 
-        const newProfiles = state.profiles.filter((e) => e.uuid !== params.id)
+        const newProfiles = profiles.filter((e) => e.uuid !== params.id)
         
         await updateData('users', {profiles: newProfiles})
-        state.profiles = newProfiles
         
-        changeState(state)
+        changeState(TYPE.profiles, newProfiles)
 
         window.location.href = '/ManageProfiles'
     }
 
-    if (state.profiles.length <= 2) {        
+    if (profiles.length <= 2) {        
         window.location.href = '/'
         return
     }
@@ -34,8 +34,8 @@ const ProfileDelete = (props) => {
                     <h1 className="hh1">¿Eliminar perfil?</h1>
                     <div className="delete-metadata delete-entry">
                         <div className="profile-avatar">
-                            <div className={'profile-icon ' + profile.bg}></div>
-                            <div className="profile-name">{profile.name}</div>
+                            <div className={'profile-icon ' + curr_profile.bg}></div>
+                            <div className="profile-name">{curr_profile.name}</div>
                         </div>
                         <div className="delete-delete-warning">
                             El historial de este perfil, incluidas Mi lista, los votos y la actividad, se eliminará definitivamente, por lo que no tendrás acceso a ellos después.

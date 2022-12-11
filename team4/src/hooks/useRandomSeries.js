@@ -1,15 +1,17 @@
 // import { getTopMovies } from "../functions/movieApi";
 import { getTopSeries } from "../functions/movieApi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getRandomInt } from "../functions/general";
 // import useClip from "./useClip";
 import useTrailer from "./useTrailer";
+import { MainContext } from "../context/MainContext";
 
 const useRandomSeries = () => {
     const [loadedSeries, setLoadedSeries] = useState(null);  
+    const {language} = useContext(MainContext)
 
     const getMovie = async () => {
-        const series = await getTopSeries(); // esta modificar para que funcione el hook
+        const series = await getTopSeries(language); // esta modificar para que funcione el hook
         const index = getRandomInt(0, 19);
         
         setLoadedSeries(series[index]);       
