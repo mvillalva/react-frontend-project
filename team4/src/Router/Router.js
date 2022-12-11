@@ -14,7 +14,6 @@ import Search from "../pages/Search/Search";
 import Avatars from '../components/profile-pack/avatars/Avatars';
 import FrontPage from '../pages/fronPage/FrontPage';
 import NotFound from '../pages/404/NotFound';
-import Slider from "../components/slider/Slider.jsx";
 import Logueo from '../pages/loginPage/TestLogueo';
 import { MainContext } from '../context/MainContext';
 import Loader from '../components/loader/Loader';
@@ -22,6 +21,8 @@ import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 import Series from '../pages/Series/Series';
 import Movies from '../pages/Movies/Movies';
 import Footer from '../components/footer/Footer';
+import Player from "../pages/Player/Player";
+import Slider from "../pages/Netflix/Netflix.jsx";
 
 const Router = (props) => {     
     const {profiles} = useContext(MainContext)
@@ -82,9 +83,11 @@ const Router = (props) => {
                 <Route path="/notfound" element={<NotFound />}></Route>
                 <Route path="/*" element={<Navigate to={'/notfound?'+location} />}></Route>
                 <Route path="/ProfileAvatars" element={isLoggedIn? <Avatars /> : <Navigate to='/start' />} ></Route>
-                <Route path="/slider" element={isLoggedIn? <Slider movies={props.movies} /> : <Navigate to='/start' /> }></Route>
+                {/* <Route path="/slider" element={isLoggedIn? <Slider movies={props.movies} /> : <Navigate to='/start' /> }></Route> */}
                 <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
                 <Route path="/registration/:email" element={isLoggedIn? <Navigate to='/start' /> : <RegistrationPage /> } />
+                <Route path="/player" element={<Player/>}/>
+                <Route path="/slider" element={<Slider/>}/>
             </Routes>
 
             <Footer></Footer>
