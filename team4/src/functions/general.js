@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { MainContext } from "../context/MainContext";
 import { logOut } from "./firebaseActions";
 
 export const TYPE = {

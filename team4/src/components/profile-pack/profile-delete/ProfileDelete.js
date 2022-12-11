@@ -8,7 +8,7 @@ import "./ProfileDelete.css";
 const ProfileDelete = (props) => {
     const params = useParams()
     const {profiles, changeState} = useContext(MainContext)  
-    const profile = profiles.filter((e) => e.uuid === params.id)[0]    
+    const curr_profile = profiles.filter((e) => e.uuid === params.id)[0]    
 
     const deleteProfile = async (e) => {
         e.preventDefault()
@@ -16,7 +16,6 @@ const ProfileDelete = (props) => {
         const newProfiles = profiles.filter((e) => e.uuid !== params.id)
         
         await updateData('users', {profiles: newProfiles})
-        profiles = newProfiles
         
         changeState(TYPE.profiles, newProfiles)
 
@@ -35,8 +34,8 @@ const ProfileDelete = (props) => {
                     <h1 className="hh1">¿Eliminar perfil?</h1>
                     <div className="delete-metadata delete-entry">
                         <div className="profile-avatar">
-                            <div className={'profile-icon ' + profile.bg}></div>
-                            <div className="profile-name">{profile.name}</div>
+                            <div className={'profile-icon ' + curr_profile.bg}></div>
+                            <div className="profile-name">{curr_profile.name}</div>
                         </div>
                         <div className="delete-delete-warning">
                             El historial de este perfil, incluidas Mi lista, los votos y la actividad, se eliminará definitivamente, por lo que no tendrás acceso a ellos después.

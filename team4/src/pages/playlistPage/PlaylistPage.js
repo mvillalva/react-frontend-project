@@ -1,7 +1,6 @@
 import React from "react";
 import './PlaylistPage.css';
 import Playlist from "../../components/playlist/Playlist";
-import Footer from "../../components/footer/Footer";
 
 const movieData = [
     {
