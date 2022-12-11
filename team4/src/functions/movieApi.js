@@ -7,12 +7,14 @@ const lang = getCurrentLanguage()
 
 export const buscar = async (peli, setTitulos) => {
     if (peli) {        
-        const api_url = `${API_BASE_URL}/search/movie?api_key=${API_KEY}&language=${lang}&query=${peli}&page=1&include_adult=false`;
+    // const api_url = `${API_BASE_URL}/search/movie?api_key=${API_KEY}&language=${lang}&query=${peli}&page=1&include_adult=false`;
+        const api_url= `${API_BASE_URL}/search/multi?api_key=${API_KEY}&language=${lang}&query=${peli}&page=1&include_adult=false`
         await fetch(api_url)
         .then(data => data.json())
         .then(resultado => {
             // const {Search=[]} = resultado;
             const {results=[]} = resultado;
+            // console.log(results);
             setTitulos({
             total: results.length,
             arreglo: results,
