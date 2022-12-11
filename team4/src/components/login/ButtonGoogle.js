@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from 'react-bootstrap';
+import { MainContext } from '../../context/MainContext';
 import { googleSingIn } from '../../functions/firebaseActions';
-import { getCurrentLanguage } from '../../functions/general';
 import logo from '../../img/google-icon.svg'
-import { languajes } from '../../languages';
+import { LANGUAGES } from '../../languages';
 import './ButtonGoogle.css'
 
 const loginGoogle = () => {
@@ -11,8 +11,8 @@ const loginGoogle = () => {
 }
 
 const ButtonGoogle = () => {
-    const current_language = getCurrentLanguage();
-    const lang = languajes[current_language];
+    const {language} = useContext(MainContext);
+    const lang = LANGUAGES[language];
 
     return (
         <Button variant="primary" type="button" className="btn-gl w-100 mb-2 btn-lg fs-6" onClick={() => {loginGoogle()}}>

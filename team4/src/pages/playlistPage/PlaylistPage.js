@@ -38,8 +38,7 @@ const PlaylistPage = () => {
      return (        
           <div className="playlist-page-container">
               <div className="centered-div animate-container">
-               <Playlist data={movieData} />
-               <Footer></Footer>
+               <Playlist data={movieData} />               
               </div>
           </div>
       )

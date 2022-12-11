@@ -5,7 +5,7 @@ import AccountMenuList from "./AccountMenuList";
 
 
 const AccountMenu = ( {children} ) => {
-    const { state } = useContext(MainContext)
+    const { currentProfile } = useContext(MainContext)
     
     const [visible, setVisible] = useState(false)    
     
@@ -25,7 +25,7 @@ const AccountMenu = ( {children} ) => {
     
     return (
         <div className="d-flex align-items-center justify-content-between me-lg-5 pointer position-relative h-100" onMouseOver={()=>{openMenu()}} onMouseOut={() => {closeMenu()}} >
-            <span className={"nav-profile-icon " + state.current_profile.bg}></span>
+            <span className={"nav-profile-icon " + currentProfile.bg}></span>
             <span className="fas fa-caret-down ms-2" id="arrow"></span>
             <AccountMenuList visible={visible}>
                 {children}

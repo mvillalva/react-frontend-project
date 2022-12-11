@@ -1,19 +1,26 @@
+import { useContext } from "react";
+import { MainContext } from "../context/MainContext";
 import { logOut } from "./firebaseActions";
 
-export const setCurrentLanguage = (value) => {
-  localStorage.setItem("language", value);
-};
-
-export const getCurrentLanguage = () => {
-  return localStorage.getItem("language");
-};
+export const TYPE = {
+  profiles : 'PS',
+  currentProfile: 'CP',
+  language: 'LG',
+  user: 'US'
+}
 
 export const closeSession = (e) => {
   e.preventDefault();
-  localStorage.removeItem("profile");
-  localStorage.removeItem("profiles");
-  localStorage.removeItem("login");
-  localStorage.removeItem("appState");
+  const state = JSON.parse(localStorage.getItem("appState"))
+  console.log(state)
+  if(state){
+    state.profiles = []
+    state.user = []
+    state.current_profile = []
+
+    localStorage.setItem("appState", JSON.stringify(state))
+  }
+  
   logOut();
   window.location.href = "/";
 };

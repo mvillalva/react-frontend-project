@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MainContext } from "../../context/MainContext";
 
 const SearchInput = ({state, buscar}) => {
     const navigate = useNavigate()
     const location = useLocation()
+    const {language} = useContext(MainContext)
     
     const deleteContent = () => {
         let input = document.getElementById("search-input");
@@ -25,7 +27,7 @@ const SearchInput = ({state, buscar}) => {
             navigate('/search', {state: location.pathname})
         }
 
-        buscar.buscar(e.target.value, buscar.setTitulos)
+        buscar.buscar(e.target.value, buscar.setTitulos, language)
     }
 
 

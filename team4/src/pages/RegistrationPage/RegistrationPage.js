@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./RegistrationPage.css";
 import logo from "../../img/netflix-icon.svg";
 import { Link, useParams } from "react-router-dom";
-import { languajes } from "../../languages";
-import { getCurrentLanguage, VerifyEmail } from "../../functions/general";
+import { LANGUAGES } from "../../languages";
+import { VerifyEmail } from "../../functions/general";
 import { Form, FloatingLabel, Modal } from "react-bootstrap";
 import ButtonLogIn from "../../components/login/ButtonLogIn";
 import { checkUser, createUserWithEmail, logInWithEmail } from "../../functions/firebaseActions";
 import ButtonGoogle from "../../components/login/ButtonGoogle";
+import { MainContext } from "../../context/MainContext";
 
 const RegistrationPage = () => {
     const params = useParams()
@@ -15,8 +16,8 @@ const RegistrationPage = () => {
     const [errMsg, setErrMsg] = useState('');
     const [validEmail, setValidEmail] = useState(true);
     const [validPass, setValidPass] = useState(true);    
-    const current_language = getCurrentLanguage();
-    const lang = languajes[current_language];
+    const {language} = useContext(MainContext);
+    const lang = LANGUAGES[language];
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

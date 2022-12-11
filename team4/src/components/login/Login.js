@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { firebaseApp } from '../../firebase/firebaseConfig';
 import { getAuth, signInWithEmailAndPassword,} from 'firebase/auth';
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import {googleSingIn} from "../../functions/firebaseActions"
 
 
@@ -37,7 +37,6 @@ const handleChange = ({target:{name,value}})=>{
     .catch((error) =>{
         const errorCode = error.code;
         console.log (errorCode);
-
     });
 
 
