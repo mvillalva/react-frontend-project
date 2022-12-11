@@ -14,8 +14,6 @@ root.render(
   <React.StrictMode>
     <MainProvider>
       <Provider store={store}>
-        {" "}
-        {/* REDUX */}
         <App />
       </Provider>
     </MainProvider>
