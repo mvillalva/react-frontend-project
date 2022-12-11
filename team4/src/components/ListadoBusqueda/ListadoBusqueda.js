@@ -9,16 +9,21 @@ import VideoDescriptionPage from '../../pages/videoDescriptionPage/VideoDescript
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
 let titleID;
+// Indicando genero
+const movies = "movies";
+const series = "series"; 
 
 export default function ListadoBusqueda(props){
     const {resultados} = props;
     const [show, setShow] = useState(false);
+    const [type, setType] = useState("")
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     
-    const showDescription = (id) => {        
+    const showDescription = (id, type) => {        
         handleShow()
+        type === "movie" ? setType(movies) : setType(series);
         titleID = id;
     } 
         
@@ -26,7 +31,7 @@ export default function ListadoBusqueda(props){
         console.log(resultado);
         return(
             <Col key={index}>
-                <Card className="card-size" onClick={() => showDescription(resultado.id)}>
+                <Card className="card-size" onClick={() => showDescription(resultado.id, resultado.media_type)}>
                     <Card.Img 
                         className="card-img-size" 
                         variant="top" 
@@ -34,8 +39,13 @@ export default function ListadoBusqueda(props){
                         alt="Poster pelicula"
                     />
                     <Card.Body className='card-description'>
-                        <Card.Title>{resultado.title}</Card.Title>
-                        {/* <Card.Text> {resultado.overview} </Card.Text> */}
+                        <Card.Title>
+                            {resultado.media_type === "movie" ? resultado.title : `${resultado.original_name} (Series)`}
+                        </Card.Title>
+                        <Card.Text>
+                            <span>Fecha de Estreno: </span>
+                            <span>{ resultado.media_type === "movie" ? resultado.release_date : resultado.first_air_date }</span>
+                        </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>
@@ -52,6 +62,7 @@ export default function ListadoBusqueda(props){
                     movieId={titleID} 
                     show={show} 
                     handleClose={handleClose}
+                    type={type}
                 >
                 </VideoDescriptionPage>
             </Row>

@@ -8,13 +8,13 @@ import Loader from "../../components/loader/Loader";
 
 const APY_KEY = process.env.REACT_APP_TMDB_APYKEY;
 
-const VideoDescriptionPage = ({movieId, show, handleClose, series}) => {
+const VideoDescriptionPage = ({movieId, show, handleClose, type}) => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [movieResults, setMovieResults] = useState(null);
   
     useEffect( () => {
-      if(series){
+      if(type === "series"){
         const api_url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${APY_KEY}&language=es-ES`;
         fetch(api_url)
          .then(data => data.json())
@@ -57,7 +57,7 @@ const VideoDescriptionPage = ({movieId, show, handleClose, series}) => {
           <Modal.Body>
             <div className="video-description-page-container">
               <div className="centered-div">
-                  <VideoDescription datamovie={movieResults} >
+                  <VideoDescription datamovie={movieResults} type={type}>
                   </VideoDescription>
               </div>
             </div>

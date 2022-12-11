@@ -20,7 +20,7 @@ const TodaySeries = () => {
         e.preventDefault()
         handleShow()
         seriesId = id;
-        console.log(id);
+        // console.log(id);
     } 
 
     const {loadedSeries, loadedClip, showPlayer} = useRandomSeries()
@@ -44,7 +44,11 @@ const TodaySeries = () => {
                         </div>
                     </div>
 
-                    <VideoDescriptionPage movieId={seriesId} show={show} handleClose={handleClose} series={series}>
+                    <VideoDescriptionPage 
+                        movieId={seriesId} 
+                        show={show} 
+                        handleClose={handleClose} 
+                        type={series}>
                     </VideoDescriptionPage>
                     <div className="home-movie-bottom"></div>
                 </div>

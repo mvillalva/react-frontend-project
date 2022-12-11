@@ -10,6 +10,7 @@ import useRandomMovie from "../../hooks/useRandomMovie";
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
 let movieId;
+const movies = 'movies';    // hard
 
 const TodayMovie = () => {
     const [show, setShow] = useState(false);
@@ -40,7 +41,12 @@ const TodayMovie = () => {
                         </div>
                     </div>
 
-                    <VideoDescriptionPage movieId={movieId} show={show} handleClose={handleClose}>
+                    <VideoDescriptionPage 
+                        movieId={movieId}
+                        show={show}
+                        handleClose={handleClose}
+                        type={movies}
+                    >
                     </VideoDescriptionPage>
                     <div className="home-movie-bottom"></div>
                 </div>
