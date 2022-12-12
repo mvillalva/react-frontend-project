@@ -27,8 +27,7 @@ export default function ListadoBusqueda(props){
         titleID = id;
     } 
         
-    const titulos = resultados.arreglo.map((resultado, index) => {
-        console.log(resultado);
+    const titulos = resultados.arreglo.map((resultado, index) => {        
         return(
             <Col key={index}>
                 <Card className="card-size" onClick={() => showDescription(resultado.id, resultado.media_type)}>

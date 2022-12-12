@@ -18,18 +18,14 @@
     background: #141414;
     bottom: 0;
     left: 0;
-    right: 0;
-    top: 0;
-    text-align: left;
+    right: 0;    
+    min-height: 100vh;
 }
 
-.playlist-page-container .centered-div {    
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;    
-}
-
-.playlist-page-container .centered-div.animate-container {
+.playlist-page-container .animate-container {
     animation: animateContainer 0.45s forwards;
+}
+
+.playlist-page-container .pt-6 {
+    padding-top: 4rem;
 }
