@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Home.css";
 import TodayMovie from "../../components/todayMovie/TodayMovie";
 import Slider from "../../pages/Netflix/Netflix";
