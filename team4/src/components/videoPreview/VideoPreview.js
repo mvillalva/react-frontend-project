@@ -14,7 +14,7 @@ const VideoPreview = ({show, className, videoId, height = null, width = null}) =
           disablekb: 1,
           modestbranding: 1,
           fs: 0,
-          rel: 1,
+          rel: 0,
           showinfo: 0,          
         },
     };

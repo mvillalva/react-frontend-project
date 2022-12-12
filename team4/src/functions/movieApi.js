@@ -57,8 +57,8 @@ export const getTopSeries = async (lang) => {
     return res
 }
 
-export const getMovieClips = async (id) => {    
-    const api_url = `${API_BASE_URL}/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
+export const getMovieClips = async (id, type='movie') => {    
+    const api_url = `${API_BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`    
 
     let res = null
     
