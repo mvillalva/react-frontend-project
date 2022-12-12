@@ -8,6 +8,7 @@ import { firebaseApp } from '../../firebase/firebaseConfig';
 import { getAuth, signInWithEmailAndPassword,} from 'firebase/auth';
 import { Button } from "react-bootstrap";
 import {googleSingIn} from "../../functions/firebaseActions"
+import ButtonGoogle from "./ButtonGoogle";
 
 
 function Login() {
@@ -29,7 +30,7 @@ const handleChange = ({target:{name,value}})=>{
     const auth = getAuth(firebaseApp);
     const email= userR.email;
     const password= userR.password;    
-    const user = signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
     .then((Credentials) =>{
         const firebase_user =Credentials.user;
         console.log(firebase_user);
@@ -42,66 +43,47 @@ const handleChange = ({target:{name,value}})=>{
 
     };
   return (
-    <div className="flex-container LoginContainer">
-      <div className="Login">
-        <h1 className="loginPage-title"> Login to Netflix </h1>
-        <br/>
-        <form onSubmit={handleSubmit}>
-          <h1>Inicia sesión</h1>
+    <div className="Login">
+      <h1 className="loginPage-title"> Login to Netflix </h1>      
+      <form onSubmit={handleSubmit}>
+        <h1>Inicia sesión</h1>
 
-          <div className="InpUserName">
-            <input
-             style={ {width: "250px" }}
-              type="text"
-              name="email"
-              placeholder="Email o número de teléfono"
-              onChange={handleChange}
-            />
-          </div>
-          <br/>
-          <div className="inpPassword">
-            <input style={ {width: "250px" }}
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              onChange={handleChange}
-            />
-          </div>
-          <br/>
-          <div>
-            <ButtonLogIn></ButtonLogIn>
-          </div>
-          <br></br>
-          <Button
-          variant="primary"
-          type="submit"
-          style={{ width: "250px" }}
-          onClick={() => googleSingIn()}
-        >
-          Iniciar con Google
-        </Button>
-        <br/><br/>
-          <div className="checkBoxLogin">
-            <Form.Check aria-label="option 1" label="Recuérdame" />
-            <Link to="/LoginHelp">¿Necesitas ayuda?</Link>
-          </div>
-          
-        </form>
-
-       
-
-        <div className="login-signup-now" data-uia="login-signup-now">
-          ¿Primera vez en Netflix?
-          <p>
-            <b>Suscríbete ahora</b>
-          </p>
+        <div className="InpUserName mb-2">
+          <input
+            style={ {width: "100%", height: "45px" }}
+            type="text"
+            name="email"
+            placeholder="Email o número de teléfono"
+            onChange={handleChange}
+          />
         </div>
-        <span className="derechos">
-          Esta página está protegida por Google reCAPTCHA para comprobar que no
-          solo eres un robot.
-        </span>
+        
+        <div className="inpPassword mb-2">
+          <input style={ {width: "100%", height: "45px" }}
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            onChange={handleChange}
+          />
+        </div>          
+        
+        <ButtonLogIn></ButtonLogIn>
+        <ButtonGoogle />
+
+        <div className="checkBoxLogin d-flex justify-content-between small mb-2">
+          <Form.Check aria-label="option 1" label="Recuérdame" id='check' />
+          <Link to="/LoginHelp" className="text-decoration-none text-secondary">¿Necesitas ayuda?</Link>
+        </div>        
+      </form>
+
+      <div className="login-signup-now text-left mb-3">
+        ¿Primera vez en Netflix? 
+        <Link to="/" className="text-decoration-none text-light"> Suscríbete ahora</Link>.
       </div>
-      
+      <span className="derechos">
+        Esta página está protegida por Google reCAPTCHA para comprobar que no
+        solo eres un robot.
+      </span>
     </div>
   );
 }
