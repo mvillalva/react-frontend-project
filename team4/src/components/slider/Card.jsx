@@ -10,19 +10,25 @@ import { BiChevronDown } from "react-icons/bi";
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 
 let movieId;
+const movies = 'movies'
+const series = 'series'
 
 export default React.memo(function Card({ movieData, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false);
   const [show, setShow] = useState(false);
+  const [type, setType] = useState("");
   const navigate = useNavigate();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   
-  const showDescription = (e, id) => {        
+  const showDescription = (e, data) => {        
       e.preventDefault()
       handleShow()
-      movieId = id;
+      movieId = data.id;
+
+      data.media_type === "movie" ? setType(movies) : setType(series);
+      
   } 
 
   return (
@@ -71,7 +77,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                   )}
                 </div>
                 <div className="info">
-                  <BiChevronDown title="More info" onClick={(e) => {showDescription(e, movieData.id)}} />
+                  <BiChevronDown title="More info" onClick={(e) => {showDescription(e, movieData)}} />
                 </div>
               </div>
             </div>
@@ -85,11 +91,12 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
           </div>
         </div>
       )}
+
       <VideoDescriptionPage 
           movieId={movieId}
           show={show}
           handleClose={handleClose}
-          type={'movies'}
+          type={type}
       />      
     </Container>
   );
