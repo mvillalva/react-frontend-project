@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Card, Row } from "react-bootstrap/";
 import { getMediaList } from "../../functions/movieApi";
 import nf from "../../img/no_movie.png";
 import VideoDescriptionPage from '../../pages/videoDescriptionPage/VideoDescriptionPage';
+import {MainContext} from '../../context/MainContext'
 import "./Playlist.css";
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
@@ -15,14 +16,14 @@ const Playlist = ({ data }) => {
     const [list, setList] = useState([]);
     const [show, setShow] = useState(false);    
     const [type, setType] = useState("")
+    const {language} = useContext(MainContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const showDescription = (id, type2) => {
         handleShow();
-        type2 === "movie" ? setType(movies) : setType(series);
-        console.log(type2)
+        type2 === "movie" ? setType(movies) : setType(series);        
         titleID = id;
     };
 
@@ -33,16 +34,15 @@ const Playlist = ({ data }) => {
                     { id: 436270, media_type: "movie" },
                     { id: 119051, media_type: "tv" },
                 ],
-                "es-ES"
+                language
             );            
             setList(datas);
         };
 
         getList();
-    }, []);
+    }, [language]);
 
     const titulos = list.map((resultado, index) => {        
-        console.log(resultado)
         return (
             <Col key={index}>
                 <Card className="card-size" onClick={() => showDescription(resultado.id, resultado.media_type)}>                

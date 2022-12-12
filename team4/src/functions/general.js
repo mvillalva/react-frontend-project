@@ -11,7 +11,7 @@ export const TYPE = {
 export const closeSession = (e) => {
   e.preventDefault();
   const state = JSON.parse(localStorage.getItem("appState"))
-  console.log(state)
+  
   if(state){
     state.profiles = []
     state.user = []

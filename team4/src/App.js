@@ -55,8 +55,7 @@ function App() {
 
       getProfiles();
     } else {
-      if (profiles.length > 0) {
-        console.log('entro')
+      if (profiles.length > 0) {        
         changeState(TYPE.profiles, []);        
         localStorage.removeItem("appState");
       }
