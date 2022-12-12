@@ -1,0 +1,44 @@
+.list-container {
+    position: relative;
+    top: 100px;
+    min-height: 100vh;
+}
+
+.card-size {
+    height: 310px;
+    border: none;
+    background-color: transparent !important;
+    position: relative;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.card-img-size {
+    width: 100%;
+    height: 280px;
+    border-radius: 4px !important;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+
+.card-size:hover {
+    transform: scale(1.1);
+}   
+
+.card-size .card-description{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: .5s;
+}
+
+.card-size:hover .card-description{
+    opacity: 1;
+}

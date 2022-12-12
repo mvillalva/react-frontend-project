@@ -84,3 +84,22 @@ export const getSeriesClips = async (id) => {
     
     return res
 }
+
+export const getMediaList = async (list, language) => {
+    let media = []
+    list.forEach( async data => {
+        let url = `${API_BASE_URL}/${data.media_type}/${data.id}?api_key=${API_KEY}&language=${language}`
+        let rta = []
+
+        await fetch(url)
+        .then(data => data.json())
+        .then(response => {        
+            response.media_type = data.media_type
+            rta = response
+        })
+
+        media.push(rta)
+    });
+
+    return media
+}
