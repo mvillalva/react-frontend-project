@@ -1,6 +1,8 @@
 import React from 'react'
 import './VideoDescription.css'
 
+import DescripcionItem from "../../components/descripcionItem/DescripcionItem";
+
 const VideoDescription = (props) => {
   // console.log(props)
   const {type} = props;
@@ -34,11 +36,18 @@ const VideoDescription = (props) => {
               </p>
             </div>
             <div className='video-description-info-container-right'>
-              <p><span className='video-description-info-categoria'>Elenco:</span> <a href="https://netflix.com">Mellisa Roxburgh</a>, <a href="https://netflix.com">Josh Dallas</a>, <a href="https://netflix.com">Athena Karkanis</a>, más</p>
-              <p><span className='video-description-info-categoria'>Género:</span> <a href="https://netflix.com">Series de misterio</a>, <a href="https://netflix.com">Series de sci-fi</a>, <a href="https://netflix.com">Series dramáticas</a></p>
-              <p><span className='video-description-info-categoria'>Este título es:</span> <a href="https://netflix.com">Surreslista</a>, <a href="https://netflix.com">De suspenso</a></p>
+              <p>
+                <span className='video-description-info-categoria'>Elenco: </span> 
+                <DescripcionItem link="https://netflix.com" label="Mellisa Roxburgh"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Josh Dallas"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Athena Karkanis"></DescripcionItem>, más
+              </p>
+              <p>
+                <span className='video-description-info-categoria'>Género: </span> 
+                <DescripcionItem link="https://netflix.com" label="Series de Misterio"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Series de sci-fi"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Series dramáticas"></DescripcionItem>
+              </p>
+              <p>
+                <span className='video-description-info-categoria'>Este título es: </span> 
+                <DescripcionItem link="https://netflix.com" label="Surrealista"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="De suspenso"></DescripcionItem></p>
             </div>
-
           </div>
         </div>
     )
