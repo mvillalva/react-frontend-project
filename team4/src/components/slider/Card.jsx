@@ -40,7 +40,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
             <img
               src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
               alt="movie"
-              onClick={() => navigate("/player/"+movieData.id)}
+              onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}
             />
             {/* <video
               src={video}
@@ -51,7 +51,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
             /> */}
           </div>
           <div className="info-container flex column">
-            <h3 className="name" onClick={() => navigate("/player/"+movieData.id)}>
+            <h3 className="name" onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}>
               {movieData.name}
             </h3>
             <div className="icons flex j-between">
@@ -60,7 +60,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                   <IoPlayCircleSharp
                     className="me-2"
                     title="play"
-                    onClick={() => navigate("/player/"+movieData.id)}
+                    onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}
                   />
                   <RiThumbUpFill className="me-2" title="Like" />
                   <RiThumbDownFill className="me-2" title="Dislike" />

@@ -39,7 +39,7 @@ const TodayMovie = () => {
                         <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedMovie.title}</div>
                         <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedMovie.overview}</p>
                         <div className="home-movie-buttons">
-                            <Link to={"/player/"+loadedMovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
+                            <Link to={"/player/movie/"+loadedMovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
                             <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><span className="fas fa-info-circle fs-5"></span> Más información</Link>
                         </div>
                     </div>

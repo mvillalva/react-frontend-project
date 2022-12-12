@@ -23,7 +23,8 @@ const sinNavBar = [
   "/notfound",
   "/front",
   "/registration",
-  "/player/:id",
+  "/player/movie/:id",
+  "/player/tv/:id",
   "/",
 ];
 
