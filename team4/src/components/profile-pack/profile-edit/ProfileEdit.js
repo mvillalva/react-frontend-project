@@ -9,8 +9,7 @@ const ProfileEdit = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
     const params = useParams()    
-    const {profiles, changeState} = useContext(MainContext)  
-    console.log(profiles)
+    const {profiles, changeState} = useContext(MainContext)      
     
     const profile = profiles.filter(e => e.uuid === params.id)[0]
     
