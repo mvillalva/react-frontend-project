@@ -33,6 +33,9 @@ const TodayMovie = () => {
                     <img src={BASE_IMG + loadedMovie.backdrop_path} alt='news' className="home-movie-img"></img>
                     {showPlayer ? loadedClip : '' }
                     <div className="home-info-container">
+                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>
+                            <span className="home-movie-movie">Película</span>
+                        </div>
                         <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedMovie.title}</div>
                         <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedMovie.overview}</p>
                         <div className="home-movie-buttons">

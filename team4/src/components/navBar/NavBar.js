@@ -51,9 +51,6 @@ const NavBar = (props) => {
                         <li className="nav-item me-2">
                             <Link className="nav-link" to="/Playlist">Mi lista</Link>
                         </li>
-                        <li className="nav-item me-2">
-                            <Link className="nav-link" to="#">Explora por idiomas</Link>
-                        </li>
                     </Nav>                    
                 </Navbar.Collapse>
                 <div className="navbar-menu-container mt-2 mt-lg-0">

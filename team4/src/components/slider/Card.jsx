@@ -1,16 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import video from "../assets/video.mp4";
+// import video from "../assets/video.mp4";
 import { IoPlayCircleSharp } from "react-icons/io5";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BsCheck } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
+import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
+
+let movieId;
 
 export default React.memo(function Card({ movieData, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
+  const showDescription = (e, id) => {        
+      e.preventDefault()
+      handleShow()
+      movieId = id;
+  } 
+
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}
@@ -28,46 +42,55 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
               alt="movie"
               onClick={() => navigate("/player")}
             />
-            <video
+            {/* <video
               src={video}
               autoPlay
               loop
               muted
               onClick={() => navigate("/player")}
-            />
+            /> */}
           </div>
           <div className="info-container flex column">
             <h3 className="name" onClick={() => navigate("/player")}>
               {movieData.name}
             </h3>
             <div className="icons flex j-between">
-              <div className="controls flex">
-                <IoPlayCircleSharp
-                  title="play"
-                  onClick={() => navigate("/player")}
-                />
-                <RiThumbUpFill title="Like" />
-                <RiThumbDownFill title="Dislike" />
-                {isLiked ? (
-                  <BsCheck title="Remove From List" />
-                ) : (
-                  <AiOutlinePlus title="Add to my list" />
-                )}
-              </div>
-              <div className="info">
-                <BiChevronDown title="More info" />
+              <div className="controls flex justify-content-between">
+                <div className="flex">
+                  <IoPlayCircleSharp
+                    className="me-2"
+                    title="play"
+                    onClick={() => navigate("/player")}
+                  />
+                  <RiThumbUpFill className="me-2" title="Like" />
+                  <RiThumbDownFill className="me-2" title="Dislike" />
+                  {isLiked ? (
+                    <BsCheck className="me-2" title="Remove From List" />
+                  ) : (
+                    <AiOutlinePlus className="me-2" title="Add to my list" />
+                  )}
+                </div>
+                <div className="info">
+                  <BiChevronDown title="More info" onClick={(e) => {showDescription(e, movieData.id)}} />
+                </div>
               </div>
             </div>
-            <div className="genres flex">
+            <div className="genres flex row">
               <ul className="flex">
                 {movieData.genres.map((genre) => (
-                  <li key={genre}>{genre}</li>
+                  <span key={genre}>{"* " + genre + " "}</span>
                 ))}
               </ul>
             </div>
           </div>
         </div>
       )}
+      <VideoDescriptionPage 
+          movieId={movieId}
+          show={show}
+          handleClose={handleClose}
+          type={'movies'}
+      />      
     </Container>
   );
 });
@@ -77,7 +100,7 @@ const Container = styled.div`
   width: 230px;
   height: 100%;
   cursor: pointer;
-  position: relative;
+  position: relative;  
   img {
     border-radius: 0.2rem;
     width: 100%;

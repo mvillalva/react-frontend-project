@@ -4,7 +4,8 @@ export const TYPE = {
   profiles : 'PS',
   currentProfile: 'CP',
   language: 'LG',
-  user: 'US'
+  user: 'US',
+  loading: 'LO',
 }
 
 export const closeSession = (e) => {

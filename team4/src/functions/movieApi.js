@@ -31,8 +31,7 @@ export function defaultTitulos() {
     }
 }
 
-export const getTopMovies = async (lang) => {   
-    console.log(lang) 
+export const getTopMovies = async (lang) => {       
     const api_url = `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
     let res = null
 

@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { firebaseApp } from '../../firebase/firebaseConfig';
 import { getAuth, signInWithEmailAndPassword,} from 'firebase/auth';
-import { Button } from "react-bootstrap";
-import {googleSingIn} from "../../functions/firebaseActions"
+// import { Button } from "react-bootstrap";
+// import {googleSingIn} from "../../functions/firebaseActions"
 import ButtonGoogle from "./ButtonGoogle";
 
 

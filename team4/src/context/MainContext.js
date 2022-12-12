@@ -5,7 +5,8 @@ const defaultState = {
     current_profile : [],
     profiles: [],
     current_language: 'es-ES',
-    user: []
+    user: [],
+    isLoading: false
 }
 
 const getInitialState = () => {
@@ -42,6 +43,10 @@ const getInitByType = (type) => {
             value = state.user
             break;
 
+        case TYPE.loading:
+            value = state.isLoading
+            break;
+
         default:
             break;
     }
@@ -54,6 +59,7 @@ const MainProvider = ({children}) => {
     const [currentProfile, setCurrentProfile] = useState(getInitByType(TYPE.currentProfile))
     const [language, setLanguage] = useState(getInitByType(TYPE.language))
     const [user, setUser] = useState(getInitByType(TYPE.user))
+    const [isLoading, setIsLoading] = useState(getInitByType(TYPE.loading))
 
     const changeState = (type, values) => {
         const state = getInitialState()
@@ -78,6 +84,11 @@ const MainProvider = ({children}) => {
                 setUser(values)
                 state.user = values
                 break;
+
+            case TYPE.loading:
+                setIsLoading(values)
+                state.isLoading = values
+                break;
     
             default:
                 break;
@@ -87,7 +98,7 @@ const MainProvider = ({children}) => {
     }
 
     return (
-        <MainContext.Provider value={{profiles, currentProfile, language, user, changeState}}>
+        <MainContext.Provider value={{profiles, currentProfile, language, user, isLoading, changeState}}>
             {children}
         </MainContext.Provider>
     )
