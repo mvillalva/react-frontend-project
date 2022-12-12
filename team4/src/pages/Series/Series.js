@@ -13,9 +13,9 @@ const Series = (props) => {
         <>
             <div className="home-container overflow-hidden">            
                 <TodaySeries />
-            </div>
-            <div className="movie-slider">
-                <Netflix type="tv" mediaType="tv" />
+                <div className="movie-slider">
+                    <Netflix type="tv" mediaType="tv" />
+                </div>
             </div>
         </>
     )
