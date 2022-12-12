@@ -6,10 +6,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { MainContext } from "../../context/MainContext";
 import { TYPE } from "../../functions/general";
-import { getMovieClips } from "../../functions/movieApi";
+import { getMovieClips, getSeriesClips } from "../../functions/movieApi";
 import YouTube from "react-youtube";
 
-export default function Player() {
+export default function Player({type}) {
   const [loadedClip, setLoadedClip] = useState(null)
   const {changeState} = useContext(MainContext)
   const navigate = useNavigate();
@@ -29,10 +29,9 @@ export default function Player() {
       loop:1,
     },
   };
-
   
   const getClip = async () => {    
-    const movieClips = await getMovieClips(params.id)      
+    const movieClips = await (type==='movie'? getMovieClips(params.id) : getSeriesClips(params.id))
     const movie = movieClips.length > 0 ? movieClips[0].key : 'EC9EFoot_a0'      
     setLoadedClip(<YouTube videoId={movie} opts={opts}/>)
   }
