@@ -23,6 +23,7 @@ const sinNavBar = [
   "/notfound",
   "/front",
   "/registration",
+  "/player/:id",
   "/",
 ];
 

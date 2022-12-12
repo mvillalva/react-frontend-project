@@ -39,7 +39,7 @@ const TodaySeries = () => {
                         <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedSeries.name}</div>
                         <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedSeries.overview}</p>
                         <div className="home-movie-buttons">
-                            <Link to="#" className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
+                            <Link to={"/player/"+loadedSeries.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
                             <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedSeries.id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
                         </div>
                     </div>

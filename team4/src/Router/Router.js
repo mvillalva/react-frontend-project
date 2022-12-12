@@ -89,7 +89,7 @@ const Router = (props) => {
                 {/* <Route path="/slider" element={isLoggedIn? <Slider movies={props.movies} /> : <Navigate to='/start' /> }></Route> */}
                 <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
                 <Route path="/registration/:email" element={isLoggedIn? <Navigate to='/start' /> : <RegistrationPage /> } />
-                <Route path="/player" element={<Player/>}/>
+                <Route path="/player/:id" element={<Player/>}/>
             </Routes>
 
             <Footer></Footer>
