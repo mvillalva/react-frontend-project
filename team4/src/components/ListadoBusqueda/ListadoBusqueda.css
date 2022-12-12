@@ -18,6 +18,7 @@
 
 .card-size:hover {
     transform: scale(1.1);
+    cursor: pointer;
 }   
 
 .card-size .card-description{
