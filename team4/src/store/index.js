@@ -3,8 +3,12 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import { API_KEY, TMBD_BASE_URL } from "../utils/constants";
+
 import axios from "axios";
+
+const API_KEY = process.env.REACT_APP_TMDB_APYKEY
+const TMBD_BASE_URL = process.env.REACT_APP_API_BASE_URL
+
 ////////////// OBTENGO CATEGORIAS DE PELICULAS
 const initialState = {
   movies: [],
@@ -12,10 +16,11 @@ const initialState = {
   genres: [],
 };
 
-export const getGenres = createAsyncThunk("netflix/genres", async () => {
+
+export const getGenres = createAsyncThunk("netflix/genres", async ({language, type}) => {  
   const {
     data: { genres },
-  } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+  } = await axios.get(`${TMBD_BASE_URL}/genre/${type}/list?api_key=${API_KEY}&language=${language}`);
   // console.log(genres); PARA VER LOS GENEROS
   return genres;
 });
@@ -30,7 +35,7 @@ const createArrayFromRawData = (array, moviesArray, genres) => {
     if (movie.backdrop_path)
       moviesArray.push({
         id: movie.id,
-        name: movie?.original_name ? movie.original_name : movie.original_title,
+        name: movie?.name ? movie.name : movie.title,
         image: movie.backdrop_path,
         genres: movieGenres.slice(0, 3),
       });
@@ -50,12 +55,12 @@ const getRawData = async (api, genres, paging) => {
 
 export const fetchMovies = createAsyncThunk(
   "netflix/trending",
-  async ({ type }, thunkApi) => {
+  async ({ type, language, mediaType}, thunkApi) => {
     const {
       netflix: { genres },
     } = thunkApi.getState();
     return getRawData(
-      `${TMBD_BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
+      `${TMBD_BASE_URL}/trending/${type}/week?api_key=${API_KEY}&language=${language}`,
       genres,
       true
     );

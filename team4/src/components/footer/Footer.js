@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { MainContext } from "../../context/MainContext";
 import "./Footer.css";
 
-function Footer() {    
+function Footer() {
+    const {isLoading} = useContext(MainContext)
 
-    return (        
+    return (
+        isLoading ? '' : 
         <div role="contentinfo" className="member-footer" id="member-footer">
             <div className="social-links">
                 <Link className="social-link" to="https://www.facebook.com/Netflixmx" aria-label="facebook">

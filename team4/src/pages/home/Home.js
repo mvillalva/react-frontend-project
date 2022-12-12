@@ -9,15 +9,15 @@ const Home = (props) => {
   });
 
   return (
-    <div>
+    <>
       <div className="movie-container overflow-hidden">
         <TodayMovie />
       </div>
 
-      <div>
-        <Slider />
+      <div className="movie-slider">
+        <Slider type="movie" />
       </div>
-    </div>
+    </>
   );
 };
 

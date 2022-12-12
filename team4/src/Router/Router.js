@@ -22,10 +22,10 @@ import Series from '../pages/Series/Series';
 import Movies from '../pages/Movies/Movies';
 import Footer from '../components/footer/Footer';
 import Player from "../pages/Player/Player";
-import Slider from "../pages/Netflix/Netflix.jsx";
+import { TYPE } from '../functions/general';
 
 const Router = (props) => {     
-    const {profiles} = useContext(MainContext)
+    const {profiles, changeState} = useContext(MainContext)
 
     const Principal = () => props.profilesLoaded ?
                             (   
@@ -48,12 +48,15 @@ const Router = (props) => {
         let obj = null
 
         if (isLoggedIn) {
+            changeState(TYPE.loading, true)
             obj = <Loader />
             
             if (props.profilesLoaded) {
+                changeState(TYPE.loading, false)
                 obj = logged
             }
         } else {
+            changeState(TYPE.loading, false)
             obj = not_logged
         }
 
@@ -87,7 +90,6 @@ const Router = (props) => {
                 <Route path="/test" element={isLoggedIn? <Navigate to='/start' /> : <Logueo />}></Route>
                 <Route path="/registration/:email" element={isLoggedIn? <Navigate to='/start' /> : <RegistrationPage /> } />
                 <Route path="/player" element={<Player/>}/>
-                <Route path="/slider" element={<Slider/>}/>
             </Routes>
 
             <Footer></Footer>

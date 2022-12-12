@@ -82,10 +82,14 @@ const Container = styled.div`
       display: none;
     }
     .left {
+      top:130px;
       left: 0;
+      cursor:pointer;
     }
     .right {
+      top:130px;
       right: 0;
+      cursor:pointer;
     }
   }
 `;

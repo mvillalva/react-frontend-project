@@ -33,15 +33,16 @@
 .home-movie-title {    
     position: relative;
     left: 0;
-    font-size: 10vw;   
+    font-size: 9vw;   
     font-weight: 900;
     line-height: .9;
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
     transition: 600ms ease-out;
 }
-.home-movie-series.home-movie-series{
-    font-size: 3vw;
+
+.home-movie-series{
+    font-size: 1.5vw;
     color: #E50914;   
 }
 
@@ -136,7 +137,7 @@
     }
 
     .home-movie-title {
-        font-size: 5vw;
+        font-size: 4vw;
     }
 
     .home-movie-buttons {
