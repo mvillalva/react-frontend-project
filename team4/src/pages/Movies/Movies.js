@@ -13,9 +13,9 @@ const Movies = (props) => {
         <>
             <div className="home-container overflow-hidden">            
                 <TodayMovie />
-            </div>
-            <div className="movie-slider">
-                <Netflix type="movie" mediaType="movie"/>
+                <div className="movie-slider">
+                    <Netflix type="movie" mediaType="movie"/>
+                </div>
             </div>
         </>
     )

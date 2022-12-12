@@ -12,10 +12,10 @@ const Home = (props) => {
     <>
       <div className="movie-container overflow-hidden">
         <TodayMovie />
-      </div>
 
-      <div className="movie-slider">
-        <Slider type="movie" />
+        <div className="movie-slider">
+          <Slider type="movie" />
+        </div>
       </div>
     </>
   );

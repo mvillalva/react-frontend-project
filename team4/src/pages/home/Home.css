@@ -17,7 +17,7 @@
     position: relative;    
     width: 100vw;        
     min-height: 1000px;    
-    text-align: center;
+    /* text-align: center; */
     background: #141414;
 }
 
@@ -39,11 +39,11 @@
 
 .movie-slider {
     position: relative;
-    top: -75vh;
+    top: -110px;
 }
 
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
     .movie-slider {        
-        top: -65vh;
+        top: -110px;
     }
 }
