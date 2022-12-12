@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import './VideoDescription.css'
 
 import DescripcionItem from "../../components/descripcionItem/DescripcionItem";
@@ -8,11 +9,11 @@ const VideoDescription = (props) => {
   const {type} = props;
   // console.log(type);
   const webUrl = `https://image.tmdb.org/t/p/original/${props.datamovie.backdrop_path}`;
-
+    
     return (
         <div className='video-description'>
           <div className='video-description-top'>
-            <img alt={props.datamovie.title} src={webUrl}></img>
+          <Link to={"/player/"+ (type === "movies" ? "movie" : "tv") +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>
           </div>
           <div className='video-description-info-container'>
             <div className='video-description-info-container-left'>
