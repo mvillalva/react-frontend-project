@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.movie-slider {
+  position: relative;
+  top: -16vh !important;;  /* para que no tape el contenido promocional*/
+}
