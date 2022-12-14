@@ -12,7 +12,7 @@ const useRandomSeries = () => {
 
     const getMovie = async () => {
         const series = await getTopSeries(language); // esta modificar para que funcione el hook
-        const index = getRandomInt(0, 19);
+        const index = getRandomInt(0, 12);
         
         setLoadedSeries(series[index]);       
     }
