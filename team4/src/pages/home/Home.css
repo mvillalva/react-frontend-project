@@ -40,6 +40,7 @@
 .movie-slider {
     position: relative;
     top: -110px;
+    z-index: 30;
 }
 
 @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {

@@ -27,7 +27,7 @@
     justify-content: flex-end;    
     color: white;
     text-align: left;
-    z-index: 1;
+    z-index: 20;
 }
 
 .home-movie-title {    

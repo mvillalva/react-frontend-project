@@ -82,11 +82,11 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
               </div>
             </div>
             <div className="genres flex row">
-              <ul className="flex">
-                {movieData.genres.map((genre) => (
-                  <span key={genre}>{"* " + genre + " "}</span>
+              <div className="flex">
+                {movieData.genres.map((genre, index) => (
+                  <span key={index}>{"* " + genre + " "}</span>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -103,11 +103,11 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
 });
 
 const Container = styled.div`
-  max-width: 230px;
-  width: 230px;
+  max-width: 250px;
+  width: 250px;
   height: 100%;
   cursor: pointer;
-  position: relative;  
+  position: relative;    
   img {
     border-radius: 0.2rem;
     width: 100%;
@@ -115,7 +115,7 @@ const Container = styled.div`
     z-index: 10;
   }
   .hover {
-    z-index: 90;
+    z-index: 11;
     height: max-content;
     width: 20rem;
     position: absolute;
@@ -149,7 +149,10 @@ const Container = styled.div`
     }
     .info-container {
       padding: 1rem;
-      gap: 0.5rem;
+      gap: 0.5rem;      
+    }
+    .name {
+      font-size: 1.2rem;
     }
     .icons {
       .controls {
