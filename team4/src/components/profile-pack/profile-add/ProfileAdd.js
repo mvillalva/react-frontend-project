@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MainContext } from "../../../context/MainContext";
 import { updateData } from "../../../functions/firebaseActions";
 import { uuidv4 } from "@firebase/util";
 import './ProfileAdd.css'
 import { TYPE } from "../../../functions/general";
+import { Form } from "react-bootstrap";
 
 const ProfileAdd = (props) => {
+    const [isInvalid, setIsInvalid] = useState(false);    
     const navigate = useNavigate()
     const location = useLocation()
     const {profiles, changeState} = useContext(MainContext)
@@ -19,21 +21,27 @@ const ProfileAdd = (props) => {
         
         let input = document.getElementById('profile-name')
         
-        const data = {
-            uuid: uuidv4(),
-            name: input.value,
-            avatar: '',
-            bg: bg,
-            type: 'Profile',
-            playlist: [],
+        if (!profiles.find(e => e.name.toLowerCase() === input.value.toLowerCase())) {
+            setIsInvalid(false)
+
+            const data = {
+                uuid: uuidv4(),
+                name: input.value,
+                avatar: '',
+                bg: bg,
+                type: 'Profile',
+                playlist: [],
+            }
+
+            profiles.push(data)
+
+            await updateData('users', {profiles: profiles})
+            changeState(TYPE.profiles, profiles)
+
+            window.location.href = '/ManageProfiles'
+        } else {           
+            setIsInvalid(true)
         }
-
-        profiles.push(data)
-
-        await updateData('users', {profiles: profiles})
-        changeState(TYPE.profiles, profiles)
-
-        window.location.href = '/ManageProfiles'
     }
 
     const showAvatars = () => {
@@ -65,9 +73,13 @@ const ProfileAdd = (props) => {
                             <div className={'profile-icon ' + bg} onClick={()=>{showAvatars()}}></div>
                         </div>
                         <div className="add-add-parent">
-                            <div className="add-entry-inputs">
-                                <input type="text" id="profile-name" className="" placeholder="Nombre" defaultValue={name}/>
-                                <label htmlFor="profile-name" aria-label="Nombre"></label>
+                            <div className="add-entry-inputs"> 
+                                <Form>
+                                    <Form.Control type="text" className="" id="profile-name" placeholder='Nombre' defaultValue={name} isInvalid={isInvalid} />
+                                    <Form.Control.Feedback type="invalid" className="invalid">
+                                        Ya existe ese nombre de perfil
+                                    </Form.Control.Feedback>
+                                </Form>
                                 <div className="option-wrapper">
                                     <div className="add-kids-option">
                                         <input type="checkbox" id="add-kids-profile" />
