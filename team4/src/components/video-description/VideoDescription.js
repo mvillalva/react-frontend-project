@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import './VideoDescription.css'
 import DescripcionItem from "../../components/descripcionItem/DescripcionItem";
@@ -7,21 +7,31 @@ import { MainContext } from '../../context/MainContext';
 import RemoveList from '../slider/RemoveList';
 
 const VideoDescription = (props) => {
-  const {currentProfile} = useContext(MainContext)  
+  const [genres, setGenres] = useState([])
+  const {currentProfile} = useContext(MainContext)    
   const {type} = props;  
   const webUrl = `https://image.tmdb.org/t/p/original/${props.datamovie.backdrop_path}`;
 
   const liked = (id) => {
     return (currentProfile.playlist.filter(item => item.id === id).length > 0)
   }
+
+  const name = type === "movies" ? props.datamovie.title : props.datamovie.name
+  const media_type = type === 'movies'? 'movie' : 'tv'
+
+  useEffect(() => {
+    const genresList = props.datamovie.genres? [props.datamovie.genres.map( (e, index) => {return e.name})] : []
+    setGenres(genresList)    
+  }, [props.datamovie])
+  
     
   return (
       <div className='video-description'>
         <div className='video-description-top'>
-          <Link to={"/player/"+ (type === "movies" ? "movie" : "tv") +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>
+          <Link to={"/player/"+ media_type +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>
           <div className='video-icons'>
-            <Link to={"/player/"+ (type === "movies" ? "movie" : "tv") +"/"+props.datamovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
-            {liked(props.datamovie.id) ? <RemoveList id={props.datamovie.id} /> : <AddList id={props.datamovie.id} media_type={type === 'movies'? 'movie' : 'tv'} />}
+            <Link to={"/player/"+ media_type +"/"+props.datamovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
+            {liked(props.datamovie.id) ? <RemoveList id={props.datamovie.id} /> : <AddList id={props.datamovie.id} media_type={media_type} name={name} image={props.datamovie.backdrop_path} genres={genres}/>}
           </div>
         </div>
         <div className='video-description-info-container'>
@@ -37,7 +47,7 @@ const VideoDescription = (props) => {
             </div>
             <div className='info-general-2'>
               <span className='ranking'>
-              { type === "movies" ? props.datamovie.title : props.datamovie.name}
+              { name }
               </span>
               {/* <span className='ranking'>N.º 3 en TV hoy</span> */}
             </div>

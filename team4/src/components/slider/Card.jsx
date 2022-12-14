@@ -70,7 +70,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                   {isLiked ? (
                     <RemoveList id={movieData.id} />
                     ) : (
-                      <AddList id={movieData.id} media_type={movieData.media_type} />
+                      <AddList id={movieData.id} media_type={movieData.media_type} name={movieData.name} image={movieData.image} genres={movieData.genres}/>
                   )}
                   <HiOutlineThumbUp className="me-2" title="Like" />
                   <HiOutlineThumbDown className="me-2" title="Dislike" />

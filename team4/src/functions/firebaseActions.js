@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import {collection, doc, getDocs, setDoc, query, where, updateDoc, deleteDoc, addDoc, orderBy, limit, getDoc} from 'firebase/firestore'
+import {collection, doc, getDocs, setDoc, query, where, updateDoc, deleteDoc, addDoc, getDoc} from 'firebase/firestore'
 import db, { firebaseApp } from "../firebase/firebaseConfig";
 import { uuidv4 } from '@firebase/util';
 
@@ -16,22 +16,6 @@ export const queryData = async (source, qry = null) => {
     });
 
     return result
-}
-
-export const getMaxValue = async (source, field) => {
-    let result = []
-
-    const cnx = collection(db, source);
-    const res = query(cnx, where('id','!=', 6), orderBy(field, 'desc'), limit(1));
-
-    const datas = await getDocs(res);
-
-    datas.forEach(doc => {
-        result = [...result, doc.data()]
-    });
-
-
-    return result ? result[0].id : 0
 }
 
 export const addDataWithKey = async (source, key, data) => {
