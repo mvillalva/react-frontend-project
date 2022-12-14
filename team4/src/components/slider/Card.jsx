@@ -55,13 +55,13 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
               onClick={() => navigate("/player")}
             /> */}
           </div>
-          <div className="info-container flex column">
+          <div className="info-container d-flex flex-column">
             <h3 className="name" onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}>
               {movieData.name}
             </h3>
-            <div className="icons flex j-between">
-              <div className="controls flex justify-content-between">
-                <div className="flex">
+            <div className="icons d-flex justify-content-between">
+              <div className="controls d-flex justify-content-between w-100">
+                <div className="d-flex">
                   <IoPlayCircleSharp
                     className="me-2"
                     title="play"
@@ -80,12 +80,12 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                 </div>
               </div>
             </div>
-            <div className="genres flex row">
-              <div className="flex">
+            <div className="genres d-flex justify-content-start">
+              <ul className="d-flex flex-wrap">
                 {movieData.genres.map((genre, index) => (
-                  <span key={index}>{"* " + genre + " "}</span>
+                  <li key={index}>{ genre }</li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ const Container = styled.div`
   .hover {
     z-index: 11;
     height: max-content;
-    width: 18rem;
+    width: 20rem;
     position: absolute;
     top: -18vh;
     left: 0;
@@ -169,9 +169,12 @@ const Container = styled.div`
       }
     }
     .genres {
-      ul {
+      ul {        
         gap: 1rem;
-        li {
+        padding-left: 0;
+        margin-bottom: 0;
+        li {          
+          font-size: .85rem;
           padding-right: 0.7rem;
           &:first-of-type {
             list-style-type: none;
