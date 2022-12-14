@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import video from "../assets/video.mp4";
-import { IoPlayCircleSharp } from "react-icons/io5";
-import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
-import { BiChevronDown } from "react-icons/bi";
+import { IoChevronDownCircleOutline, IoPlayCircleSharp } from "react-icons/io5";
+import {HiOutlineThumbUp, HiOutlineThumbDown} from "react-icons/hi"
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 import AddList from "./AddList";
 import RemoveList from "./RemoveList";
@@ -34,7 +33,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => setIsHovered(false)}      
     >
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
@@ -68,16 +67,16 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                     title="play"
                     onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}
                   />
-                  <RiThumbUpFill className="me-2" title="Like" />
-                  <RiThumbDownFill className="me-2" title="Dislike" />
                   {isLiked ? (
                     <RemoveList id={movieData.id} />
-                  ) : (
-                    <AddList id={movieData.id} media_type={movieData.media_type} />
+                    ) : (
+                      <AddList id={movieData.id} media_type={movieData.media_type} />
                   )}
+                  <HiOutlineThumbUp className="me-2" title="Like" />
+                  <HiOutlineThumbDown className="me-2" title="Dislike" />
                 </div>
                 <div className="info">
-                  <BiChevronDown title="More info" onClick={(e) => {showDescription(e, movieData)}} />
+                  <IoChevronDownCircleOutline title="More info" onClick={(e) => {showDescription(e, movieData)}} />
                 </div>
               </div>
             </div>

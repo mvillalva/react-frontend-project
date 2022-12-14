@@ -1,9 +1,9 @@
 import React from "react";
 import { useContext } from "react";
 import { MainContext } from "../../context/MainContext"
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { TYPE } from "../../functions/general";
 import { updateData } from "../../functions/firebaseActions";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const AddList = ({id, media_type}) => {
 
@@ -27,7 +27,7 @@ const AddList = ({id, media_type}) => {
     }
 
     return (
-        <AiOutlinePlusCircle
+        <IoAddCircleOutline
             className="me-2"
             title="Add to my list"
             onClick={() => {addMyList();}}
