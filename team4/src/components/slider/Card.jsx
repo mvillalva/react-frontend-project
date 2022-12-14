@@ -4,10 +4,10 @@ import styled from "styled-components";
 // import video from "../assets/video.mp4";
 import { IoPlayCircleSharp } from "react-icons/io5";
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
-import { BsCheck } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
 import { BiChevronDown } from "react-icons/bi";
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
+import AddList from "./AddList";
+import RemoveList from "./RemoveList";
 
 let movieId;
 const movies = 'movies'
@@ -71,9 +71,9 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
                   <RiThumbUpFill className="me-2" title="Like" />
                   <RiThumbDownFill className="me-2" title="Dislike" />
                   {isLiked ? (
-                    <BsCheck className="me-2" title="Remove From List" />
+                    <RemoveList id={movieData.id} />
                   ) : (
-                    <AiOutlinePlus className="me-2" title="Add to my list" />
+                    <AddList id={movieData.id} media_type={movieData.media_type} />
                   )}
                 </div>
                 <div className="info">
@@ -155,14 +155,15 @@ const Container = styled.div`
       .controls {
         display: flex;
         gap: 1rem;
-      }
+      }      
       svg {
         font-size: 2rem;
-        cursor: pointer;
+        cursor: pointer;        
         transition: 0.3s ease-in-out;
+        border-radius: 50%;
         &:hover {
           color: #b8b8b8;
-        }
+        }      
       }
     }
     .genres {

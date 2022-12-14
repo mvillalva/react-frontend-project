@@ -1,11 +1,14 @@
 import React, { useState, useRef } from "react";
+import { useContext } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import styled from "styled-components";
+import { MainContext } from "../../context/MainContext";
 import Card from "./Card";
 
 export default React.memo(function CardSlider({ data, title }) {
   const [showControls, setShowControls] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(0);
+  const {currentProfile} = useContext(MainContext)
   const listRef = useRef();
 
   const handleDirection = (direction) => {
@@ -19,6 +22,10 @@ export default React.memo(function CardSlider({ data, title }) {
       setSliderPosition(sliderPosition + 1);
     }
   };
+
+  const liked = (id) => {
+    return (currentProfile.playlist.filter(item => item.id === id).length > 0)
+  }
 
   return (
     <Container
@@ -37,7 +44,7 @@ export default React.memo(function CardSlider({ data, title }) {
         </div>
         <div className="flex slider row" ref={listRef}>
           {data.map((movie, index) => {
-            return <Card movieData={movie} index={index} key={movie.id} />;
+            return <Card movieData={movie} index={index} key={movie.id} isLiked={liked(movie.id)}/>;
           })}
         </div>
         <div

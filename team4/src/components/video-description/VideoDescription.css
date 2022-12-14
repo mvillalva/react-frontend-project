@@ -6,7 +6,7 @@
 
 
 .video-description-top {
-     
+     position: relative;
 }
 
 .video-description-top img {
@@ -95,4 +95,27 @@
  .ranking {
      font-weight: 500;
      font-size: 20px;
+ }
+
+ .video-icons {
+    position: relative;
+    display: flex;    
+    align-items: center;
+    left: 10px;
+    bottom: 50px;    
+ }
+
+ .video-icons svg {
+    position: relative;
+    bottom: 7px;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(99, 99, 99, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+ }
+
+ .video-icons svg:hover {
+    color: rgb(255, 255, 255);
  }
