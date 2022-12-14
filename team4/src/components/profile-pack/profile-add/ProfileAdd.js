@@ -25,6 +25,7 @@ const ProfileAdd = (props) => {
             avatar: '',
             bg: bg,
             type: 'Profile',
+            playlist: [],
         }
 
         profiles.push(data)

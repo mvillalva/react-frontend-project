@@ -29,18 +29,12 @@ const Playlist = ({ data }) => {
 
     useEffect(() => {
         const getList = async () => {
-            const datas = await getMediaList(
-                [
-                    { id: 436270, media_type: "movie" },
-                    { id: 119051, media_type: "tv" },
-                ],
-                language
-            );            
+            const datas = await getMediaList(data, language);            
             setList(datas);
         };
 
         getList();
-    }, [language]);
+    }, [data, language]);
 
     const titulos = list.map((resultado, index) => {        
         return (
