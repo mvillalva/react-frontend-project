@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BsCheckCircle } from "react-icons/bs";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { MainContext } from "../../context/MainContext";
 import { updateData } from "../../functions/firebaseActions";
 import { TYPE } from "../../functions/general";
@@ -25,7 +25,7 @@ const RemoveList = ({ id }) => {
 
 
     return (
-        <BsCheckCircle
+        <IoCheckmarkCircleOutline
             className="me-2"
             title="Remove From List"
             onClick={() => {removeList();}}
