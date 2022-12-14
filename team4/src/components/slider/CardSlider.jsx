@@ -12,13 +12,17 @@ export default React.memo(function CardSlider({ data, title }) {
   const listRef = useRef();
 
   const handleDirection = (direction) => {
-    let distance = listRef.current.getBoundingClientRect().x - 70;
+    let distance = listRef.current.getBoundingClientRect().x - 70 ;
     if (direction === "left" && sliderPosition > 0) {
-      listRef.current.style.transform = `translateX(${230 + distance}px)`;
+      let firstDistance = sliderPosition === 1 ? 0 : 250+distance
+      
+      listRef.current.style.transform = `translateX(${firstDistance}px)`;
       setSliderPosition(sliderPosition - 1);
     }
-    if (direction === "right" && sliderPosition < 4) {
-      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+    if (direction === "right" && sliderPosition < 5) { 
+      let lastDistance = sliderPosition === 4 ? -250 - 70 + distance  : -250 + distance
+
+      listRef.current.style.transform = `translateX(${lastDistance}px)`;
       setSliderPosition(sliderPosition + 1);
     }
   };
@@ -29,7 +33,7 @@ export default React.memo(function CardSlider({ data, title }) {
 
   return (
     <Container
-      className="flex column"
+      className="d-flex flex-column"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
@@ -38,11 +42,11 @@ export default React.memo(function CardSlider({ data, title }) {
         <div
           className={`slider-action left ${
             !showControls ? "none" : ""
-          } flex j-center a-center`}
+          } d-flex justify-content-center align-items-center`}
         >
           <AiOutlineLeft onClick={() => handleDirection("left")} />
         </div>
-        <div className="flex slider row" ref={listRef}>
+        <div className="d-flex slider" ref={listRef}>
           {data.map((movie, index) => {
             return <Card movieData={movie} index={index} key={movie.id} isLiked={liked(movie.id)}/>;
           })}
@@ -50,7 +54,7 @@ export default React.memo(function CardSlider({ data, title }) {
         <div
           className={`slider-action right ${
             !showControls ? "none" : ""
-          } flex j-center a-center`}
+          } d-flex justify-content-center align-items-center`}
         >
           <AiOutlineRight onClick={() => handleDirection("right")} />
         </div>
@@ -89,12 +93,12 @@ const Container = styled.div`
       display: none;
     }
     .left {
-      top:130px;
+      top:30px;
       left: 0;
       cursor:pointer;
     }
     .right {
-      top:130px;
+      top:30px;
       right: 0;
       cursor:pointer;
     }
