@@ -12,15 +12,17 @@ export default React.memo(function CardSlider({ data, title }) {
   const listRef = useRef();
 
   const handleDirection = (direction) => {
+    const windWidth = window.innerWidth    
     let distance = listRef.current.getBoundingClientRect().x - 70 ;
+
     if (direction === "left" && sliderPosition > 0) {
       let firstDistance = sliderPosition === 1 ? 0 : 250+distance
       
       listRef.current.style.transform = `translateX(${firstDistance}px)`;
       setSliderPosition(sliderPosition - 1);
     }
-    if (direction === "right" && sliderPosition < 5) { 
-      let lastDistance = sliderPosition === 4 ? -250 - 70 + distance  : -250 + distance
+    if (direction === "right" && sliderPosition < (windWidth < 492 ? 8 : 5)) { 
+      let lastDistance = sliderPosition === (windWidth < 492 ? 7 : 4) ? -250 - 70 + distance  : -250 + distance
 
       listRef.current.style.transform = `translateX(${lastDistance}px)`;
       setSliderPosition(sliderPosition + 1);
