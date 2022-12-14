@@ -117,7 +117,7 @@ const Container = styled.div`
   .hover {
     z-index: 11;
     height: max-content;
-    width: 20rem;
+    width: 18rem;
     position: absolute;
     top: -18vh;
     left: 0;
