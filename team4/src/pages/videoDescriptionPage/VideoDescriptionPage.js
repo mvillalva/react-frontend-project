@@ -37,24 +37,22 @@ const VideoDescriptionPage = ({movieId, show, handleClose, type}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieId]);
 
-    if (isLoading) {
-        return <Loader />;
-      }
-    
-      return (
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="video-description-page-container">
-              <div className="centered-div">
-                  <VideoDescription datamovie={movieResults} type={type}>
-                  </VideoDescription>
-              </div>
+   
+    return isLoading ? <Loader /> :  
+    (
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="video-description-page-container">
+            <div className="centered-div">
+                <VideoDescription datamovie={movieResults} type={type}>
+                </VideoDescription>
             </div>
-          </Modal.Body>          
-        </Modal>
-      );
+          </div>
+        </Modal.Body>          
+      </Modal>
+    );
  }
   
  export default VideoDescriptionPage
