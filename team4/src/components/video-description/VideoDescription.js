@@ -20,13 +20,12 @@ const VideoDescription = (props) => {
   useEffect(() => {
     const genresList = [];
 
-    if (props.datamovie.genres) {
-      console.log(props.datamovie.genres)
+    if (props.datamovie.genres) {      
       props.datamovie.genres.forEach((genre) => {        
         if (genre.name) genresList.push(genre.name);
       });
     }
-
+    
     setGenres(genresList)
 
   }, [props.datamovie])
@@ -45,10 +44,10 @@ const VideoDescription = (props) => {
             <div className='info-general'>
               <span className='porcentaje'>97% para tí</span>
               <span className='anio'>
-                { type === "movies" ? props.datamovie.release_date : props.datamovie.first_air_date }
+                { type === "movies" ? props.datamovie.release_date : props.datamovie?.last_air_date ? props.datamovie.last_air_date : props.datamovie.first_air_date }
               </span>
               <span className='maturity'>13+</span>
-              <span className='temporadas'>4 temporadas</span>
+              {props.datamovie?.number_of_seasons ? <span className='temporadas'>{props.datamovie.number_of_seasons} {props.datamovie.number_of_seasons===1? "temporada" : "temporadas"}</span> : ''}
               <span className='hd'>HD</span>
             </div>
             <div className='info-general-2'>
@@ -64,15 +63,17 @@ const VideoDescription = (props) => {
           <div className='video-description-info-container-right'>
             <p>
               <span className='video-description-info-categoria'>Elenco: </span> 
-              <DescripcionItem link="https://netflix.com" label="Mellisa Roxburgh"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Josh Dallas"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Athena Karkanis"></DescripcionItem>, más
+              <DescripcionItem link="https://netflix.com" label="Mellisa Roxburgh"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Josh Dallas"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Athena Karkanis"></DescripcionItem> más
             </p>
             <p>
               <span className='video-description-info-categoria'>Género: </span> 
-              <DescripcionItem link="https://netflix.com" label="Series de Misterio"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Series de sci-fi"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="Series dramáticas"></DescripcionItem>
+              {genres.map((e, index) => (
+                <DescripcionItem key={index} link="https://netflix.com" label={e} /> 
+              ))}              
             </p>
             <p>
               <span className='video-description-info-categoria'>Este título es: </span> 
-              <DescripcionItem link="https://netflix.com" label="Surrealista"></DescripcionItem>, <DescripcionItem link="https://netflix.com" label="De suspenso"></DescripcionItem></p>
+              <DescripcionItem link="https://netflix.com" label="Surrealista"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="De suspenso"></DescripcionItem></p>
           </div>
         </div>
       </div>
