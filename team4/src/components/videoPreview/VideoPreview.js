@@ -24,20 +24,21 @@ const VideoPreview = ({show, className, videoId, height = null, width = null}) =
         show(false)
     }
 
+    let done = false
     const setDuration = (e) => {
-        const runtime = e.target.getDuration()
-        opts.playerVars['end'] = runtime <= 70 ? runtime - 10 : 70
-        e.target.setOption(opts)
+        if (e.data === 1 && !done) {
+            setTimeout(() => {hiddenControl(e)}, 40000)
+            done = true
+        }
     }
     
     const showControl = (e) => {
-        setDuration(e)
         show(true)
     }
 
 
     return (
-        <YouTube className={className} videoId={videoId} opts={opts} onReady={(e)=>{showControl(e)}} onEnd={(e)=>{hiddenControl(e)}} />
+        <YouTube className={className} videoId={videoId} opts={opts} onStateChange={(e) => {setDuration(e)}} onReady={(e)=>{showControl(e)}} onEnd={(e)=>{hiddenControl(e)}} />
     );
 };
 

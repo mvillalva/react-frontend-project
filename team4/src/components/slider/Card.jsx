@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // import video from "../assets/video.mp4";
-import { IoPlayCircleSharp } from "react-icons/io5";
-import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
-import { BsCheck } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
+import { IoChevronDownCircleOutline, IoPlayCircleSharp } from "react-icons/io5";
+import {HiOutlineThumbUp, HiOutlineThumbDown} from "react-icons/hi"
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
+import AddList from "./AddList";
+import RemoveList from "./RemoveList";
 
 let movieId;
 const movies = 'movies'
@@ -34,7 +33,7 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => setIsHovered(false)}      
     >
       <img
         src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
@@ -56,35 +55,35 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
               onClick={() => navigate("/player")}
             /> */}
           </div>
-          <div className="info-container flex column">
+          <div className="info-container d-flex flex-column">
             <h3 className="name" onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}>
               {movieData.name}
             </h3>
-            <div className="icons flex j-between">
-              <div className="controls flex justify-content-between">
-                <div className="flex">
+            <div className="icons d-flex justify-content-between">
+              <div className="controls d-flex justify-content-between w-100">
+                <div className="d-flex">
                   <IoPlayCircleSharp
                     className="me-2"
                     title="play"
                     onClick={() => navigate("/player/" + movieData.media_type + "/" +movieData.id)}
                   />
-                  <RiThumbUpFill className="me-2" title="Like" />
-                  <RiThumbDownFill className="me-2" title="Dislike" />
                   {isLiked ? (
-                    <BsCheck className="me-2" title="Remove From List" />
-                  ) : (
-                    <AiOutlinePlus className="me-2" title="Add to my list" />
+                    <RemoveList id={movieData.id} />
+                    ) : (
+                      <AddList id={movieData.id} media_type={movieData.media_type} name={movieData.name} image={movieData.image} genres={movieData.genres}/>
                   )}
+                  <HiOutlineThumbUp className="me-2" title="Like" />
+                  <HiOutlineThumbDown className="me-2" title="Dislike" />
                 </div>
                 <div className="info">
-                  <BiChevronDown title="More info" onClick={(e) => {showDescription(e, movieData)}} />
+                  <IoChevronDownCircleOutline title="More info" onClick={(e) => {showDescription(e, movieData)}} />
                 </div>
               </div>
             </div>
-            <div className="genres flex row">
-              <ul className="flex">
-                {movieData.genres.map((genre) => (
-                  <span key={genre}>{"* " + genre + " "}</span>
+            <div className="genres d-flex justify-content-start">
+              <ul className="d-flex flex-wrap">
+                {movieData.genres.map((genre, index) => (
+                  <li key={index}>{ genre }</li>
                 ))}
               </ul>
             </div>
@@ -103,11 +102,11 @@ export default React.memo(function Card({ movieData, isLiked = false }) {
 });
 
 const Container = styled.div`
-  max-width: 230px;
-  width: 230px;
+  max-width: 250px;
+  width: 250px;
   height: 100%;
   cursor: pointer;
-  position: relative;  
+  position: relative;    
   img {
     border-radius: 0.2rem;
     width: 100%;
@@ -115,7 +114,7 @@ const Container = styled.div`
     z-index: 10;
   }
   .hover {
-    z-index: 90;
+    z-index: 11;
     height: max-content;
     width: 20rem;
     position: absolute;
@@ -149,26 +148,33 @@ const Container = styled.div`
     }
     .info-container {
       padding: 1rem;
-      gap: 0.5rem;
+      gap: 0.5rem;      
+    }
+    .name {
+      font-size: 1.2rem;
     }
     .icons {
       .controls {
         display: flex;
         gap: 1rem;
-      }
+      }      
       svg {
         font-size: 2rem;
-        cursor: pointer;
+        cursor: pointer;        
         transition: 0.3s ease-in-out;
+        border-radius: 50%;
         &:hover {
           color: #b8b8b8;
-        }
+        }      
       }
     }
     .genres {
-      ul {
+      ul {        
         gap: 1rem;
-        li {
+        padding-left: 0;
+        margin-bottom: 0;
+        li {          
+          font-size: .85rem;
           padding-right: 0.7rem;
           &:first-of-type {
             list-style-type: none;

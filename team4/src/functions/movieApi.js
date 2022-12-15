@@ -65,7 +65,7 @@ export const getMovieClips = async (id, type='movie') => {
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {        
-        res = response.results.filter(e => e.type === 'Clip');
+        res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
     })
     
     return res
@@ -78,28 +78,9 @@ export const getSeriesClips = async (id) => {
     
     await fetch(api_url)
     .then(data => data.json())
-    .then(response => {        
-        res = response.results.filter(e => e.type === 'Clip');
+    .then(response => {
+        res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
     })
     
     return res
-}
-
-export const getMediaList = async (list, language) => {
-    let media = []
-    list.forEach( async data => {
-        let url = `${API_BASE_URL}/${data.media_type}/${data.id}?api_key=${API_KEY}&language=${language}`
-        let rta = []
-
-        await fetch(url)
-        .then(data => data.json())
-        .then(response => {        
-            response.media_type = data.media_type
-            rta = response
-        })
-
-        media.push(rta)
-    });
-
-    return media
 }
