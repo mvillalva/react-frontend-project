@@ -12,18 +12,24 @@ const VideoDescription = (props) => {
   const {type} = props;  
   const webUrl = `https://image.tmdb.org/t/p/original/${props.datamovie.backdrop_path}`;
 
-  const liked = (id) => {
-    return (currentProfile.playlist.filter(item => item.id === id).length > 0)
-  }
-
   const name = type === "movies" ? props.datamovie.title : props.datamovie.name
   const media_type = type === 'movies'? 'movie' : 'tv'
 
+  const liked = (id) => currentProfile.playlist.filter(item => item.id === props.datamovie.id).length > 0
+
   useEffect(() => {
-    const genresList = props.datamovie.genres? [props.datamovie.genres.map( (e, index) => {return e.name})] : []
-    setGenres(genresList)    
+    const genresList = [];
+
+    if (props.datamovie.genres) {
+      console.log(props.datamovie.genres)
+      props.datamovie.genres.forEach((genre) => {        
+        if (genre.name) genresList.push(genre.name);
+      });
+    }
+
+    setGenres(genresList)
+
   }, [props.datamovie])
-  
     
   return (
       <div className='video-description'>
