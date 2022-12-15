@@ -26,7 +26,7 @@ const VideoPreview = ({show, className, videoId, height = null, width = null}) =
 
     const setDuration = (e) => {
         const runtime = e.target.getDuration()
-        opts.playerVars['end'] = runtime <= 70 ? runtime - 10 : 70
+        opts.playerVars['end'] = 40
         e.target.setOption(opts)
     }
     

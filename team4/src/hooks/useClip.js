@@ -17,7 +17,10 @@ const useClip = (id, showInMobile = true, height = null, width = null) => {
 
     const getClip = async (id) => {        
         const movieClips = await getMovieClips(id)
-        const videoClip = movieClips.length > 0 ? <VideoPreview show={setShowPlayer} className="home-movie-video" videoId={movieClips[getRandomInt(0, movieClips.length-1)].key} height={height} width={width} /> : null
+        const movieIndex = movieClips.length > 0 ? getRandomInt(0, movieClips.length-1) : 0
+        const movieId = movieClips.length > 0 ? movieClips[movieIndex].key : 'EC9EFoot_a0'
+
+        const videoClip = <VideoPreview show={setShowPlayer} className="home-movie-video" videoId={movieId} height={height} width={width} />
 
         if (videoClip) {
             showClip(videoClip)            
