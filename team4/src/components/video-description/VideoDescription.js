@@ -6,7 +6,7 @@ import AddList from '../slider/AddList';
 import { MainContext } from '../../context/MainContext';
 import RemoveList from '../slider/RemoveList';
 
-const VideoDescription = (props) => {
+const VideoDescription = React.memo((props) => {
   const [genres, setGenres] = useState([])
   const {currentProfile} = useContext(MainContext)    
   const {type} = props;  
@@ -14,6 +14,8 @@ const VideoDescription = (props) => {
 
   const name = type === "movies" ? props.datamovie.title : props.datamovie.name
   const media_type = type === 'movies'? 'movie' : 'tv'
+  let anio = type === "movies" ? props.datamovie.release_date : props.datamovie?.last_air_date ? props.datamovie.last_air_date : props.datamovie.first_air_date
+  anio = anio ? anio.substring(0,4) : ''  
 
   const liked = (id) => currentProfile.playlist.filter(item => item.id === props.datamovie.id).length > 0
 
@@ -44,7 +46,7 @@ const VideoDescription = (props) => {
             <div className='info-general'>
               <span className='porcentaje'>97% para tí</span>
               <span className='anio'>
-                { type === "movies" ? props.datamovie.release_date : props.datamovie?.last_air_date ? props.datamovie.last_air_date : props.datamovie.first_air_date }
+                { anio }
               </span>
               <span className='maturity'>13+</span>
               {props.datamovie?.number_of_seasons ? <span className='temporadas'>{props.datamovie.number_of_seasons} {props.datamovie.number_of_seasons===1? "temporada" : "temporadas"}</span> : ''}
@@ -78,6 +80,6 @@ const VideoDescription = (props) => {
         </div>
       </div>
   )
-}
+})
 
 export default VideoDescription
