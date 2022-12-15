@@ -65,7 +65,7 @@ export const getMovieClips = async (id, type='movie') => {
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {        
-        res = response.results.filter(e => e.type === 'Clip');
+        res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
     })
     
     return res
@@ -78,8 +78,8 @@ export const getSeriesClips = async (id) => {
     
     await fetch(api_url)
     .then(data => data.json())
-    .then(response => {        
-        res = response.results.filter(e => e.type === 'Clip');
+    .then(response => {
+        res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
     })
     
     return res
