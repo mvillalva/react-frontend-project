@@ -23,7 +23,6 @@ const AddList = ({ id, media_type, name, image, genres }) => {
         currentProfile.playlist = playlist;
 
         editProfiles.push(currentProfile);
-        console.log(editProfiles)
 
         await updateData("users", { profiles: editProfiles });
 
