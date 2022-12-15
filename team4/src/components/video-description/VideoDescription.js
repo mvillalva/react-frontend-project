@@ -10,7 +10,7 @@ const VideoDescription = React.memo((props) => {
   const [genres, setGenres] = useState([])
   const {currentProfile} = useContext(MainContext)    
   const {type} = props;  
-  const webUrl = `https://image.tmdb.org/t/p/original/${props.datamovie.backdrop_path}`;
+  const webUrl = `${process.env.REACT_APP_BASE_URL_IMG}/${props.datamovie.backdrop_path}`;
 
   const name = type === "movies" ? props.datamovie.title : props.datamovie.name
   const media_type = type === 'movies'? 'movie' : 'tv'
