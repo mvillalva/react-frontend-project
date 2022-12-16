@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import ButtonLogIn from "./ButtonLogIn";
 import Form from "react-bootstrap/Form";
@@ -9,20 +9,22 @@ import { getAuth, signInWithEmailAndPassword,} from 'firebase/auth';
 // import { Button } from "react-bootstrap";
 // import {googleSingIn} from "../../functions/firebaseActions"
 import ButtonGoogle from "./ButtonGoogle";
+import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 
 
 function Login() {
-    
+  const {language} = useContext(MainContext)
 
-
-    const [userR, setUser] = useState({
+  const [userR, setUser] = useState({      
     email:"",
     password:"",
 
-});
-const handleChange = ({target:{name,value}})=>{
-        setUser({...userR,[name]: value})
- };
+  });
+
+  const handleChange = ({target:{name,value}})=>{
+          setUser({...userR,[name]: value})
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,16 +46,16 @@ const handleChange = ({target:{name,value}})=>{
     };
   return (
     <div className="Login">
-      <h1 className="loginPage-title"> Login to Netflix </h1>      
+      <h1 className="loginPage-title"> {LANGUAGES[language].LOGIN_TITLE} </h1>      
       <form onSubmit={handleSubmit}>
-        <h1>Inicia sesión</h1>
+        <h1>{LANGUAGES[language].LOGIN_START}</h1>
 
         <div className="InpUserName mb-2">
           <input
             style={ {width: "100%", height: "45px" }}
             type="text"
             name="email"
-            placeholder="Email o número de teléfono"
+            placeholder={LANGUAGES[language].LOGIN_EMAIL}
             onChange={handleChange}
           />
         </div>
@@ -62,7 +64,7 @@ const handleChange = ({target:{name,value}})=>{
           <input style={ {width: "100%", height: "45px" }}
             type="password"
             name="password"
-            placeholder="Contraseña"
+            placeholder={LANGUAGES[language].LOGIN_PASSWORD}
             onChange={handleChange}
           />
         </div>          
@@ -71,18 +73,17 @@ const handleChange = ({target:{name,value}})=>{
         <ButtonGoogle />
 
         <div className="checkBoxLogin d-flex justify-content-between small mb-2">
-          <Form.Check aria-label="option 1" label="Recuérdame" id='check' />
-          <Link to="/LoginHelp" className="text-decoration-none text-secondary">¿Necesitas ayuda?</Link>
+          <Form.Check aria-label="option 1" label={LANGUAGES[language].LOGIN_REMEMBER} id='check' />
+          <Link to="/LoginHelp" className="text-decoration-none text-secondary">{LANGUAGES[language].LOGIN_HELP}</Link>
         </div>        
       </form>
 
       <div className="login-signup-now text-left mb-3">
-        ¿Primera vez en Netflix? 
-        <Link to="/" className="text-decoration-none text-light"> Suscríbete ahora</Link>.
+      {LANGUAGES[language].LOGIN_NEW}
+        <Link to="/" className="text-decoration-none text-light"> {LANGUAGES[language].LOGIN_SUBSCRIBE}</Link>.
       </div>
       <span className="derechos">
-        Esta página está protegida por Google reCAPTCHA para comprobar que no
-        solo eres un robot.
+      {LANGUAGES[language].LOGIN_PROTECT_TEXT}
       </span>
     </div>
   );
