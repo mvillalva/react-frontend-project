@@ -10,7 +10,6 @@ const Playlist = ({ data }) => {
 
     return (
         <>
-            <h1 className="pt-5 ps-5 fs-3">Mi lista</h1>
             <div className="playlist-list">
                 {list.length > 0 ? (
                     <div className="d-flex my-5 gap-2 justify-content-start flex-wrap" style={{maxWidth: "1285px"}}>

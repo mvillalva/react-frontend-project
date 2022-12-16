@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 
 const SearchInput = ({state, buscar}) => {
     const navigate = useNavigate()
@@ -35,7 +36,7 @@ const SearchInput = ({state, buscar}) => {
         state.click?
         <div className="search-container position-relative">
             <span className="icon-start fas fa-search text-light fs-5"></span>
-            <Form.Control id="search-input" className="search-input" placeholder="Títulos, personas, géneros" onChange={(e) => search(e)} onBlur={(e)=>{verifyState(e)}} autoFocus></Form.Control>
+            <Form.Control id="search-input" className="search-input" placeholder={LANGUAGES[language].SEARCH_PLACEHOLDER} onChange={(e) => search(e)} onBlur={(e)=>{verifyState(e)}} autoFocus></Form.Control>
             <span className="icon-end fas fa-times text-light fs-5" onClick={() => {deleteContent();}}></span>
         </div>
         :''

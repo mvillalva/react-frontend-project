@@ -3,7 +3,7 @@ import VideoPreview from '../components/videoPreview/VideoPreview'
 import { getRandomInt } from '../functions/general'
 import { getMovieClips } from '../functions/movieApi'
 
-const useClip = (id, showInMobile = true, height = null, width = null) => {
+const useClip = (id, media, showInMobile = true, height = null, width = null) => {
     const {innerWidth} = window
     const [loadedClip, setLoadedClip] = useState(null)
     const [showPlayer, setShowPlayer] = useState(false)
@@ -16,7 +16,7 @@ const useClip = (id, showInMobile = true, height = null, width = null) => {
     }
 
     const getClip = async (id) => {        
-        const movieClips = await getMovieClips(id)
+        const movieClips = await getMovieClips(id, media)
         const movieIndex = movieClips.length > 0 ? getRandomInt(0, movieClips.length-1) : 0
         const movieId = movieClips.length > 0 ? movieClips[movieIndex].key : 'EC9EFoot_a0'
 

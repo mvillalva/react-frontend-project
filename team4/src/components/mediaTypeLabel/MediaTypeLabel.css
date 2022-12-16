@@ -1,0 +1,9 @@
+.media-logo-size {
+    max-height: 35px;
+}
+
+.media-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    letter-spacing: 7px !important;
+}

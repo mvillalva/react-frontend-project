@@ -9,10 +9,11 @@ import AccountMenu from '../accountMenu/AccountMenu'
 import Profile from '../profile-pack/profile/Profile'
 import { closeSession, TYPE } from "../../functions/general";
 import { MainContext } from '../../context/MainContext'
+import { LANGUAGES } from '../../languages'
 
 const NavBar = (props) => {
     const thisLocation = useLocation();
-    const {profiles, currentProfile, changeState} = useContext(MainContext)
+    const {profiles, currentProfile, language, changeState} = useContext(MainContext)
 
     let filter = props.filter.find(e => matchPath({ path: e }, thisLocation.pathname))    
     
@@ -37,19 +38,19 @@ const NavBar = (props) => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">                    
                         <li className="nav-item me-2">
-                            <Link className="nav-link active" to="/home" >Inicio <span className="visually-hidden">(current)</span></Link>
+                            <Link className="nav-link active" to="/home" >{LANGUAGES[language].HOME} <span className="visually-hidden">(current)</span></Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="/series">Series</Link>
+                            <Link className="nav-link" to="/series">{LANGUAGES[language].TV_SHOWS}</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/movies">Películas</Link>
+                            <Link className="nav-link" to="/movies">{LANGUAGES[language].MOVIES}</Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="#">Novedades populares</Link>
+                            <Link className="nav-link" to="#">{LANGUAGES[language].NEW_POPULAR}</Link>
                         </li>
                         <li className="nav-item me-2">
-                            <Link className="nav-link" to="/Playlist">Mi lista</Link>
+                            <Link className="nav-link" to="/Playlist">{LANGUAGES[language].MY_LIST}</Link>
                         </li>
                     </Nav>                    
                 </Navbar.Collapse>
@@ -61,11 +62,11 @@ const NavBar = (props) => {
                             {getProfiles()} 
                             <li>
                                 <span className="me-3 fas fa-pencil"></span>
-                                <Link className="text-decoration-none text-light" to="/ManageProfiles">Administrar perfiles</Link>
+                                <Link className="text-decoration-none text-light" to="/ManageProfiles">{LANGUAGES[language].MANAGE_PROFILES}</Link>
                             </li>
                         </ul>
                         <hr />
-                        <Link className="text-decoration-none text-light" to='#' onClick={(e) => closeSession(e) }>Cerrar sesión en Netflix</Link>
+                        <Link className="text-decoration-none text-light" to='#' onClick={(e) => closeSession(e) }>{LANGUAGES[language].LOGOUT}</Link>
                     </AccountMenu>                    
                 </div>
             </Container>
