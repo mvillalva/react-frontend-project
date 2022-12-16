@@ -9,7 +9,7 @@ const Home = (props) => {
   const {language} = useContext(MainContext)
   
   useEffect(() => {
-    document.title = `${LANGUAGES[language].HOME_PAGE} - Team4`;
+    document.title = `${LANGUAGES[language].HOME_PAGE} — Team4`;
   });
 
   return (

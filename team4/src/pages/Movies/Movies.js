@@ -9,7 +9,7 @@ const Movies = (props) => {
     const {language} = useContext(MainContext)
 
     useEffect( () => {
-        document.title = `${LANGUAGES[language].MOVIES} - Team4`
+        document.title = `${LANGUAGES[language].MOVIES} — Team4`
     })
 
     return (

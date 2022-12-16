@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { MainContext } from '../../../context/MainContext'
 import { updateData } from '../../../functions/firebaseActions'
 import { TYPE } from '../../../functions/general'
+import { LANGUAGES } from '../../../languages'
 import './ProfileEdit.css'
 
 const ProfileEdit = (props) => {
@@ -11,7 +12,7 @@ const ProfileEdit = (props) => {
     const navigate = useNavigate()
     const location = useLocation()
     const params = useParams()    
-    const {profiles, changeState} = useContext(MainContext)      
+    const {profiles, language, changeState} = useContext(MainContext)      
     
     const profile = profiles.filter(e => e.uuid === params.id)[0]
     
@@ -41,7 +42,7 @@ const ProfileEdit = (props) => {
         }
     }
 
-    const showAvatars = () => {
+    const showAvatars = () => {        
 
         let input = document.getElementById('profile-name')
         
@@ -64,7 +65,7 @@ const ProfileEdit = (props) => {
         <div className="edit-container">
             <div className="centered-div animate-container">
                 <div className="edit-actions-container">
-                    <h1 className="hh1">Editar perfil</h1>
+                    <h1 className="hh1">{LANGUAGES[language].EDIT_PROFILE}</h1>
                     <div className="edit-metadata edit-entry">
                         <div className="profile-avatar">                            
                             <div className={'profile-icon sz-img ' + bg} onClick={()=>{showAvatars()}}></div>
@@ -72,17 +73,17 @@ const ProfileEdit = (props) => {
                         <div className="profile-edit-parent">
                             <div className="profile-edit-inputs">
                                 <Form>
-                                    <Form.Control type="text" className="" id="profile-name" placeholder='Nombre' defaultValue={name} isInvalid={isInvalid} />
+                                    <Form.Control type="text" className="" id="profile-name" placeholder={LANGUAGES[language].NAME} defaultValue={name} isInvalid={isInvalid} />
                                     <Form.Control.Feedback type="invalid" className="invalid">
-                                        Ya existe ese nombre de perfil
+                                        {LANGUAGES[language].PROFILE_EXISTS}
                                     </Form.Control.Feedback>
                                 </Form>
                             </div>                
                         </div>
                     </div>
-                    <Link to='/ManageProfiles' className="edit-button preferred-action" onClick={(e)=>{saveData(e)}}>Guardar</Link>
-                    <Link to='/ManageProfiles' className="edit-button">Cancelar</Link>
-                    {profiles.length > 2 && <Link to={'/DeleteProfile/'+ params.id} className="edit-button">Eliminar perfil</Link>}
+                    <Link to='/ManageProfiles' className="edit-button preferred-action" onClick={(e)=>{saveData(e)}}>{LANGUAGES[language].SAVE}</Link>
+                    <Link to='/ManageProfiles' className="edit-button">{LANGUAGES[language].CANCEL}</Link>
+                    {profiles.length > 2 && <Link to={'/DeleteProfile/'+ params.id} className="edit-button">{LANGUAGES[language].DELETE_PROFILE}</Link>}
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ const Series = (props) => {
     const {language} = useContext(MainContext)
 
     useEffect( () => {
-        document.title = `${LANGUAGES[language].TV_SHOWS} - Team4`
+        document.title = `${LANGUAGES[language].TV_SHOWS} — Team4`
     })
 
     return (
