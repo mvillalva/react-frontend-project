@@ -5,11 +5,12 @@ import Profile from "../../components/profile-pack/profile/Profile";
 import ProfileAddButton from "../../components/profile-pack/profile/ProfileAddButton";
 import ProfileList from "../../components/profile-pack/profileList/ProfileList";
 import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 import './Profiles.css'
 
 const Profiles = ({title, action}) => {
 
-    const {profiles} = useContext(MainContext)    
+    const {profiles, language} = useContext(MainContext)    
 
     const LoadProfiles = () => {
         return profiles
@@ -22,7 +23,7 @@ const Profiles = ({title, action}) => {
                              : <Profile profile={e} action={action} key={index}></Profile>)
     }
 
-    const button_title = action === 'R'? "Administrar perfiles" : "Listo"    
+    const button_title = action === 'R'? LANGUAGES[language].MANAGE_PROFILES : LANGUAGES[language].DONE    
 
     return (
         profiles.length === 0 

@@ -6,12 +6,13 @@ import { uuidv4 } from "@firebase/util";
 import './ProfileAdd.css'
 import { TYPE } from "../../../functions/general";
 import { Form } from "react-bootstrap";
+import { LANGUAGES } from "../../../languages";
 
 const ProfileAdd = (props) => {
     const [isInvalid, setIsInvalid] = useState(false);    
     const navigate = useNavigate()
     const location = useLocation()
-    const {profiles, changeState} = useContext(MainContext)
+    const {profiles, language, changeState} = useContext(MainContext)
 
     let bg = 'bg-5'
     let name = ''
@@ -66,8 +67,8 @@ const ProfileAdd = (props) => {
         <div className="add-container">
             <div className="centered-div animate-container">
                 <div className="add-actions-container">
-                    <h1 className="hh1">Agregar perfil</h1>
-                    <h2 className="hh2">Agrega un perfil para otra persona que ve Netflix.</h2>
+                    <h1 className="hh1">{LANGUAGES[language].ADD_PROFILE}</h1>
+                    <h2 className="hh2">{LANGUAGES[language].ADD_PROFILE_TEXT}</h2>
                     <div className="add-metadata add-entry">
                         <div className="profile-avatar">
                             <div className={'profile-icon ' + bg} onClick={()=>{showAvatars()}}></div>
@@ -75,24 +76,23 @@ const ProfileAdd = (props) => {
                         <div className="add-add-parent">
                             <div className="add-entry-inputs"> 
                                 <Form>
-                                    <Form.Control type="text" className="" id="profile-name" placeholder='Nombre' defaultValue={name} isInvalid={isInvalid} />
+                                    <Form.Control type="text" className="" id="profile-name" placeholder={LANGUAGES[language].NAME} defaultValue={name} isInvalid={isInvalid} />
                                     <Form.Control.Feedback type="invalid" className="invalid">
-                                        Ya existe ese nombre de perfil
+                                        {LANGUAGES[language].PROFILE_EXISTS}
                                     </Form.Control.Feedback>
                                 </Form>
                                 <div className="option-wrapper">
-                                    <div className="add-kids-option">
+                                    <div className="add-kids-option" title={LANGUAGES[language].KID_TOOLTIP}>
                                         <input type="checkbox" id="add-kids-profile" />
                                         <label htmlFor="add-kids-profile"></label>
-                                        <span className="add-kids-marker" role="checkbox" aria-checked="false">¿Niños?</span>
-                                        <span className="kids-profile-tooltip">Si se selecciona esta opción, este perfil solo puede ver películas y series clasificadas para menores de 12&nbsp;años.</span>
+                                        <span className="add-kids-marker" role="checkbox" aria-checked="false">{LANGUAGES[language].KID}</span>                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <Link to="/ManageProfiles" className="add-button preferred-action" onClick={(e)=>{addProfile(e)}}><span>Continuar</span></Link>
-                    <Link to="/ManageProfiles" className="add-button"><span>Cancelar</span></Link>
+                    <Link to="/ManageProfiles" className="add-button preferred-action" onClick={(e)=>{addProfile(e)}}><span>{LANGUAGES[language].CONTINUE}</span></Link>
+                    <Link to="/ManageProfiles" className="add-button"><span>{LANGUAGES[language].CANCEL}</span></Link>
                 </div>
             </div>
         </div>

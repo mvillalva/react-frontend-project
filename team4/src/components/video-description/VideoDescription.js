@@ -45,7 +45,7 @@ const VideoDescription = React.memo((props) => {
         <div className='video-description-info-container'>
           <div className='video-description-info-container-left'>
             <div className='info-general'>
-              <span className='porcentaje'>97% para tí</span>
+              <span className='porcentaje'>{`97% ${LANGUAGES[language].MATCH}`}</span>
               <span className='anio'>
                 { anio }
               </span>
@@ -65,7 +65,7 @@ const VideoDescription = React.memo((props) => {
           </div>
           <div className='video-description-info-container-right'>
             <p>
-              <span className='video-description-info-categoria'>Elenco: </span> 
+              <span className='video-description-info-categoria'>{LANGUAGES[language].CAST}: </span> 
               <DescripcionItem link="https://netflix.com" label="Mellisa Roxburgh"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Josh Dallas"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Athena Karkanis"></DescripcionItem> más
             </p>
             <p>
@@ -75,7 +75,7 @@ const VideoDescription = React.memo((props) => {
               ))}              
             </p>
             <p>
-              <span className='video-description-info-categoria'>Este título es: </span> 
+              <span className='video-description-info-categoria'>{media_type==='movie' ? LANGUAGES[language].THIS_MOVIE_IS : LANGUAGES[language].THIS_SHOW_IS}: </span> 
               <DescripcionItem link="https://netflix.com" label="Surrealista"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="De suspenso"></DescripcionItem></p>
           </div>
         </div>

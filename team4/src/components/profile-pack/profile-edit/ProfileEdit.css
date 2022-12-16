@@ -153,6 +153,10 @@
     width: 18em;
 }
 
+.edit-entry input::placeholder {
+    color:rgba(255, 255, 255, 0.7) !important;
+}
+
 .edit-entry .profile-edit-parent input[type=text] {
     margin: 0;
     width: 100%;

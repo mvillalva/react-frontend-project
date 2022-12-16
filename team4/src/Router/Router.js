@@ -23,15 +23,16 @@ import Movies from '../pages/Movies/Movies';
 import Footer from '../components/footer/Footer';
 import Player from "../pages/Player/Player";
 import { TYPE } from '../functions/general';
+import { LANGUAGES } from '../languages';
 
 const Router = (props) => {     
-    const {profiles, changeState} = useContext(MainContext)
+    const {profiles, language, changeState} = useContext(MainContext)
 
     const Principal = () => props.profilesLoaded ?
                             (   
                                 profiles.length === 2 ?
                                 <Navigate to='/home' /> :
-                                <Profiles title="¿Quién está viendo ahora?" profiles={profiles} action='R' />
+                                <Profiles title={LANGUAGES[language].WHOS_WATCHING} profiles={profiles} action='R' />
                             )
                             :   <Loader />
     
@@ -74,11 +75,11 @@ const Router = (props) => {
                 <Route path="/LoginHelp" element={isLoggedIn? <Navigate to='/start' /> : <LoginHelp />}></Route>
                 <Route path="/VideoDescriptionPage" element={isLoggedIn? <VideoDescriptionPage title="Manifiesto" /> : <Navigate to='/' />}></Route>
                 <Route path="/Playlist" element={isLoggedIn? <PlaylistPage title="Playlist" /> : <Navigate to='/start' /> }></Route>
-                <Route path="/profiles" element={loadPage(<Profiles title="¿Quién está viendo ahora?" action='R' /> , <Navigate to='/start' />) }></Route>
+                <Route path="/profiles" element={loadPage(<Profiles title={LANGUAGES[language].WHOS_WATCHING} action='R' /> , <Navigate to='/start' />) }></Route>
                 <Route path="/home" element={loadPage(<Home /> , <Navigate to='/' />)}></Route>
                 <Route path="/series" element={loadPage(<Series /> , <Navigate to='/start' />)}></Route>
                 <Route path="/movies" element={loadPage(<Movies /> , <Navigate to='/start' />)}></Route>
-                <Route path="/ManageProfiles" element={loadPage(<Profiles title="Administrar perfiles:" action='U' /> , <Navigate to='/start' />) }></Route>
+                <Route path="/ManageProfiles" element={loadPage(<Profiles title={LANGUAGES[language].MANAGE_PROFILES} action='U' /> , <Navigate to='/start' />) }></Route>
                 <Route path="/AddProfile" element={isLoggedIn? <ProfileAdd /> : <Navigate to='/start' /> }></Route>
                 <Route path="/EditProfile/:id" element={isLoggedIn? <ProfileEdit /> : <Navigate to='/start' /> }></Route>
                 <Route path="/DeleteProfile/:id" element={isLoggedIn? <ProfileDelete /> : <Navigate to='/start' /> }></Route>
