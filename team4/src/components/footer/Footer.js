@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 import "./Footer.css";
 
 function Footer() {
-    const {isLoading} = useContext(MainContext)
+    const {isLoading, language} = useContext(MainContext)
 
     return (
         isLoading ? '' : 
@@ -46,62 +47,62 @@ function Footer() {
             <ul className="member-footer-links">
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="/browse/audio-description">
-                        <span className="member-footer-link-content">Audio descriptivo</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].AUDIO_DESCRIPTION}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/">
-                        <span className="member-footer-link-content">Centro de ayuda</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].HELP_CENTER}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="/redeem">
-                        <span className="member-footer-link-content">Tarjetas de regalo</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].GIFT_CARDS}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://media.netflix.com/">
-                        <span className="member-footer-link-content">Prensa</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].MEDIA_CENTER}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="http://ir.netflix.com/">
-                        <span className="member-footer-link-content">Relaciones con inversionistas</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].INVESTOR_RELATIONS}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://jobs.netflix.com/">
-                        <span className="member-footer-link-content">Empleo</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].JOBS}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/legal/termsofuse">
-                        <span className="member-footer-link-content">Términos de uso</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].TERM_USE}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/legal/privacy">
-                        <span className="member-footer-link-content">Privacidad</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].PRIVACY}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/legal/notices">
-                        <span className="member-footer-link-content">Avisos legales</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].LEGAL_NOTICE}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="/Cookies">
-                        <span className="member-footer-link-content">Preferencias de cookies</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].COOKIE_PREF}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/legal/corpinfo">
-                        <span className="member-footer-link-content">Información corporativa</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].CORPORATE_INFO}</span>
                     </Link>
                 </li>
                 <li className="member-footer-link-wrapper">
                     <Link className="member-footer-link" to="https://help.netflix.com/contactus">
-                        <span className="member-footer-link-content">Contáctanos</span>
+                        <span className="member-footer-link-content">{LANGUAGES[language].CONTACT_US}</span>
                     </Link>
                 </li>
             </ul>

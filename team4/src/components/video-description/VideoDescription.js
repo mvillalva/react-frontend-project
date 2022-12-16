@@ -5,10 +5,11 @@ import DescripcionItem from "../../components/descripcionItem/DescripcionItem";
 import AddList from '../slider/AddList';
 import { MainContext } from '../../context/MainContext';
 import RemoveList from '../slider/RemoveList';
+import { LANGUAGES } from '../../languages';
 
 const VideoDescription = React.memo((props) => {
   const [genres, setGenres] = useState([])
-  const {currentProfile} = useContext(MainContext)    
+  const {currentProfile, language} = useContext(MainContext)    
   const {type} = props;  
   const webUrl = `${process.env.REACT_APP_BASE_URL_IMG}/${props.datamovie.backdrop_path}`;
 
@@ -37,7 +38,7 @@ const VideoDescription = React.memo((props) => {
         <div className='video-description-top'>
           <Link to={"/player/"+ media_type +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>
           <div className='video-icons'>
-            <Link to={"/player/"+ media_type +"/"+props.datamovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
+            <Link to={"/player/"+ media_type +"/"+props.datamovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> {LANGUAGES[language].PLAY}</Link>
             {liked(props.datamovie.id) ? <RemoveList id={props.datamovie.id} /> : <AddList id={props.datamovie.id} media_type={media_type} name={name} image={props.datamovie.backdrop_path} genres={genres}/>}
           </div>
         </div>
@@ -68,7 +69,7 @@ const VideoDescription = React.memo((props) => {
               <DescripcionItem link="https://netflix.com" label="Mellisa Roxburgh"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Josh Dallas"></DescripcionItem> <DescripcionItem link="https://netflix.com" label="Athena Karkanis"></DescripcionItem> más
             </p>
             <p>
-              <span className='video-description-info-categoria'>Género: </span> 
+              <span className='video-description-info-categoria'>{LANGUAGES[language].GENRE}: </span> 
               {genres.map((e, index) => (
                 <DescripcionItem key={index} link="https://netflix.com" label={e} /> 
               ))}              

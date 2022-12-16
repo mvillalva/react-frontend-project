@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsArrowLeft } from "react-icons/bs";
 // import video from "../../components/assets/video.mp4";
@@ -29,6 +29,10 @@ export default function Player({type}) {
       loop:1,
     },
   };
+
+  useEffect( () => {
+    document.title = `Team4`
+  })
   
   const getClip = async () => {    
     const movieClips = await (type==='movie'? getMovieClips(params.id) : getSeriesClips(params.id))

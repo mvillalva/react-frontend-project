@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import "./TodaySeries.css";
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 import useRandomSeries from "../../hooks/useRandomSeries";
+import MediaTypeLabel from "../mediaTypeLabel/MediaTypeLabel";
+import {AiOutlineInfoCircle} from "react-icons/ai"
+import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
@@ -12,6 +16,7 @@ const series = 'series';    // hard
 
 const TodaySeries = () => {
     const [show, setShow] = useState(false);
+    const {language} = useContext(MainContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -33,14 +38,18 @@ const TodaySeries = () => {
                     <img src={BASE_IMG + loadedSeries.backdrop_path} alt='news' className="home-movie-img"></img>
                     {showPlayer ? loadedClip : '' }
                     <div className="home-info-container">
-                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>
-                            <span className="home-movie-series">Series</span>
+                        <div className={(showPlayer ? "smaller" : "normal")}>
+                            <div className="home-movie-title" >
+                                <MediaTypeLabel media_type={'tv'}/>
+                            </div>
+                            <div className="home-movie-title" >{loadedSeries.name}</div>
+                            <div className={"home-movie-overview " + (showPlayer ? "smaller2" : "normal2")} >
+                                {loadedSeries.overview}                                    
+                            </div>
                         </div>
-                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedSeries.name}</div>
-                        <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedSeries.overview}</p>
-                        <div className="home-movie-buttons">
-                            <Link to={"/player/tv/"+loadedSeries.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
-                            <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedSeries.id)}}><span className="fas fa-info-circle fs-5"></span> Más informaicón</Link>
+                        <div className="home-movie-buttons mt-3">
+                            <Link to={"/player/tv/"+loadedSeries.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> {LANGUAGES[language].PLAY}</Link>
+                            <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedSeries.id)}}><AiOutlineInfoCircle className="fs-4" /> {LANGUAGES[language].MORE_INFO}</Link>
                         </div>
                     </div>
 

@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './ListadoBusqueda.css'
 import nf from '../../img/no_movie.png'
 import VideoDescriptionPage from '../../pages/videoDescriptionPage/VideoDescriptionPage';
+import { LANGUAGES } from '../../languages';
+import { MainContext } from '../../context/MainContext';
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
@@ -17,6 +19,7 @@ export default function ListadoBusqueda(props){
     const {resultados} = props;
     const [show, setShow] = useState(false);
     const [type, setType] = useState("")
+    const {language} = useContext(MainContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -42,7 +45,7 @@ export default function ListadoBusqueda(props){
                             {resultado.media_type === "movie" ? resultado.title : `${resultado.original_name} (Series)`}
                         </Card.Title>
                         <Card.Text>
-                            <span>Fecha de Estreno: </span>
+                            <span>{LANGUAGES[language].RELEASE_DATE}: </span>
                             <span>{ resultado.media_type === "movie" ? resultado.release_date : resultado.first_air_date }</span>
                         </Card.Text>
                     </Card.Body>

@@ -37,17 +37,21 @@
     font-weight: 900;
     line-height: .9;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
-    transition: 600ms ease-out;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%); 
 }
 
-.home-movie-series{
-    font-size: 1.5vw;
-    color: #E50914;   
+.normal {
+    transform-origin: left bottom;
+    transform: scale(1) translate3d(0px, 0px, 0px);
+    transition-duration: 1300ms;
+    transition-delay: 0ms;        
 }
 
-.home-movie-title.smaller {
-    transform: scale(.5);    
+.smaller {
+    transform-origin: left bottom;
+    transform: scale(0.6) translate3d(0px, 10px, 0px);
+    transition-duration: 1300ms;
+    transition-delay: 5000ms;
 }
 
 .home-movie-overview {        
@@ -60,14 +64,23 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
-    transition: 600ms ease-out;
 }
 
-.home-movie-overview.smaller {
-    transform: scale(0);
-    height: 0;    
+.home-movie-overview.normal2 {
+    transform-origin: left bottom;
+    transform: scale(1)  translate3d(0px, 0px, 0px);
+    transition-duration: 1300ms;
+    transition-delay: 0ms;
+    opacity: 1;
 }
 
+.home-movie-overview.smaller2 {
+    transform-origin: left bottom;
+    transform: scale(0.6) translate3d(0px, 10px, 0px);
+    transition-duration: 1300ms;
+    transition-delay: 5000ms;
+    opacity: 0;
+}
 
 .home-movie-buttons {
     position: relative;

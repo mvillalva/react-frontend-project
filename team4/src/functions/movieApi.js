@@ -1,3 +1,5 @@
+import { getRandomInt } from "./general";
+
 const API_KEY = process.env.REACT_APP_TMDB_APYKEY;
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -31,17 +33,19 @@ export function defaultTitulos() {
     }
 }
 
-export const getTopMovies = async (lang) => {       
-    const api_url = `${API_BASE_URL}/discover/movie?api_key=${API_KEY}&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
-    let res = null
+export const getTopMovies = async (lang, type='') => {
+    const media_type = !type ? (getRandomInt(0, 2) === 0 ? 'movie' : 'tv') : type
+
+    const api_url = `${API_BASE_URL}/discover/${media_type}?api_key=${API_KEY}&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
+    let movie = null
 
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {        
-        res = response.results
+        movie = response.results
     })
     
-    return res
+    return {movie, media_type}
 }
 
 export const getTopSeries = async (lang) => {    

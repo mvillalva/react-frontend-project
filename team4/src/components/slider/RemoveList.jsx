@@ -3,10 +3,11 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { MainContext } from "../../context/MainContext";
 import { updateData } from "../../functions/firebaseActions";
 import { TYPE } from "../../functions/general";
+import { LANGUAGES } from "../../languages";
 
 const RemoveList = ({ id }) => {
 
-    const {profiles, currentProfile, changeState} = useContext(MainContext)
+    const {profiles, currentProfile, language, changeState} = useContext(MainContext)
     const editProfiles = profiles.filter(e => e.uuid !== currentProfile.uuid)
 
     const removeList = async () => {
@@ -27,7 +28,7 @@ const RemoveList = ({ id }) => {
     return (
         <IoCheckmarkCircleOutline
             className="me-2"
-            title="Remove From List"
+            title={LANGUAGES[language].REMOVE_LIST}
             onClick={() => {removeList();}}
         />
     );

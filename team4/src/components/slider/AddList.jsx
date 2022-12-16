@@ -4,9 +4,10 @@ import { MainContext } from "../../context/MainContext";
 import { TYPE } from "../../functions/general";
 import { updateData } from "../../functions/firebaseActions";
 import { IoAddCircleOutline } from "react-icons/io5";
+import { LANGUAGES } from "../../languages";
 
 const AddList = ({ id, media_type, name, image, genres }) => {
-    const { profiles, currentProfile, changeState } = useContext(MainContext);
+    const { profiles, currentProfile, language, changeState } = useContext(MainContext);
     const editProfiles = profiles.filter((e) => e.uuid !== currentProfile.uuid);
 
     const addMyList = async () => {
@@ -33,7 +34,7 @@ const AddList = ({ id, media_type, name, image, genres }) => {
     return (
         <IoAddCircleOutline
             className="me-2"
-            title="Add to my list"
+            title={LANGUAGES[language].ADD_LIST}
             onClick={() => {
                 addMyList();
             }}

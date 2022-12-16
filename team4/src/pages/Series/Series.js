@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import './Series.css';
 import TodaySeries from "../../components/todaySeries/TodaySeries";
 import Netflix from "../Netflix/Netflix";
+import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 
 const Series = (props) => {
+    const {language} = useContext(MainContext)
 
     useEffect( () => {
-        document.title = 'Series - Team4'
+        document.title = `${LANGUAGES[language].TV_SHOWS} - Team4`
     })
 
     return (

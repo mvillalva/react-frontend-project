@@ -39,7 +39,7 @@ export default React.memo(function CardSlider({ data, title }) {
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
-      <h1>{title}</h1>
+      <h5>{title}</h5>
       <div className="wrapper">
         <div
           className={`slider-action left ${
@@ -68,8 +68,9 @@ const Container = styled.div`
   gap: 1rem;
   position: relative;
   padding: 2rem 0;
-  h1 {
+  h5 {
     margin-left: 50px;
+    font-weight: 600;
   }
   .wrapper {
     .slider {

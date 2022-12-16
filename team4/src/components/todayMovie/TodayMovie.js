@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import "./TodayMovie.css";
-
-
+import {AiOutlineInfoCircle} from "react-icons/ai"
 import VideoDescriptionPage from "../../pages/videoDescriptionPage/VideoDescriptionPage";
 import useRandomMovie from "../../hooks/useRandomMovie";
+import MediaTypeLabel from "../mediaTypeLabel/MediaTypeLabel";
+import { MainContext } from "../../context/MainContext";
+import { LANGUAGES } from "../../languages";
 
 const BASE_IMG = process.env.REACT_APP_BASE_URL_IMG;
 
 let movieId;
-const movies = 'movies';    // hard
 
-const TodayMovie = () => {
+const TodayMovie = ({type=''}) => {
     const [show, setShow] = useState(false);
+    const {language} = useContext(MainContext)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,7 +26,9 @@ const TodayMovie = () => {
         movieId = id;
     } 
 
-    const {loadedMovie, loadedClip, showPlayer} = useRandomMovie()    
+    
+    const {loadedMovie, loadedClip, showPlayer, media_type} = useRandomMovie(type)    
+    const media = media_type === 'movie' ? 'movies' : 'series'    
 
     return (        
         <div className="movie_container">
@@ -33,14 +37,21 @@ const TodayMovie = () => {
                     <img src={BASE_IMG + loadedMovie.backdrop_path} alt='news' className="home-movie-img"></img>
                     {showPlayer ? loadedClip : '' }
                     <div className="home-info-container">
-                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>
-                            <span className="home-movie-movie">Película</span>
-                        </div>
-                        <div className={"home-movie-title " + (showPlayer ? "smaller" : "") }>{loadedMovie.title}</div>
-                        <p className={"home-movie-overview " + (showPlayer ? "smaller" : "")}>{loadedMovie.overview}</p>
-                        <div className="home-movie-buttons">
-                            <Link to={"/player/movie/"+loadedMovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> Reproducir</Link>
-                            <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><span className="fas fa-info-circle fs-5"></span> Más información</Link>
+                        <div className="home-info-layer">
+                            <div className={(showPlayer ? "smaller" : "normal")}>
+                                <div className="home-movie-title" >
+                                    <MediaTypeLabel media_type={media_type}/>
+                                </div>
+                                <div className="home-movie-title" >{loadedMovie?.title ? loadedMovie.title : loadedMovie.name}</div>
+                                <div className={"home-movie-overview " + (showPlayer ? "smaller2" : "normal2")} >
+                                    {loadedMovie.overview}                                    
+                                </div>
+                            </div>
+                            
+                            <div className="home-movie-buttons mt-3">
+                                <Link to={"/player/movie/"+loadedMovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> {LANGUAGES[language].PLAY}</Link>
+                                <Link to="#" className="home-movie-button-info" onClick={(e)=>{showDescription(e, loadedMovie.id)}}><AiOutlineInfoCircle className="fs-4" /> {LANGUAGES[language].MORE_INFO}</Link>
+                            </div>
                         </div>
                     </div>
 
@@ -48,7 +59,7 @@ const TodayMovie = () => {
                         movieId={movieId}
                         show={show}
                         handleClose={handleClose}
-                        type={movies}
+                        type={media}
                     >
                     </VideoDescriptionPage>
                     <div className="home-movie-bottom"></div>
@@ -60,10 +71,3 @@ const TodayMovie = () => {
 };
 
 export default TodayMovie;
-
-// const login = (e) => {
-//     e.preventDefault()
-//     const user = document.forms[0].username.value
-//     const pass = document.forms[0].password.value
-//     logInWithEmail(user, pass)
-// }
