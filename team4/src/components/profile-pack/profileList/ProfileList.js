@@ -1,7 +1,7 @@
 import React from 'react'
 import './ProfileList.css'
 
-const ProfileList = ({title, children}) => {
+const ProfileList = React.memo(({title, children}) => {
 
     return (
         <div className='list-profiles'>
@@ -11,6 +11,6 @@ const ProfileList = ({title, children}) => {
             </ul>
         </div>
     )        
-}
+})
 
 export default ProfileList
