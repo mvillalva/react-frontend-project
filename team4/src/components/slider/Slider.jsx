@@ -12,7 +12,7 @@ export default React.memo(function Slider({ movies }) {
   };
 
   return (
-    <div>
+    <div className="mt-4">
       <CardSlider title={LANGUAGES[language].TRENDING_NOW} data={getMoviesFromRange(0, 10)} />
       <CardSlider
         title={LANGUAGES[language].NEW_RELEASES}
