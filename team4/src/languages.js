@@ -78,6 +78,9 @@ export const LANGUAGES = {
         LOGIN_TITLE: "Login to Netflix",
         LOGIN_START: "Sign In",
         LOGIN_REMEMBER: "Remember me",
+        SEASONS: "seasons",
+        EPISODES: "episodes",
+        SIN: "Without description",
     },
     "es-ES":{
         LOGIN_HEADER: "prueba",
@@ -158,5 +161,8 @@ export const LANGUAGES = {
         LOGIN_TITLE: "Login to Netflix",
         LOGIN_START: "Iniciá sesión",
         LOGIN_REMEMBER: "Recuérdame",
+        SEASONS: "temporadas",        
+        EPISODES: "episodios",        
+        SIN: "Sin descripción disponible",
     }
 }

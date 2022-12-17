@@ -50,7 +50,7 @@ const VideoDescription = React.memo((props) => {
                 { anio }
               </span>
               <span className='maturity'>13+</span>
-              {props.datamovie?.number_of_seasons ? <span className='temporadas'>{props.datamovie.number_of_seasons} {props.datamovie.number_of_seasons===1? "temporada" : "temporadas"}</span> : ''}
+              {props.datamovie?.number_of_seasons ? <span className='temporadas'>{props.datamovie.number_of_seasons===1? props.datamovie.number_of_episodes +" " +LANGUAGES[language].EPISODES : props.datamovie.number_of_seasons + " " + LANGUAGES[language].SEASONS}</span> : ''}
               <span className='hd'>HD</span>
             </div>
             <div className='info-general-2'>
@@ -60,7 +60,7 @@ const VideoDescription = React.memo((props) => {
               {/* <span className='ranking'>N.º 3 en TV hoy</span> */}
             </div>
             <p className='video-description-info-description'>
-              {props.datamovie.overview === "" ? 'Sin descripcion disponible' : props.datamovie.overview}
+              {props.datamovie.overview === "" ? LANGUAGES[language].SIN : props.datamovie.overview}
             </p>
           </div>
           <div className='video-description-info-container-right'>
