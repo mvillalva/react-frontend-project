@@ -8,7 +8,7 @@ import { MainContext } from "../../context/MainContext";
 import { LANGUAGES } from "../../languages";
 import './Profiles.css'
 
-const Profiles = ({title, action}) => {
+const Profiles = React.memo(({title, action}) => {
 
     const {profiles, language} = useContext(MainContext)    
 
@@ -37,7 +37,7 @@ const Profiles = ({title, action}) => {
                 </div>
             </div>
     )
-}
+})
 
 
 export default Profiles
