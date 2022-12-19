@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import VideoPreview from '../components/videoPreview/VideoPreview'
+import { MainContext } from '../context/MainContext'
 import { getRandomInt } from '../functions/general'
 import { getSeriesClips } from '../functions/movieApi'
 
@@ -7,6 +8,7 @@ const useTrailer = (id, showInMobile = true, height = null, width = null) => {
     const {innerWidth} = window
     const [loadedClip, setLoadedClip] = useState(null)
     const [showPlayer, setShowPlayer] = useState(false)
+    const {language} = useContext(MainContext)
     
     const showClip = (video) => {
         setTimeout(() => {            
@@ -17,7 +19,7 @@ const useTrailer = (id, showInMobile = true, height = null, width = null) => {
 
     const getClip = async (id) => {        
         // const movieClips = await getMovieClips(id);
-        const movieClips = await getSeriesClips(id);
+        const movieClips = await getSeriesClips(id, language);
         const movieIndex = movieClips.length > 0 ? getRandomInt(0, movieClips.length-1) : 0
         const movieId = movieClips.length > 0 ? movieClips[movieIndex].key : 'EC9EFoot_a0'
 

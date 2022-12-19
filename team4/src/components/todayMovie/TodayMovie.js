@@ -27,7 +27,7 @@ const TodayMovie = ({type=''}) => {
     } 
 
     
-    const {loadedMovie, loadedClip, showPlayer, media_type} = useRandomMovie(type)    
+    const {loadedMovie, loadedClip, showPlayer, media_type} = useRandomMovie(type)
     const media = media_type === 'movie' ? 'movies' : 'series'    
 
     return (        
@@ -62,7 +62,6 @@ const TodayMovie = ({type=''}) => {
                         type={media}
                     >
                     </VideoDescriptionPage>
-                    <div className="home-movie-bottom"></div>
                 </div>
                 : <Loader />
             }
