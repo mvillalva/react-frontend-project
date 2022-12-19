@@ -11,7 +11,7 @@ import YouTube from "react-youtube";
 
 export default function Player({type}) {
   const [loadedClip, setLoadedClip] = useState(null)
-  const {changeState} = useContext(MainContext)
+  const {language, changeState} = useContext(MainContext)
   const navigate = useNavigate();
   const params = useParams()  
 
@@ -35,7 +35,7 @@ export default function Player({type}) {
   })
   
   const getClip = async () => {    
-    const movieClips = await (type==='movie'? getMovieClips(params.id) : getSeriesClips(params.id))
+    const movieClips = await (type==='movie'? getMovieClips(params.id, 'movie', language) : getSeriesClips(params.id, language))
     const movie = movieClips.length > 0 ? movieClips[0].key : 'EC9EFoot_a0'      
     setLoadedClip(<YouTube videoId={movie} opts={opts}/>)
   }

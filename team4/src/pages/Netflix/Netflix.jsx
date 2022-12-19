@@ -27,7 +27,7 @@ export default function Netflix({type, mediaType='all'}) {
   );
 }
 
-const Container = styled.div`
-  background-color: transparent;
+const Container = styled.div`  
   height: 100%;  
+  background-image: linear-gradient(rgba(20,20,20,0), rgba(20,20,20,0.9), 12%, rgb(20,20,20));
 `;

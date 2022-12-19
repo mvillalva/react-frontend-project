@@ -50,7 +50,7 @@ export const getTopMovies = async (lang, type='') => {
 
 export const getTopSeries = async (lang) => {    
     const api_url = `${API_BASE_URL}/discover/tv?api_key=${API_KEY}&language=${lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate`
-    let res = null
+    let res = []
 
     await fetch(api_url)
     .then(data => data.json())
@@ -61,30 +61,49 @@ export const getTopSeries = async (lang) => {
     return res
 }
 
-export const getMovieClips = async (id, type='movie') => {    
-    const api_url = `${API_BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`    
+export const getMovieClips = async (id, type='movie', lang='en-US') => {    
+    console.log(lang)
+    const api_url = `${API_BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=${lang}`
+    const api_url_en = `${API_BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=en-US`
 
-    let res = null
+    let res = []
     
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {        
         res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
-    })
+    })    
+
+    if (res.length === 0) {
+        await fetch(api_url_en)
+        .then(data => data.json())
+        .then(response => {        
+            res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
+        })
+    }    
     
     return res
 }
 
-export const getSeriesClips = async (id) => {
-    const api_url = `${API_BASE_URL}/tv/${id}/videos?api_key=${API_KEY}&language=en-US`
+export const getSeriesClips = async (id, lang='en-US') => {
+    const api_url = `${API_BASE_URL}/tv/${id}/videos?api_key=${API_KEY}&language=${lang}`
+    const api_url_en = `${API_BASE_URL}/tv/${id}/videos?api_key=${API_KEY}&language=en-US`
 
-    let res = null
+    let res = []
     
     await fetch(api_url)
     .then(data => data.json())
     .then(response => {
         res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
     })
+
+    if (!res || res.length === 0) {
+        await fetch(api_url_en)
+        .then(data => data.json())
+        .then(response => {        
+            res = response.results.filter(e => e.type === 'Clip' || e.type === 'Trailer');
+        })
+    }    
     
     return res
 }
