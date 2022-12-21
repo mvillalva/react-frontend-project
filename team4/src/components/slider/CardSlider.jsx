@@ -12,17 +12,30 @@ export default React.memo(function CardSlider({ data, title }) {
   const listRef = useRef();
 
   const handleDirection = (direction) => {
-    const windWidth = window.innerWidth    
-    let distance = listRef.current.getBoundingClientRect().x - 70 ;
+    const windWidth = window.innerWidth
+    const slide_with = Math.trunc(windWidth / 250) * 250
+    const max_slides = Math.trunc((250 * 10) / slide_with)
+
+    let distance = listRef.current.getBoundingClientRect()['x'];
 
     if (direction === "left" && sliderPosition > 0) {
-      let firstDistance = sliderPosition === 1 ? 0 : 250+distance
+      let firstDistance = sliderPosition === 1 ? 0 : slide_with+distance
+
+      if (slide_with+distance > 0) {
+        firstDistance = 0
+        setSliderPosition(1)
+      }
       
       listRef.current.style.transform = `translateX(${firstDistance}px)`;
       setSliderPosition(sliderPosition - 1);
     }
-    if (direction === "right" && sliderPosition < (windWidth < 492 ? 8 : 5)) { 
-      let lastDistance = sliderPosition === (windWidth < 492 ? 7 : 4) ? -250 - 70 + distance  : -250 + distance
+    if (direction === "right" && sliderPosition < max_slides) { 
+      let lastDistance = (slide_with * -1) + (distance-(50+(sliderPosition*2)))
+
+      if (sliderPosition === max_slides-1) {
+        lastDistance = distance-slide_with+50
+        setSliderPosition(max_slides)
+      }
 
       listRef.current.style.transform = `translateX(${lastDistance}px)`;
       setSliderPosition(sliderPosition + 1);
@@ -96,13 +109,17 @@ const Container = styled.div`
       display: none;
     }
     .left {
-      top:30px;
-      left: 0;
+      top:79px;
+      left: 0px;
+      height:57%;
+      background-color: rgba(20, 20, 20, .5);
       cursor:pointer;
     }
     .right {
-      top:30px;
-      right: 0;
+      top:79px;
+      right: 10px;      
+      height:57%;
+      background-color: rgba(20, 20, 20, .5);
       cursor:pointer;
     }
   }
