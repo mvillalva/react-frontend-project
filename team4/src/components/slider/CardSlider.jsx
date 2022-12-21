@@ -117,7 +117,7 @@ const Container = styled.div`
     }
     .right {
       top:79px;
-      right: 10px;      
+      right: 0;      
       height:57%;
       background-color: rgba(20, 20, 20, .5);
       cursor:pointer;
