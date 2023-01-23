@@ -40,10 +40,10 @@ const VideoDescriptionPage = ({movieId, show, handleClose, type}) => {
    
     return isLoading ? <Loader /> :  
     (
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>        
+        <Modal.Body>
         <Modal.Header closeButton>
         </Modal.Header>
-        <Modal.Body>
           <div className="video-description-page-container">
             <div className="centered-div">
                 <VideoDescription datamovie={movieResults} type={type}>

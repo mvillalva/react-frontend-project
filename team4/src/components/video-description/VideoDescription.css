@@ -1,39 +1,46 @@
-.video-description {
-     width: 100%;
-     margin-left: auto;
-     margin-right: auto;
-}
-
-
 .video-description-top {
-     position: relative;
+    position: relative;
 }
 
 .video-description-top img {
     width: 100%;
+    height: 75vh;
+    object-fit: cover;
+}
+
+.video-description-top.bottom {
+    position: absolute;
+    width: 100%;
+    height: 18vh;
+    bottom: -2px;
+    background-image: linear-gradient(rgba(24, 24, 24, 0), rgb(24, 24, 24, 0.9), rgb(24, 24, 24));
 }
 
 .video-description-title {
-     font-size: 2rem;
+    font-size: 2rem;
 }
 
 .video-description-info-container {
-     display: flex;
-     flex-direction: column;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: -60px;
+    padding: 0 20px;
+    background-image: linear-gradient(rgba(24, 24, 24, 0), 3%, rgba(24, 24, 24, 1), 10%, rgb(24, 24, 24));
 }
 
 .video-description-info-container-left {
-     width: 100%;
-     padding: 20px 5px 20px 0;
+    width: 100%;
+    padding: 20px 5px 20px 0;
 }
 .video-description-info-container-right {
-     width: 100%;
-     padding: 20px 5px 20px 0;
+    width: 100%;
+    padding: 20px 5px 20px 0;
 }
 
 .video-description-info-categoria {
-     color: #777;
-     font-size: 14px;
+    color: #777;
+    font-size: 14px;
     line-height: 20px;
 }
 
@@ -42,91 +49,93 @@
 }
 
 .video-description-info-container-right a {
-     color: #fff;
-     cursor: pointer;
-     text-decoration: none;
-     font-size: 14px;
-     line-height: 20px;
- }
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+}
 
- .video-description-info-description {
-     font-size: 14px;
+.video-description-info-description {
+    font-size: 14px;
     line-height: 24px;
- }
+}
 
-.info-general, .info-general-2 {
-     margin-bottom: 20px;
- }
+.info-general,
+.info-general-2 {
+    margin-bottom: 20px;
+}
 
- .info-general span {
-     margin-right: 10px;
- }
- 
- .porcentaje {
-     color: #46d369;
-     display: inline-block;
-     font-weight: 500;
-     font-size: 16px;
- }
+.info-general span {
+    margin-right: 10px;
+}
 
- .anio {
-     color: #fff;
- }
+.porcentaje {
+    color: #46d369;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+}
 
- .maturity {
-     border: 1px solid hsla(0,0%,100%,.4);
-    font-family: Netflix Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+.anio {
+    color: #fff;
+}
+
+.maturity {
+    border: 1px solid hsla(0, 0%, 100%, 0.4);
+    font-family: Netflix Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
     overflow: hidden;
     padding: 0 0.4em;
     text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
- }
+}
 
- .temporadas {
-     color: #fff;
- }
+.temporadas {
+    color: #fff;
+}
 
- .hd {
-     border: 1px solid hsla(0,0%,100%,.4);
+.hd {
+    border: 1px solid hsla(0, 0%, 100%, 0.4);
     border-radius: 3px;
-    color: hsla(0,0%,100%,.9);
-    font-size: .7em;
+    color: hsla(0, 0%, 100%, 0.9);
+    font-size: 0.7em;
     padding: 0 0.5em;
     white-space: nowrap;
- }
+}
 
- .ranking {
-     font-weight: 500;
-     font-size: 20px;
- }
+.ranking {
+    font-weight: 500;
+    font-size: 20px;
+}
 
- .video-icons {
-    position: relative;
-    display: flex;    
+.video-icons {
+    position: absolute;
+    display: flex;
     align-items: center;
-    left: 10px;
-    bottom: 50px;    
- }
+    left: 40px;
+    bottom: 100px;
+}
 
- .video-icons svg {
+.video-icons svg {
     position: relative;
     bottom: 7px;
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(42,42,42,.6);    
+    background-color: rgba(42, 42, 42, 0.6);
     border-radius: 50%;
     cursor: pointer;
     transition: 0.3s ease-in-out;
- }
+}
 
- .video-icons svg:hover {
+.video-icons svg:hover {
     color: rgb(255, 255, 255);
- }
+}
 
- @media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
-    .video-description-info-container {    
+@media only screen and (min-width: 1450px), only screen and (min-width: 950px) and (max-width: 1449px) {
+    .video-description-info-container {
         flex-direction: row;
+        padding: 0 50px;
     }
 
     .video-description-info-container-left {
@@ -138,4 +147,4 @@
         width: 35%;
         padding: 20px 0 20px 30px;
     }
- }
+}

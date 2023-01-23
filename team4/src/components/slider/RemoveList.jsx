@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import { IoCheckmark } from "react-icons/io5";
 import { MainContext } from "../../context/MainContext";
 import { updateData } from "../../functions/firebaseActions";
 import { TYPE } from "../../functions/general";
 import { LANGUAGES } from "../../languages";
+import styled from "styled-components";
 
 const RemoveList = ({ id }) => {
 
@@ -26,12 +27,28 @@ const RemoveList = ({ id }) => {
 
 
     return (
-        <IoCheckmarkCircleOutline
-            className="me-2"
-            title={LANGUAGES[language].REMOVE_LIST}
-            onClick={() => {removeList();}}
-        />
+        <Container>
+            <IoCheckmark
+                className="me-2 custom-border"
+                title={LANGUAGES[language].REMOVE_LIST}
+                onClick={() => {removeList();}}
+            />
+        </Container>
     );
 };
+
+const Container = styled.div`
+    .custom-border {
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-width: 2px;
+        color: white;
+    }
+    .custom-border:hover {
+        border: 1px solid white;
+        border-width: 2px;
+        color: white;
+    }
+`;
+
 
 export default RemoveList;

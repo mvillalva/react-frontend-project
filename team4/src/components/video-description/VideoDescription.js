@@ -36,7 +36,7 @@ const VideoDescription = React.memo((props) => {
   return (
       <div className='video-description'>
         <div className='video-description-top'>
-          <Link to={"/player/"+ media_type +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>
+          <Link to={"/player/"+ media_type +"/"+props.datamovie.id}><img alt={props.datamovie.title} src={webUrl}></img></Link>          
           <div className='video-icons'>
             <Link to={"/player/"+ media_type +"/"+props.datamovie.id} className="home-movie-button-rep"><span className="fas fa-play fs-5"></span> {LANGUAGES[language].PLAY}</Link>
             {liked(props.datamovie.id) ? <RemoveList id={props.datamovie.id} /> : <AddList id={props.datamovie.id} media_type={media_type} name={name} image={props.datamovie.backdrop_path} genres={genres}/>}
