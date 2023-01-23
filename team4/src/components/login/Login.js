@@ -57,7 +57,7 @@ function Login() {
             </Form.Group>
 
             <Form.Group className="mb-5 text-secondary">
-                <FloatingLabel controlId="passId" label="Contraseña">
+                <FloatingLabel controlId="passId" label={LANGUAGES[language].LOGIN_PASSWORD}>
                     <Form.Control name="password" type="password" placeholder={LANGUAGES[language].LOGIN_PASSWORD} className="w-100 fs-6" required onChange={handleChange} />
                     <Form.Control.Feedback type="invalid">
                         La contraseña debe tener entre 4 y 60 caracteres.
