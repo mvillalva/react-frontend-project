@@ -99,7 +99,7 @@ export const LANGUAGES = {
         BUTTON_SIGNIN_GOOGLE: "Iniciar con Google",
         MOVIES: "Películas",
         TV_SHOWS: "Series",
-        FILM: 'Plelícula',
+        FILM: 'Película',
         SERIES: 'Serie',
         MY_LIST: 'Mi lista',
         HOME: 'Inicio',
