@@ -1,12 +1,7 @@
-.LoginContainer2 {
-    display: flex;
-    height: 90vh;
-    justify-content: center;
-}
-
 .checkBoxLogin {
     justify-content: center;
     text-align: center;
+    color: #b3b3b3;
 }
 
 .Login {
@@ -22,7 +17,7 @@
     border-radius: 4px;
     box-sizing: border-box;
     flex-direction: column;
-    padding: 30px 68px 40px;
+    padding: 60px 68px 40px;
 }
 
 .derechos {
@@ -41,4 +36,9 @@
     font-size: 16px !important;
     font-weight: 400 !important;
     margin-top: 16px;
+}
+
+#check {
+    position: absolute;
+    top: -3px
 }
